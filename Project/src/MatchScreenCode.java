@@ -24,6 +24,14 @@ public class MatchScreenCode extends Application{
         teamAScore.setText("" + (Integer.parseInt(teamAScore.getText()) + 1));
     }
 
+    @FXML
+    void matchScreenSubButtonClicked(ActionEvent event) throws Exception {
+        
+        Stage MatchScreenSubButtonClickedStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenSubButtonClicked.fxml"));
+        MatchScreenSubButtonClickedStage.setScene( new Scene( root, 600, 600));
+        MatchScreenSubButtonClickedStage.show();
+    }
 
     public static void main(String[] args)  {
         System.out.println("Hello, World!");
