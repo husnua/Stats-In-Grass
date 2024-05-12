@@ -298,7 +298,7 @@
             </Button>
          </children>
       </GridPane>
-      <Button layoutY="107.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="100.0" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 3; -fx-background-radius: 6;" text="SUB" textFill="#faf7f7" AnchorPane.leftAnchor="0.0">
+      <Button layoutY="107.0" mnemonicParsing="false" onAction="#matchScreenSubButtonClicked" prefHeight="43.0" prefWidth="100.0" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 3; -fx-background-radius: 6;" text="SUB" textFill="#faf7f7" AnchorPane.leftAnchor="0.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -676,7 +676,7 @@
             </Button>
          </children>
       </Pane>
-      <Button layoutX="850.0" layoutY="107.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="100.0" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 3; -fx-background-radius: 6;" text="SUB" textFill="#faf7f7" AnchorPane.bottomAnchor="448.2" AnchorPane.leftAnchor="850.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="107.2">
+      <Button layoutX="850.0" layoutY="107.0" mnemonicParsing="false" onAction="#matchScreenSubButtonClicked" prefHeight="43.0" prefWidth="100.0" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 3; -fx-background-radius: 6;" text="SUB" textFill="#faf7f7" AnchorPane.bottomAnchor="448.2" AnchorPane.leftAnchor="850.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="107.2">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
