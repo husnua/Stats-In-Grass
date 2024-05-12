@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MatchScreenCode",
+            "request": "launch",
+            "mainClass": "MatchScreenCode",
+            "projectName": "Stats-In-Grass_3eb9ce84"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}",
