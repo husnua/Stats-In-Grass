@@ -9,19 +9,29 @@ import javafx.scene.text.Text;
 import javafx.fxml.FXML;
 
 
-public class MatchScreenCode extends Application{
+
+public class CreateMatchCode extends Application{
 
     @FXML
-    private Text teamAScore;
+    private String nameTeamA;
+    private String nameTeamB;
+    private Team teamA;
+    private Team teamB;
+    
 
     @FXML
-    void teamAScoreDown(ActionEvent event) {
-        teamAScore.setText("" + (Integer.parseInt(teamAScore.getText()) - 1));
+    void addPlayerForTeamA(ActionEvent event) {
+        
     }
 
     @FXML
-    void teamAScoreUp(ActionEvent event) {
-        teamAScore.setText("" + (Integer.parseInt(teamAScore.getText()) + 1));
+    void addPlayerForTeamB(ActionEvent event) {
+        
+    }
+
+    @FXML
+    void startMatch(ActionEvent event) {
+        System.out.println("MATCH STARTING");
     }
 
 
@@ -33,8 +43,8 @@ public class MatchScreenCode extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
-        primaryStage.setTitle("Match Screen");
+        Parent root = FXMLLoader.load(getClass().getResource("CreateMatch.fxml"));
+        primaryStage.setTitle("Create Match");
         primaryStage.setScene(new Scene(root, 950, 600));
         primaryStage.show();
 
