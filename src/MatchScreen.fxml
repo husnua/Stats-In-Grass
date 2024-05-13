@@ -653,9 +653,19 @@
                         <Image url="@TimeDown.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="58.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="45.00" textAlignment="CENTER" wrappingWidth="84.53668212890625">
+                  <Text id="matchSecond" layoutX="100.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="38.53755187988281">
                      <font>
                         <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text id="matchHour" layoutX="55.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="38.53755187988281">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="96.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
                      </font>
                   </Text>
                </children>

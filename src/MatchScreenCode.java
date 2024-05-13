@@ -9,9 +9,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.fxml.FXML;
 import java.util.ArrayList;
-
-
-
+import java.util.Timer;
+import java.util.TimerTask;
 //db related conns
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -37,12 +36,16 @@ public class MatchScreenCode extends Application{
 
     //Instance Variables of MatchScreenCode
     static Parent mainRoot;
+    private Timer timer = new Timer();
+    private TimerHelper timerHelper = new TimerHelper( this);
     @FXML
     private Text teamAScore;
     private Text teamBScore;
-  
-
-
+    private Text matchHour;
+    private Text matchSecond;
+    
+    
+    
     //team Score adjustment by arrows
     @FXML
     void teamAScoreDown(ActionEvent event) {
@@ -69,6 +72,35 @@ public class MatchScreenCode extends Application{
         score.setText("" + (Integer.parseInt(score.getText()) + 1));
     }
     
+
+    //Timer matchTime setter
+    public void runMatchTime()
+    {
+
+        Text second = (Text)mainRoot.lookup("#matchSecond");
+        Text hour = (Text)mainRoot.lookup("#matchHour");
+
+        if( Integer.parseInt(second.getText()) < 59)
+        {
+            
+            if(second!=null)
+            {
+                second.setText( ((Integer.parseInt(second.getText())) + 1)  + "");
+            }
+        }
+        else
+        {
+            if(second!=null)
+            {
+                second.setText( 0 + "");
+            }
+            if(hour!=null)
+            {
+                hour.setText( ((Integer.parseInt(hour.getText())) + 1)  + "");
+            }
+        }
+    }
+
 
     //SUB
     @FXML
@@ -128,10 +160,17 @@ public class MatchScreenCode extends Application{
     {
         return teamAScore;
     }
+    public Text getMatchHour()
+    {
+        return matchHour;
+    }
+    public Text getMatchSecond()
+    {
+        return matchSecond;
+    }
    
 
     public static void main(String[] args)  {
-       
         System.out.println("Hello, World!");
         launch(args);
     }
@@ -152,9 +191,16 @@ public class MatchScreenCode extends Application{
         matchDAO.printAllMatches();*/  // Printing all matches
         //System.out.println(matchDAO.getMatch(5).getMatchDate());
         
+        timer.schedule(timerHelper, 1000, 1000);
         mainRoot = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
         primaryStage.setTitle("Match Screen");
         primaryStage.setScene(new Scene(mainRoot, 950, 600));
         primaryStage.show();
+       
+        
+       
+        
+        
+        
     }
 }
