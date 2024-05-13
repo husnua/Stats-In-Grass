@@ -5,7 +5,6 @@ import javafx.util.Callback;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.fxml.FXML;
@@ -14,6 +13,7 @@ import javafx.fxml.FXML;
 public class MatchScreenCode extends Application{
 
     //Instance Variables of MatchScreenCode
+    static Parent mainRoot;
     @FXML
     private Text teamAScore;
 
@@ -42,15 +42,22 @@ public class MatchScreenCode extends Application{
     @FXML
     void matchScreenPitchClicked(MouseEvent event) throws Exception {
 
-        MatchScreenPitchClickedCode matchScreenPitchClickedCode = new MatchScreenPitchClickedCode( this, event.getX() + 100, event.getY() + 100);
-        teamAScoreUp(null);
+        Stage matchScreenPitchClickedStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClicked.fxml"));
+        matchScreenPitchClickedStage.setScene( new Scene( root, 300, 300));
+        matchScreenPitchClickedStage.setX( event.getX() + 100 + 100);
+        matchScreenPitchClickedStage.setY( event.getY() + 100);
+        matchScreenPitchClickedStage.show();  
+        //MatchScreenPitchClickedCode matchScreenPitchClickedCode = new MatchScreenPitchClickedCode( this, event.getX() + 100, event.getY() + 100);
     }
 
     @FXML
     void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
 
-        MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClickedCode = new MatchScreenPitchClickedGoalClickedCode(this);
-        
+        //MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClickedCode = new MatchScreenPitchClickedGoalClickedCode(this);
+        Text score = (Text)mainRoot.lookup("#teamAScore");
+        if(score!=null)
+        score.setText("" + (Integer.parseInt(score.getText()) + 1));
     }
     
    
@@ -69,9 +76,9 @@ public class MatchScreenCode extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
+        mainRoot = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
         primaryStage.setTitle("Match Screen");
-        primaryStage.setScene(new Scene(root, 950, 600));
+        primaryStage.setScene(new Scene(mainRoot, 950, 600));
         primaryStage.show();
     }
 }

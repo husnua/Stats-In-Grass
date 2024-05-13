@@ -31,6 +31,14 @@ public class MatchScreenPitchClickedCode {
         matchScreenPitchClickedStage.setY( Y + 100);
         matchScreenPitchClickedStage.show();   
     }
+    
+    /*@FXML
+    void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
+
+        //MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClickedCode = new MatchScreenPitchClickedGoalClickedCode(this);
+        matchScreenCode.teamAScoreUp(null);
+        
+    }*/
 
    
    
