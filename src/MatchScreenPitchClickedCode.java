@@ -17,8 +17,8 @@ public class MatchScreenPitchClickedCode {
 
     private MatchScreenCode matchScreenCode;
     private Stage matchScreenPitchClickedStage; 
-    Text teamAScore;
-
+    static Parent mainRoot;
+    
    
 
     public MatchScreenPitchClickedCode( MatchScreenCode matchScreenCode ,double X, double Y) throws Exception
@@ -32,13 +32,7 @@ public class MatchScreenPitchClickedCode {
         matchScreenPitchClickedStage.show();   
     }
     
-    /*@FXML
-    void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
-
-        //MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClickedCode = new MatchScreenPitchClickedGoalClickedCode(this);
-        matchScreenCode.teamAScoreUp(null);
-        
-    }*/
+  
 
 
    

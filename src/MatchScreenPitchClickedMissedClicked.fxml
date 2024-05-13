@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #880015;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="57.0" layoutY="67.0" mnemonicParsing="false" prefHeight="158.0" prefWidth="194.0" style="-fx-background-color: #880015; -fx-border-color: white; -fx-border-width: 3; -fx-border-radius: 6;" text="ON TARGET " textFill="#f4ecec">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="372.0" layoutY="67.0" mnemonicParsing="false" prefHeight="158.0" prefWidth="194.0" style="-fx-background-color: #880015; -fx-border-color: white; -fx-border-width: 3; -fx-border-radius: 6;" text="NOT ON TARGET " textFill="#f4ecec">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="75.0" layoutY="249.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="162.0" style="-fx-background-color: #880015; -fx-border-width: 3; -fx-border-color: white;" text="SAVED" textFill="#fafafa">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button layoutX="454.0" layoutY="279.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="112.0" style="-fx-background-color: green;" text="CONFIRM" textFill="#faf8f8">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <effect>
+            <Lighting diffuseConstant="1.22" specularConstant="0.0" specularExponent="40.0" surfaceScale="1.87">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant azimuth="163.9" elevation="134.17" />
+               </light>
+            </Lighting>
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>

@@ -39,6 +39,7 @@ public class MatchScreenCode extends Application{
     static Parent mainRoot;
     @FXML
     private Text teamAScore;
+    private Text teamBScore;
   
 
     @FXML
@@ -66,26 +67,40 @@ public class MatchScreenCode extends Application{
 
     @FXML
     void matchScreenPitchClicked(MouseEvent event) throws Exception {
+        
+        MatchScreenPitchClickedCode matchScreenPitchClickedCode = new MatchScreenPitchClickedCode( this, event.getX() + 100, event.getY() + 100);
+    }
 
-        Stage matchScreenPitchClickedStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClicked.fxml"));
-        matchScreenPitchClickedStage.setScene( new Scene( root, 300, 300));
-        matchScreenPitchClickedStage.setX( event.getX() + 100 + 100);
-        matchScreenPitchClickedStage.setY( event.getY() + 100);
-        matchScreenPitchClickedStage.show();  
-        //MatchScreenPitchClickedCode matchScreenPitchClickedCode = new MatchScreenPitchClickedCode( this, event.getX() + 100, event.getY() + 100);
+    @FXML
+    void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
+
+        Text score = (Text)mainRoot.lookup("#teamAScore");
+        if(score!=null)
+        score.setText("" + (Integer.parseInt(score.getText()) + 1));
+        MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClickedCode = new MatchScreenPitchClickedGoalClickedCode(this);
+    }
+    
+    @FXML
+    void matchScreenPitchClickedMissedClicked(ActionEvent event) throws Exception {
+        MatchScreenPitchClickedMissedClickedCode matchScreenPitchClickedMissedClickedCode = new MatchScreenPitchClickedMissedClickedCode(this);
+    }
+
+    @FXML
+    void matchScreenPitchClickedLostClicked(MouseEvent event) throws Exception {
+        Stage MatchScreenPitchClickedLostClickedStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedLostClicked.fxml"));
+        MatchScreenPitchClickedLostClickedStage.setScene( new Scene( root, 600, 500));
+        MatchScreenPitchClickedLostClickedStage.show();
     }
 
     
     @FXML
-    void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
-
-        //MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClickedCode = new MatchScreenPitchClickedGoalClickedCode(this);
-        Text score = (Text)mainRoot.lookup("#teamAScore");
-        if(score!=null)
-        score.setText("" + (Integer.parseInt(score.getText()) + 1));
-    }
-    
+    void matchScreenPitchClickedFoulClicked(MouseEvent event) throws Exception{
+        Stage MatchScreenPitchClickedFoulClickedStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedFoulClicked.fxml"));
+        MatchScreenPitchClickedFoulClickedStage.setScene( new Scene( root, 600, 500));
+        MatchScreenPitchClickedFoulClickedStage.show();
+    }   
    
     //getters
     public Text getTextScoreOfTeamA()
@@ -102,7 +117,7 @@ public class MatchScreenCode extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        DatabaseInitializer.initializeDatabase();
+        /*DatabaseInitializer.initializeDatabase();
         this.teamDAO = new TeamDAO();
         this.playerDAO = new PlayerDAO();
         this.matchDAO = new MatchDAO();
@@ -112,7 +127,7 @@ public class MatchScreenCode extends Application{
         teamDAO.addTeam("Team A", "path/to/logo1.jpg");
         teamDAO.addTeam("Team B", "path/to/logo2.jpg");
         matchDAO.addMatch(1, 2, 3, 2, "2024-05-13");  
-        matchDAO.printAllMatches();  // Printing all matches
+        matchDAO.printAllMatches();*/  // Printing all matches
         System.out.println(matchDAO.getMatch(5).getMatchDate());
         
         mainRoot = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
