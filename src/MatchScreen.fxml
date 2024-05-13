@@ -611,7 +611,7 @@
             </Pane>
             <Pane layoutX="490.0" layoutY="45.0" prefHeight="61.0" prefWidth="110.0" style="-fx-background-color: 0000FF; -fx-border-color: black; -fx-border-width: 3.5; -fx-border-radius: 6;">
                <children>
-                  <Button layoutX="14.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: red;">
+                  <Button layoutX="14.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#teamBScoreDown" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: red;">
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="25.0">
                            <image>
@@ -620,7 +620,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="75.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: red;">
+                  <Button layoutX="75.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#teamBScoreUp" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: red;">
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="26.0">
                            <image>
@@ -629,7 +629,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Text fill="#f7f2f2" layoutX="36.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="38.53755187988281">
+                  <Text fx:id="teamBScore" fill="#f7f2f2" layoutX="36.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="38.53755187988281">
                      <font>
                         <Font name="System Bold" size="39.0" />
                      </font>
@@ -664,6 +664,16 @@
                <font>
                   <Font size="52.0" />
                </font>
+               <effect>
+                  <Lighting diffuseConstant="1.11" specularConstant="0.33" specularExponent="40.0">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant azimuth="360.0" />
+                     </light>
+                  </Lighting>
+               </effect>
             </Text>
          </children>
       </Pane>

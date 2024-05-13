@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -9,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #880015;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchScreenCode">
    <children>
-      <GridPane layoutX="37.0" layoutY="37.0" prefHeight="225.0" prefWidth="226.0" vgap="40.0">
+      <GridPane layoutX="37.0" layoutY="38.0" prefHeight="225.0" prefWidth="226.0" vgap="40.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -35,12 +40,29 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#matchScreenPitchClickedLostClicked" style="-fx-background-color: #880015; -fx-border-color: white; -fx-border-width: 2;" text="FOUL" textFill="#f7f2f2" GridPane.rowIndex="3">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#matchScreenPitchClickedFoulClicked" style="-fx-background-color: #880015; -fx-border-color: white; -fx-border-width: 2;" text="FOUL" textFill="#f7f2f2" GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Button>
          </children>
+         <effect>
+            <Lighting specularExponent="15.97" surfaceScale="4.8">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant azimuth="140.78" />
+               </light>
+            </Lighting>
+         </effect>
       </GridPane>
    </children>
+   <effect>
+      <InnerShadow>
+         <input>
+            <DropShadow />
+         </input>
+      </InnerShadow>
+   </effect>
 </AnchorPane>

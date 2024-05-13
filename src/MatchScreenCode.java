@@ -42,20 +42,35 @@ public class MatchScreenCode extends Application{
     private Text teamBScore;
   
 
+
+    //team Score adjustment by arrows
     @FXML
     void teamAScoreDown(ActionEvent event) {
-        System.out.println( teamAScore.getText());
-        teamAScore.setText("" + (Integer.parseInt(teamAScore.getText()) - 1));
-        
+        Text score = (Text)mainRoot.lookup("#teamAScore");
+        if(score!=null)
+        score.setText("" + (Integer.parseInt(score.getText()) - 1));
     }
-
     @FXML
     void teamAScoreUp(ActionEvent event) {
-        System.out.println( teamAScore.getText());
-        teamAScore.setText("" + (Integer.parseInt(teamAScore.getText()) + 1));
-        
+        Text score = (Text)mainRoot.lookup("#teamAScore");
+        if(score!=null)
+        score.setText("" + (Integer.parseInt(score.getText()) + 1));
     }
+    @FXML
+    void teamBScoreDown(ActionEvent event) {
+        Text score = (Text)mainRoot.lookup("#teamBScore");
+        if(score!=null)
+        score.setText("" + (Integer.parseInt(score.getText()) - 1));
+    }
+    @FXML
+    void teamBScoreUp(ActionEvent event) {
+        Text score = (Text)mainRoot.lookup("#teamBScore");
+        if(score!=null)
+        score.setText("" + (Integer.parseInt(score.getText()) + 1));
+    }
+    
 
+    //SUB
     @FXML
     void matchScreenSubButtonClicked(ActionEvent event) throws Exception {
         
@@ -65,6 +80,9 @@ public class MatchScreenCode extends Application{
         MatchScreenSubButtonClickedStage.show();
     }
 
+
+
+    //PitchClickRelatedCodes
     @FXML
     void matchScreenPitchClicked(MouseEvent event) throws Exception {
         
@@ -82,7 +100,11 @@ public class MatchScreenCode extends Application{
     
     @FXML
     void matchScreenPitchClickedMissedClicked(ActionEvent event) throws Exception {
-        MatchScreenPitchClickedMissedClickedCode matchScreenPitchClickedMissedClickedCode = new MatchScreenPitchClickedMissedClickedCode(this);
+        //MatchScreenPitchClickedMissedClickedCode matchScreenPitchClickedMissedClickedCode = new MatchScreenPitchClickedMissedClickedCode(this);
+        Stage matchScreenPitchClickedMissedClickedStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedMissedClicked.fxml"));
+        matchScreenPitchClickedMissedClickedStage.setScene( new Scene( root, 600, 400));
+        matchScreenPitchClickedMissedClickedStage.show();   
     }
 
     @FXML
@@ -93,7 +115,6 @@ public class MatchScreenCode extends Application{
         MatchScreenPitchClickedLostClickedStage.show();
     }
 
-    
     @FXML
     void matchScreenPitchClickedFoulClicked(MouseEvent event) throws Exception{
         Stage MatchScreenPitchClickedFoulClickedStage = new Stage();
@@ -128,7 +149,7 @@ public class MatchScreenCode extends Application{
         teamDAO.addTeam("Team B", "path/to/logo2.jpg");
         matchDAO.addMatch(1, 2, 3, 2, "2024-05-13");  
         matchDAO.printAllMatches();*/  // Printing all matches
-        System.out.println(matchDAO.getMatch(5).getMatchDate());
+        //System.out.println(matchDAO.getMatch(5).getMatchDate());
         
         mainRoot = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
         primaryStage.setTitle("Match Screen");
