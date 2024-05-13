@@ -143,6 +143,7 @@ public class MatchScreenCode extends Application{
         this.playerDAO = new PlayerDAO();
         this.matchDAO = new MatchDAO();
         this.playerStatsDAO = new PlayerStatsDAO();
+        Parent root = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
 
         
         teamDAO.addTeam("Team A", "path/to/logo1.jpg");

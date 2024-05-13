@@ -2,9 +2,13 @@ public class Player {
     private String name;
     private int jerseyNumber;
     private Team team;
-
-    public Player () {
-        //TODO
+    PlayerStats stats;
+    
+    public Player ( String namee, int jersey, Team t) {
+        name = namee;
+        jerseyNumber = jersey;
+        team = t;
+        t.addPlayer( this );
     }
 
     public String getName () {
