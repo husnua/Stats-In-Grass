@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 
 public class MatchDAO {
     public void addMatch(int team1Id, int team2Id, int team1Score, int team2Score, String date) throws SQLException {
@@ -31,4 +33,47 @@ public class MatchDAO {
             }
         }
     }
+
+    public Match getMatch(int matchId) throws SQLException {
+        String sql = "SELECT * FROM Matches WHERE MatchID = ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, matchId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new Match(
+                    rs.getInt("MatchID"),
+                    rs.getInt("Team1ID"),
+                    rs.getInt("Team2ID"),
+                    rs.getInt("Team1Score"),
+                    rs.getInt("Team2Score"),
+                    rs.getString("MatchDate")
+                );
+            }
+        }
+        return null;  
+    }
+
+    public ArrayList<Match> getAllMatches() throws SQLException {
+        ArrayList<Match> matches = new ArrayList<>();
+        String sql = "SELECT * FROM Matches";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+                matches.add(new Match(
+                    rs.getInt("MatchID"),
+                    rs.getInt("Team1ID"),
+                    rs.getInt("Team2ID"),
+                    rs.getInt("Team1Score"),
+                    rs.getInt("Team2Score"),
+                    rs.getString("MatchDate")
+                ));
+            }
+        }
+        return matches;  
+    }
+
+    
 }
+

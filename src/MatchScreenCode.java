@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.fxml.FXML;
+import java.util.ArrayList;
+
 
 
 //db related conns
@@ -21,6 +23,7 @@ import dao.PlayerDAO;
 import dao.MatchDAO;
 import dao.PlayerStatsDAO;
 import dao.DatabaseInitializer;
+import dao.Match;
 
 
 public class MatchScreenCode extends Application{
@@ -110,6 +113,7 @@ public class MatchScreenCode extends Application{
         teamDAO.addTeam("Team B", "path/to/logo2.jpg");
         matchDAO.addMatch(1, 2, 3, 2, "2024-05-13");  
         matchDAO.printAllMatches();  // Printing all matches
+        System.out.println(matchDAO.getMatch(5).getMatchDate());
         
         mainRoot = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
         primaryStage.setTitle("Match Screen");
