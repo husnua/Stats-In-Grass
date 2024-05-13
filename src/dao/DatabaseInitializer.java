@@ -7,11 +7,13 @@ import java.sql.Statement;
 
 public class DatabaseInitializer {
 
-    private static final String URL = "jdbc:mysql://localhost/?user=root&password=yourPassword"; 
+    private static final String URL = "jdbc:mysql://localhost:3306/football_stats"; 
+    static final String USER = "root";
+    static final String PASS = "statsingrass24";
     private static final String DATABASE_NAME = "football_stats";
 
     public static void initializeDatabase() {
-        try (Connection conn = DriverManager.getConnection(URL)) {
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASS)){
             Statement stmt = conn.createStatement();
             
             // Create the database if it doesn't exist
@@ -67,5 +69,9 @@ public class DatabaseInitializer {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASS);
     }
 }

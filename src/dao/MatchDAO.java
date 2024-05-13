@@ -2,19 +2,33 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MatchDAO {
-    public void addMatch(int team1Id, int team2Id, String scores, String venue, String date) throws SQLException {
-        String sql = "INSERT INTO Matches (Team1ID, Team2ID, Scores, Venue, Date) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = DatabaseUtil.getConnection();
+    public void addMatch(int team1Id, int team2Id, int team1Score, int team2Score, String date) throws SQLException {
+        String sql = "INSERT INTO Matches (Team1ID, Team2ID, Team1Score, Team2Score, MatchDate) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = DatabaseInitializer.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, team1Id);
-            stmt.setInt(2, team2Id);
-            stmt.setString(3, scores);
-            stmt.setString(4, venue);
-            stmt.setString(5, date);
-            stmt.executeUpdate();
+                stmt.setInt(1, team1Id);      // Team1ID
+                stmt.setInt(2, team2Id);      // Team2ID
+                stmt.setInt(3, team1Score);   // Team1Score
+                stmt.setInt(4, team2Score);   // Team2Score
+                stmt.setString(5, date);      // MatchDate
+                stmt.executeUpdate();
+        }
+    }
+
+    public void printAllMatches() throws SQLException {
+        String sql = "SELECT * FROM Matches";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+                System.out.println("Match ID: " + rs.getInt("MatchID") + ", Team1 ID: " + rs.getInt("Team1ID")
+                    + ", Team2 ID: " + rs.getInt("Team2ID") + ", Team1 Score: " + rs.getInt("Team1Score")
+                    + ", Team2 Score: " + rs.getInt("Team2Score") + ", Date: " + rs.getString("MatchDate"));
+            }
         }
     }
 }

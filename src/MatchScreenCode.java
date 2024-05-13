@@ -73,9 +73,6 @@ public class MatchScreenCode extends Application{
         //MatchScreenPitchClickedCode matchScreenPitchClickedCode = new MatchScreenPitchClickedCode( this, event.getX() + 100, event.getY() + 100);
     }
 
-<<<<<<< HEAD
-
-=======
     
     @FXML
     void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
@@ -84,7 +81,6 @@ public class MatchScreenCode extends Application{
         Text score = (Text)mainRoot.lookup("#teamAScore");
         if(score!=null)
         score.setText("" + (Integer.parseInt(score.getText()) + 1));
->>>>>>> 51326c8dde0069d60a248e3ac47bc4b55f5570f6
     }
     
    
@@ -103,17 +99,19 @@ public class MatchScreenCode extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-<<<<<<< HEAD
         DatabaseInitializer.initializeDatabase();
         this.teamDAO = new TeamDAO();
         this.playerDAO = new PlayerDAO();
         this.matchDAO = new MatchDAO();
         this.playerStatsDAO = new PlayerStatsDAO();
-        Parent root = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
-=======
 
+        
+        teamDAO.addTeam("Team A", "path/to/logo1.jpg");
+        teamDAO.addTeam("Team B", "path/to/logo2.jpg");
+        matchDAO.addMatch(1, 2, 3, 2, "2024-05-13");  
+        matchDAO.printAllMatches();  // Printing all matches
+        
         mainRoot = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
->>>>>>> 51326c8dde0069d60a248e3ac47bc4b55f5570f6
         primaryStage.setTitle("Match Screen");
         primaryStage.setScene(new Scene(mainRoot, 950, 600));
         primaryStage.show();

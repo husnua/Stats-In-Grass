@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class PlayerStatsDAO {
     public void addPlayerStats(int playerId, int matchId, int goals, int assists, int minutesPlayed, int yellowCards, int redCards) throws SQLException {
         String sql = "INSERT INTO PlayerStats (PlayerID, MatchID, Goals, Assists, MinutesPlayed, YellowCards, RedCards) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DatabaseUtil.getConnection();
+        try (Connection conn = DatabaseInitializer.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, playerId);
             stmt.setInt(2, matchId);
