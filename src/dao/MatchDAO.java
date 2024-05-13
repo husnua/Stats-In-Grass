@@ -74,6 +74,41 @@ public class MatchDAO {
         return matches;  
     }
 
+    public void updateMatch(Match match) throws SQLException {
+        String sql = "UPDATE Matches SET Team1ID = ?, Team2ID = ?, Team1Score = ?, Team2Score = ?, MatchDate = ? WHERE MatchID = ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, match.getTeam1Id());
+            stmt.setInt(2, match.getTeam2Id());
+            stmt.setInt(3, match.getTeam1Score());
+            stmt.setInt(4, match.getTeam2Score());
+            stmt.setString(5, match.getMatchDate());
+            stmt.setInt(6, match.getMatchId());
+            stmt.executeUpdate();
+        }
+    }
+
+    public void deleteMatch(int matchId) throws SQLException {
+        String sql = "DELETE FROM Matches WHERE MatchID = ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, matchId);
+            stmt.executeUpdate();
+        }
+    }
+
+    public int countMatches() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM Matches";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        }
+        return 0;
+    }
+
     
 }
 
