@@ -58,7 +58,11 @@
                <center>
                   <ImageView fitHeight="95.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                      <image>
+<<<<<<< HEAD
                         <Image url="@../Project%20Images/images.jpeg" />
+=======
+                        <Image url="@images.jpeg" />
+>>>>>>> f4c40ae29d90fd6b86b44ba2889febf1e1092efd
                      </image>
                   </ImageView>
                </center>
