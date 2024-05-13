@@ -1,3 +1,4 @@
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
@@ -52,3 +53,4 @@ public class CreateMatchCode extends Application{
         
     }
 }
+
