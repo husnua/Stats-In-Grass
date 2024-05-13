@@ -38,4 +38,52 @@ public class PlayerDAO {
         }
         return player;
     }
+
+    public void updatePlayer(Player player) throws SQLException {
+        String sql = "UPDATE Players SET TeamID = ?, Name = ?, Position = ? WHERE PlayerID = ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, player.getTeamId());
+            stmt.setString(2, player.getName());
+            stmt.setString(3, player.getPosition());
+            stmt.setInt(4, player.getPlayerId());
+            stmt.executeUpdate();
+        }
+    }
+
+    public void deletePlayer(int playerId) throws SQLException {
+        String sql = "DELETE FROM Players WHERE PlayerID = ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, playerId);
+            stmt.executeUpdate();
+        }
+    }
+
+    public int countPlayersByTeam(int teamId) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM Players WHERE TeamID = ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, teamId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        }
+        return 0;
+    }
+
+    public ArrayList<Player> searchPlayersByName(String name) throws SQLException {
+        ArrayList<Player> players = new ArrayList<>();
+        String sql = "SELECT * FROM Players WHERE Name LIKE ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, "%" + name + "%");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                players.add(new Player(rs.getInt("PlayerID"), rs.getInt("TeamID"), rs.getString("Name"), rs.getString("Position")));
+            }
+        }
+        return players;
+    }
 }

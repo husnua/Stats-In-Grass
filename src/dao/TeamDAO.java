@@ -37,6 +37,52 @@ public class TeamDAO {
         return team;
     }
 
+    public void updateTeam(Team team) throws SQLException {
+        String sql = "UPDATE Teams SET Name = ?, LogoPath = ? WHERE TeamID = ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, team.getName());
+            stmt.setString(2, team.getLogoPath());
+            stmt.setInt(3, team.getTeamId());
+            stmt.executeUpdate();
+        }
+    }
+
+    public void deleteTeam(int teamId) throws SQLException {
+        String sql = "DELETE FROM Teams WHERE TeamID = ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, teamId);
+            stmt.executeUpdate();
+        }
+    }
+
+    public int countTeams() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM Teams";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        }
+        return 0;
+    }
+
+    public ArrayList<Team> searchTeamsByName(String name) throws SQLException {
+        ArrayList<Team> teams = new ArrayList<>();
+        String sql = "SELECT * FROM Teams WHERE Name LIKE ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, "%" + name + "%");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                teams.add(new Team(rs.getInt("TeamID"), rs.getString("Name"), rs.getString("LogoPath")));
+            }
+        }
+        return teams;
+    }
+
     
 
     
