@@ -323,6 +323,16 @@
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+         <effect>
+            <Lighting diffuseConstant="1.22" specularConstant="0.0" specularExponent="40.0" surfaceScale="1.87">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant azimuth="163.9" elevation="134.17" />
+               </light>
+            </Lighting>
+         </effect>
       </Button>
    </children>
 </AnchorPane>

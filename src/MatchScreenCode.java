@@ -14,8 +14,10 @@ import javafx.fxml.FXML;
 public class MatchScreenCode extends Application{
 
     //Instance Variables of MatchScreenCode
+    
     @FXML
     private Text teamAScore;
+  
 
     @FXML
     void teamAScoreDown(ActionEvent event) {
@@ -28,6 +30,7 @@ public class MatchScreenCode extends Application{
     void teamAScoreUp(ActionEvent event) {
         System.out.println( teamAScore.getText());
         teamAScore.setText("" + (Integer.parseInt(teamAScore.getText()) + 1));
+        
     }
 
     @FXML
@@ -43,16 +46,17 @@ public class MatchScreenCode extends Application{
     void matchScreenPitchClicked(MouseEvent event) throws Exception {
 
         MatchScreenPitchClickedCode matchScreenPitchClickedCode = new MatchScreenPitchClickedCode( this, event.getX() + 100, event.getY() + 100);
-    
+        
     }
 
+    
     @FXML
     void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
 
         MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClicked = new MatchScreenPitchClickedGoalClickedCode(this);
-        
+       
+       
     }
-    
     
    
     //getters
