@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.fxml.FXML;
 
@@ -17,6 +18,7 @@ public class MatchScreenCode extends Application{
     @FXML
     void teamAScoreDown(ActionEvent event) {
         teamAScore.setText("" + (Integer.parseInt(teamAScore.getText()) - 1));
+        
     }
 
     @FXML
@@ -33,6 +35,16 @@ public class MatchScreenCode extends Application{
         MatchScreenSubButtonClickedStage.show();
     }
 
+     @FXML
+    void matchScreenPitchClicked(MouseEvent event) throws Exception {
+        Stage matchScreenPitchClickedStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClicked.fxml"));
+        matchScreenPitchClickedStage.setScene( new Scene( root, 300, 300));
+        matchScreenPitchClickedStage.setX( event.getX() + 100);
+        matchScreenPitchClickedStage.setY( event.getY() + 100);
+        matchScreenPitchClickedStage.show();
+
+    }
     
 
     public static void main(String[] args)  {
