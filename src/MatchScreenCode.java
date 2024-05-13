@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,17 +13,20 @@ import javafx.fxml.FXML;
 
 public class MatchScreenCode extends Application{
 
+    //Instance Variables of MatchScreenCode
     @FXML
     private Text teamAScore;
 
     @FXML
     void teamAScoreDown(ActionEvent event) {
+        System.out.println( teamAScore.getText());
         teamAScore.setText("" + (Integer.parseInt(teamAScore.getText()) - 1));
         
     }
 
     @FXML
     void teamAScoreUp(ActionEvent event) {
+        System.out.println( teamAScore.getText());
         teamAScore.setText("" + (Integer.parseInt(teamAScore.getText()) + 1));
     }
 
@@ -35,17 +39,27 @@ public class MatchScreenCode extends Application{
         MatchScreenSubButtonClickedStage.show();
     }
 
-     @FXML
+    @FXML
     void matchScreenPitchClicked(MouseEvent event) throws Exception {
-        Stage matchScreenPitchClickedStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClicked.fxml"));
-        matchScreenPitchClickedStage.setScene( new Scene( root, 300, 300));
-        matchScreenPitchClickedStage.setX( event.getX() + 100);
-        matchScreenPitchClickedStage.setY( event.getY() + 100);
-        matchScreenPitchClickedStage.show();
 
+        MatchScreenPitchClickedCode matchScreenPitchClickedCode = new MatchScreenPitchClickedCode( this, event.getX() + 100, event.getY() + 100);
+        teamAScoreUp(null);
+    }
+
+    @FXML
+    void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
+
+        MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClickedCode = new MatchScreenPitchClickedGoalClickedCode(this);
+        
     }
     
+   
+    //getters
+    public Text getTextScoreOfTeamA()
+    {
+        return teamAScore;
+    }
+   
 
     public static void main(String[] args)  {
         System.out.println("Hello, World!");
@@ -59,8 +73,5 @@ public class MatchScreenCode extends Application{
         primaryStage.setTitle("Match Screen");
         primaryStage.setScene(new Scene(root, 950, 600));
         primaryStage.show();
-
-    
-        
     }
 }
