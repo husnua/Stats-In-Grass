@@ -16,6 +16,7 @@ public class MatchScreenCode extends Application{
     static Parent mainRoot;
     @FXML
     private Text teamAScore;
+  
 
     @FXML
     void teamAScoreDown(ActionEvent event) {
@@ -28,6 +29,7 @@ public class MatchScreenCode extends Application{
     void teamAScoreUp(ActionEvent event) {
         System.out.println( teamAScore.getText());
         teamAScore.setText("" + (Integer.parseInt(teamAScore.getText()) + 1));
+        
     }
 
     @FXML
@@ -51,6 +53,7 @@ public class MatchScreenCode extends Application{
         //MatchScreenPitchClickedCode matchScreenPitchClickedCode = new MatchScreenPitchClickedCode( this, event.getX() + 100, event.getY() + 100);
     }
 
+    
     @FXML
     void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
 
