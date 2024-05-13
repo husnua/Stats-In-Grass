@@ -32,8 +32,6 @@ public class MatchScreenPitchClickedCode {
         matchScreenPitchClickedStage.show();   
     }
 
-   
-   
 
    
   

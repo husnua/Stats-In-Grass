@@ -43,15 +43,16 @@ public class MatchScreenCode extends Application{
     void matchScreenPitchClicked(MouseEvent event) throws Exception {
 
         MatchScreenPitchClickedCode matchScreenPitchClickedCode = new MatchScreenPitchClickedCode( this, event.getX() + 100, event.getY() + 100);
-        teamAScoreUp(null);
+    
     }
 
     @FXML
     void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
 
-        MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClickedCode = new MatchScreenPitchClickedGoalClickedCode(this);
+        MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClicked = new MatchScreenPitchClickedGoalClickedCode(this);
         
     }
+    
     
    
     //getters
