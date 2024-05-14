@@ -4,6 +4,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.util.Callback;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -43,6 +44,8 @@ public class MatchScreenCode extends Application{
     private String teamBShortName;
     private Timer timer = new Timer();
     private TimerHelper timerHelper = new TimerHelper( this);
+    private Stage matchScreenPitchClickedGoalClickedStage;
+    private Stage matchScreenPitchClickedStage;
 
 
     @FXML
@@ -172,22 +175,38 @@ public class MatchScreenCode extends Application{
     @FXML
     void matchScreenPitchClicked(MouseEvent event) throws Exception {
         
-        MatchScreenPitchClickedCode matchScreenPitchClickedCode = new MatchScreenPitchClickedCode( this, event.getX() + 100, event.getY() + 100);
+        //MatchScreenPitchClickedCode matchScreenPitchClickedCode = new MatchScreenPitchClickedCode( this, event.getX() + 100, event.getY()
+        matchScreenPitchClickedStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClicked.fxml"));
+        matchScreenPitchClickedStage.setScene( new Scene( root, 300, 300));
+        matchScreenPitchClickedStage.setX( event.getX() + 100);
+        matchScreenPitchClickedStage.setY( event.getY() + 100);
+        matchScreenPitchClickedStage.show();   
     }
 
     @FXML
     void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
 
-        MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClickedCode = new MatchScreenPitchClickedGoalClickedCode(this);
-        
+        //closing pitchClickedScreen
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+
+        //MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClickedCode = new MatchScreenPitchClickedGoalClickedCode(this);
+        matchScreenPitchClickedGoalClickedStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedGoalClicked.fxml"));
+        matchScreenPitchClickedGoalClickedStage.setScene( new Scene( root, 600, 491));
+        matchScreenPitchClickedGoalClickedStage.show();   
+    
+
         Text score = (Text)mainRoot.lookup("#teamAScore");
         
-        //now working 
         if(score!=null)
         {
             score.setText("" + (Integer.parseInt(score.getText()) + 1));
         }
 
+        //now working 
         Button assist = (Button)goalClickedRoot.lookup("#goalClickedAssistButton");
         assist.setText("A");
 
@@ -196,9 +215,15 @@ public class MatchScreenCode extends Application{
             System.out.println( "sa");
             Button button = (Button)goalClickedRoot.lookup("#matchScreenTeamAPlayerButtonGoal" + i);
             button.setText( i + 1 + "");
-           
         }
     }
+
+    @FXML
+    void matchScreenPitchClickedGoalClickedExit(ActionEvent event) {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }   
     
     @FXML
     void matchScreenPitchClickedMissedClicked(ActionEvent event) throws Exception {
