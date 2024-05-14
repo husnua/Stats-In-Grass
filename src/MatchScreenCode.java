@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Callback;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -266,6 +267,7 @@ public class MatchScreenCode extends Application{
         goalClickedRoot = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedGoalClicked.fxml")); 
         primaryStage.setTitle("Match Screen");
         primaryStage.setScene(new Scene(mainRoot, 950, 600));
+        primaryStage.setMaximized(true);
         primaryStage.show();
         constructTeam();
        
