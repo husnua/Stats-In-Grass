@@ -13,9 +13,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
 import dao.DatabaseInitializer;
@@ -134,7 +131,8 @@ public class AddPlayerCode {
             scene = new Scene(page, 700, 450);
             stage.setScene(scene);
         } else {
-            stage.getScene().setRoot(page);
+            MatchScreenCode msc = new MatchScreenCode();
+            msc.start(stage); 
         }
         stage.sizeToScene();
         return page;
@@ -152,7 +150,7 @@ public class AddPlayerCode {
             System.out.println("Error in search players db");
             return;
         }
-        if (teamAPlayers.size() <=12 && teamBPlayers.size() <=12 && teamAPlayers.size() >=0 && teamBPlayers.size() >= 0) {
+        if (teamAPlayers.size() <=12 && teamBPlayers.size() <=12 && teamAPlayers.size() >=6 && teamBPlayers.size() >= 6) {
             try {
                 for(int i = 0;i< teamAJerseyNumbers.size();i++){
                     playerDAO.addPlayer(aID, teamAPlayers.get(i), teamAJerseyNumbers.get(i));
