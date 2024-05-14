@@ -606,7 +606,7 @@
       </AnchorPane>
       <HBox layoutX="101.0" layoutY="3.0" prefHeight="154.0" prefWidth="748.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="154.0" prefWidth="750.0" style="-fx-border-color: black;" HBox.hgrow="ALWAYS">
+            <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="154.0" prefWidth="750.0" style="-fx-border-color: black; -fx-background-color: #068588;" HBox.hgrow="ALWAYS">
                <children>
                   <GridPane layoutX="1.0" prefHeight="154.0" prefWidth="750.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <columnConstraints>
@@ -620,7 +620,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Pane layoutX="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="109.0" style="-fx-background-color: 0000FF; -fx-border-color: black; -fx-border-width: 3.5; -fx-border-radius: 6;" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS">
+                        <Pane layoutX="5.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="66.0" prefWidth="155.0" style="-fx-background-color: 0000FF; -fx-border-width: 3.5; -fx-border-radius: 6;" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
                            <children>
                               <Button layoutX="14.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#teamBScoreDown" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: red;">
                                  <graphic>
@@ -631,7 +631,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button layoutX="75.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#teamBScoreUp" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: red;">
+                              <Button layoutX="112.0" layoutY="19.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#teamBScoreUp" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: red;">
                                  <graphic>
                                     <ImageView fitHeight="26.0" fitWidth="26.0">
                                        <image>
@@ -640,24 +640,34 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Text fx:id="teamBScore" fill="#f7f2f2" layoutX="36.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="38.53755187988281">
+                              <Text fx:id="teamBScore" fill="#f7f2f2" layoutX="29.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="91.99999999999994">
                                  <font>
                                     <Font name="System Bold" size="39.0" />
                                  </font>
                               </Text>
                            </children>
                            <GridPane.margin>
-                              <Insets left="30.0" />
+                              <Insets />
                            </GridPane.margin>
+                           <effect>
+                              <Lighting diffuseConstant="2.0" specularConstant="0.58" surfaceScale="4.89">
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant azimuth="187.02" />
+                                 </light>
+                              </Lighting>
+                           </effect>
                         </Pane>
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 4; -fx-border-radius: 0; -fx-background-color: white;" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS">
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="190.0" style="-fx-border-width: 4; -fx-border-radius: 0; -fx-background-color: #B9AAB8;" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS">
                            <children>
-                              <ImageView layoutX="152.0" layoutY="23.0">
+                              <ImageView fitHeight="35.0" fitWidth="39.0" layoutX="139.0" layoutY="22.0">
                                  <image>
                                     <Image url="@TimeUp.png" />
                                  </image>
                               </ImageView>
-                              <ImageView layoutX="14.0" layoutY="23.0">
+                              <ImageView fitHeight="35.0" fitWidth="39.0" layoutX="14.0" layoutY="23.0">
                                  <image>
                                     <Image url="@TimeDown.png" />
                                  </image>
@@ -681,8 +691,18 @@
                            <GridPane.margin>
                               <Insets left="10.0" />
                            </GridPane.margin>
+                           <effect>
+                              <Lighting diffuseConstant="1.26" specularExponent="35.41" surfaceScale="4.62">
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant />
+                                 </light>
+                              </Lighting>
+                           </effect>
                         </Pane>
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: 0000FF; -fx-border-color: black; -fx-border-width: 3.5; -fx-border-radius: 6;" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS">
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="66.0" prefWidth="174.0" style="-fx-background-color: 0000FF; -fx-border-width: 3.5; -fx-border-radius: 6;" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS">
                            <children>
                               <Button layoutX="14.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#teamAScoreDown" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: red;">
                                  <graphic>
@@ -693,7 +713,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button layoutX="75.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#teamAScoreUp" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: red;">
+                              <Button layoutX="108.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#teamAScoreUp" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: red;">
                                  <graphic>
                                     <ImageView fitHeight="26.0" fitWidth="26.0">
                                        <image>
@@ -702,7 +722,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Text fx:id="teamAScore" fill="#f7f2f2" layoutX="36.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="38.53755187988281">
+                              <Text fx:id="teamAScore" fill="#f7f2f2" layoutX="27.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="91.60000000000008">
                                  <font>
                                     <Font name="System Bold" size="39.0" />
                                  </font>
@@ -711,8 +731,18 @@
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
+                           <effect>
+                              <Lighting diffuseConstant="2.0" specularConstant="0.67" surfaceScale="5.08">
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant azimuth="153.99" />
+                                 </light>
+                              </Lighting>
+                           </effect>
                         </Pane>
-                        <Text fx:id="matchScreenTeamBShortName" fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="A" textAlignment="CENTER" wrappingWidth="91.60000000000002" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS">
+                        <Text fx:id="matchScreenTeamBShortName" fill="#8c1414" strokeType="OUTSIDE" strokeWidth="0.0" text="A" textAlignment="CENTER" wrappingWidth="91.60000000000002" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS">
                            <font>
                               <Font size="52.0" />
                            </font>
@@ -727,13 +757,23 @@
                               </Lighting>
                            </effect>
                         </Text>
-                        <Text fx:id="matchScreenTeamAShortName" fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="A" textAlignment="CENTER" wrappingWidth="91.60000000000002" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS">
+                        <Text fx:id="matchScreenTeamAShortName" fill="#910b0b" strokeType="OUTSIDE" strokeWidth="0.0" text="A" textAlignment="CENTER" wrappingWidth="91.60000000000002" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS">
                            <font>
                               <Font size="52.0" />
                            </font>
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
+                           <effect>
+                              <Lighting>
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant />
+                                 </light>
+                              </Lighting>
+                           </effect>
                         </Text>
                      </children>
                   </GridPane>

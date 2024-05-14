@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.fxml.FXML;
 import java.util.ArrayList;
@@ -114,8 +115,10 @@ public class MatchScreenCode extends Application{
     void teamAScoreUp(ActionEvent event) {
         Text score = (Text)mainRoot.lookup("#teamAScore");
         if(score!=null)
-        score.setText("" + (Integer.parseInt(score.getText()) + 1));
-    }
+        {
+            score.setText("" + (Integer.parseInt(score.getText()) + 1));
+        }
+    }  
     @FXML
     void teamBScoreDown(ActionEvent event) {
         Text score = (Text)mainRoot.lookup("#teamBScore");
@@ -200,7 +203,6 @@ public class MatchScreenCode extends Application{
     
 
         Text score = (Text)mainRoot.lookup("#teamAScore");
-        
         if(score!=null)
         {
             score.setText("" + (Integer.parseInt(score.getText()) + 1));
@@ -220,6 +222,7 @@ public class MatchScreenCode extends Application{
 
     @FXML
     void matchScreenPitchClickedGoalClickedExit(ActionEvent event) {
+        //closing goalScreen
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
@@ -227,6 +230,11 @@ public class MatchScreenCode extends Application{
     
     @FXML
     void matchScreenPitchClickedMissedClicked(ActionEvent event) throws Exception {
+        //closing pitchClickedScreen
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+
         //MatchScreenPitchClickedMissedClickedCode matchScreenPitchClickedMissedClickedCode = new MatchScreenPitchClickedMissedClickedCode(this);
         Stage matchScreenPitchClickedMissedClickedStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedMissedClicked.fxml"));
@@ -236,6 +244,11 @@ public class MatchScreenCode extends Application{
 
     @FXML
     void matchScreenPitchClickedLostClicked(MouseEvent event) throws Exception {
+        //closing pitchClickedScreen
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+
         Stage MatchScreenPitchClickedLostClickedStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedLostClicked.fxml"));
         MatchScreenPitchClickedLostClickedStage.setScene( new Scene( root, 600, 500));
@@ -243,12 +256,33 @@ public class MatchScreenCode extends Application{
     }
 
     @FXML
+    void matchScreenPitchClickedLostClickedExit( ActionEvent event) throws Exception{
+        //closing pitchClickedScreen
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
     void matchScreenPitchClickedFoulClicked(MouseEvent event) throws Exception{
+        //closing pitchClickedScreen
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+
         Stage MatchScreenPitchClickedFoulClickedStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedFoulClicked.fxml"));
         MatchScreenPitchClickedFoulClickedStage.setScene( new Scene( root, 600, 500));
         MatchScreenPitchClickedFoulClickedStage.show();
     }   
+
+    @FXML
+    void matchScreenPitchClickedFoulClickedExit( ActionEvent event) throws Exception{
+        //closing pitchClickedScreen
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
    
     //getters
     public Text getTextScoreOfTeamA()
