@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #f0f8ff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddPlayerCode">
+    <VBox alignment="CENTER" layoutX="20" layoutY="20" prefWidth="916.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="14.0">
+        <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2f4f4f;" text="Add Player" />
+        
+        <HBox alignment="CENTER" spacing="40">
+            <VBox alignment="CENTER" prefHeight="490.0" prefWidth="368.0" spacing="15">
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #4682b4;" text="Team A" />
+                <ListView fx:id="teamAListView" prefHeight="400.0" prefWidth="385.0" style="-fx-border-color: #4682b4; -fx-border-width: 2px;" />
+                <HBox alignment="CENTER" spacing="10">
+                    <TextField fx:id="teamAPlayerNameField" prefHeight="30.0" prefWidth="183.0" promptText="Enter player name" style="-fx-font-size: 14px;" />
+                    <TextField fx:id="teamAPlayerNumberField" prefHeight="30.0" prefWidth="208.0" promptText="Enter jersey number" style="-fx-font-size: 14px;" />
+                    <Button fx:id="teamAAddPlayerButton" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #4682b4; -fx-text-fill: white; -fx-font-size: 14px;" text="Add" />
+                </HBox>
+            </VBox>
+
+            <VBox alignment="CENTER" prefHeight="490.0" prefWidth="518.0" spacing="15.0">
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #8b0000;" text="Team B" />
+                <ListView fx:id="teamBListView" prefHeight="400.0" prefWidth="272.0" style="-fx-border-color: #8b0000; -fx-border-width: 2px;" />
+                <HBox alignment="CENTER" spacing="10">
+                    <TextField fx:id="teamBPlayerNameField" prefHeight="30.0" prefWidth="181.0" promptText="Enter player name" style="-fx-font-size: 14px;" />
+                    <TextField fx:id="teamBPlayerNumberField" prefHeight="30.0" prefWidth="183.0" promptText="Enter jersey number" style="-fx-font-size: 14px;" />
+                    <Button fx:id="teamBAddPlayerButton" prefHeight="30.0" prefWidth="108.0" style="-fx-background-color: #8b0000; -fx-text-fill: white; -fx-font-size: 14px;" text="Add" />
+                </HBox>
+            <padding>
+               <Insets left="150.0" />
+            </padding>
+            </VBox>
+        </HBox>
+        
+              <Button fx:id="saveButton" style="-fx-background-color: #32cd32; -fx-text-fill: white; -fx-font-size: 16px;" text="Save" />
+    </VBox>
+   <ImageView fitHeight="63.0" fitWidth="162.0" layoutX="804.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+      <image>
+         <Image url="@Logo.jpg" />
+      </image>
+      <effect>
+         <DropShadow />
+      </effect>
+   </ImageView>
+</AnchorPane>

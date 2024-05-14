@@ -21,8 +21,12 @@ public class CreateMatchCode extends Application{
     
 
     @FXML
-    void addPlayerForTeamA(ActionEvent event) {
-        System.out.println("A");
+    void addPlayerForTeamA(ActionEvent event) throws Exception {
+        Stage AddPlayerButtonClickedStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("AddPlayer.fxml"));
+        AddPlayerButtonClickedStage.setScene( new Scene( root, 950, 600));
+        AddPlayerButtonClickedStage.setTitle("Add Player");
+        AddPlayerButtonClickedStage.show();
     }
 
     @FXML
