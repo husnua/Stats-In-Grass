@@ -47,6 +47,42 @@ public class PlayerStatsDAO {
         }
         return playerStats;
     }
+    public void updatePlayerStats(PlayerStats playerStats) throws SQLException {
+        String sql = "UPDATE PlayerStats SET PlayerID = ?, MatchID = ?, Goals = ?, Assists = ?, MinutesPlayed = ?, YellowCards = ?, RedCards = ? WHERE StatsID = ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, playerStats.getPlayerId());
+            stmt.setInt(2, playerStats.getMatchId());
+            stmt.setInt(3, playerStats.getGoals());
+            stmt.setInt(4, playerStats.getAssists());
+            stmt.setInt(5, playerStats.getMinutesPlayed());
+            stmt.setInt(6, playerStats.getYellowCards());
+            stmt.setInt(7, playerStats.getRedCards());
+            stmt.setInt(8, playerStats.getStatsId());
+            stmt.executeUpdate();
+        }
+    }
+
+    public void deletePlayerStats(int statsId) throws SQLException {
+        String sql = "DELETE FROM PlayerStats WHERE StatsID = ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, statsId);
+            stmt.executeUpdate();
+        }
+    }
+
+    public int countPlayerStats() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM PlayerStats";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        }
+        return 0;
+    }
 
     
 

@@ -24,12 +24,7 @@ public class MatchScreenPitchClickedCode {
     public MatchScreenPitchClickedCode( MatchScreenCode matchScreenCode ,double X, double Y) throws Exception
     {
         this.matchScreenCode = matchScreenCode;
-        matchScreenPitchClickedStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClicked.fxml"));
-        matchScreenPitchClickedStage.setScene( new Scene( root, 300, 300));
-        matchScreenPitchClickedStage.setX( X + 100);
-        matchScreenPitchClickedStage.setY( Y + 100);
-        matchScreenPitchClickedStage.show();   
+    
     }
     
   

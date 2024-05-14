@@ -14,11 +14,6 @@ public class MatchScreenPitchClickedGoalClickedCode{
     public MatchScreenPitchClickedGoalClickedCode( MatchScreenCode matchScreenCode) throws Exception
     {
         this.matchScreenCode = matchScreenCode;
-        Stage matchScreenPitchClickedGoalClickedStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedGoalClicked.fxml"));
-        matchScreenPitchClickedGoalClickedStage.setScene( new Scene( root, 600, 491));
-        matchScreenPitchClickedGoalClickedStage.show();   
-        
     }
    
 
