@@ -1,16 +1,36 @@
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
+
+import dao.DatabaseInitializer;
+import dao.MatchDAO;
+import dao.PlayerDAO;
+import dao.PlayerStatsDAO;
+import dao.TeamDAO;
+
 public class AddPlayerCode {
+    
+    private TeamDAO teamDAO;
+    private PlayerDAO playerDAO;
+    private MatchDAO matchDAO;
+    private PlayerStatsDAO playerStatsDAO;
+    private DatabaseInitializer databaseInitializer;
 
     @FXML
     private TextField teamAPlayerNameField;
@@ -42,8 +62,8 @@ public class AddPlayerCode {
     private final ObservableList<String> teamAPlayers = FXCollections.observableArrayList();
     private final ObservableList<String> teamBPlayers = FXCollections.observableArrayList();
 
-    private final Set<String> teamAJerseyNumbers = new HashSet<>();
-    private final Set<String> teamBJerseyNumbers = new HashSet<>();
+    private final ArrayList<String> teamAJerseyNumbers = new ArrayList<String>();
+    private final ArrayList<String> teamBJerseyNumbers = new ArrayList<String>();
 
     @FXML
     public void initialize() {
@@ -79,7 +99,7 @@ public class AddPlayerCode {
         }
     }
 
-    private boolean isValidInput(String playerName, String playerNumber, ObservableList<String> teamPlayers, Set<String> jerseyNumbers) {
+    private boolean isValidInput(String playerName, String playerNumber, ObservableList<String> teamPlayers, ArrayList<String> jerseyNumbers) {
         if (playerName.isEmpty() || playerNumber.isEmpty()) {
             showAlert("Error", "Player name and jersey number cannot be empty.");
             return false;
@@ -106,13 +126,54 @@ public class AddPlayerCode {
         alert.setContentText(content);
         alert.showAndWait();
     }
+    private Parent replaceSceneContent(String fxml) throws Exception {
+        Stage stage = CreateMatchCode.getStage();
+        Parent page = (Parent) FXMLLoader.load(CreateMatchCode.class.getResource(fxml), null, new JavaFXBuilderFactory());
+        Scene scene = stage.getScene();
+        if (scene == null) {
+            scene = new Scene(page, 700, 450);
+            stage.setScene(scene);
+        } else {
+            stage.getScene().setRoot(page);
+        }
+        stage.sizeToScene();
+        return page;
+    }
 
     private void savePlayerData() {
-        if (teamAPlayers.size() == 11 && teamBPlayers.size() == 11) {
-            //TODO
-            // Save data and open the next interface
+        playerDAO = new PlayerDAO();
+        teamDAO = new TeamDAO();
+        String nameA = CreateMatchCode.getNameA();
+        String nameB = CreateMatchCode.getNameB();
+        int aID,bID;
+        try {
+            aID = teamDAO.searchTeamsByName(nameA).get(0).getTeamId(); bID = teamDAO.searchTeamsByName(nameB).get(0).getTeamId();
+        } catch (Exception e) {
+            System.out.println("Error in search players db");
+            return;
+        }
+        if (teamAPlayers.size() <=12 && teamBPlayers.size() <=12 && teamAPlayers.size() >=0 && teamBPlayers.size() >= 0) {
+            try {
+                for(int i = 0;i< teamAJerseyNumbers.size();i++){
+                    playerDAO.addPlayer(aID, teamAPlayers.get(i), teamAJerseyNumbers.get(i));
+                }
+                for(int i = 0;i< teamBJerseyNumbers.size();i++){
+                    playerDAO.addPlayer(bID, teamBPlayers.get(i), teamBJerseyNumbers.get(i));
+                }
+            } catch (Exception e) {
+                System.out.println("Error in adding players to db");
+            }
+            System.out.println("Save button");
+            Stage stage = (Stage) saveButton.getScene().getWindow();
+            stage.close();
+            try {
+                
+                replaceSceneContent("MatchScreen.fxml");
+            } catch (Exception e) {
+                System.out.println("couldnt change screen");
+            }
         } else {
-            showAlert("Error", "Each team must have exactly 11 players.");
+            showAlert("Error", "Each team must have at least 6 at most 12 players.");
         }
     }
 }

@@ -12,4 +12,7 @@ public class Team {
     public void addPlayer(Player player) {
         this.players.add(player);
     }
+    public ArrayList<Player> getPlayers(){
+        return players;
+    } 
 }

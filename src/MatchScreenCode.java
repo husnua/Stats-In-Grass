@@ -219,29 +219,26 @@ public class MatchScreenCode extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
       
-        /*DatabaseInitializer.initializeDatabase();
+        DatabaseInitializer.initializeDatabase();
         this.teamDAO = new TeamDAO();
         this.playerDAO = new PlayerDAO();
         this.matchDAO = new MatchDAO();
         this.playerStatsDAO = new PlayerStatsDAO();
-        Parent root = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
-
+        
         
         teamDAO.addTeam("Team A", "path/to/logo1.jpg");
         teamDAO.addTeam("Team B", "path/to/logo2.jpg");
         matchDAO.addMatch(1, 2, 3, 2, "2024-05-13");  
-        matchDAO.printAllMatches();*/  // Printing all matches
+        matchDAO.printAllMatches();  // Printing all matches
         //System.out.println(matchDAO.getMatch(5).getMatchDate());
         
+        Parent root = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
         timer.schedule(timerHelper, 1000, 1000);
         mainRoot = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
         primaryStage.setTitle("Match Screen");
         primaryStage.setScene(new Scene(mainRoot, 950, 600));
         primaryStage.show();
         constructTeam();
-       
-        
-       
         
         
         
