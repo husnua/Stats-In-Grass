@@ -92,6 +92,11 @@ public class PlayerStats {
         shotOnTarget++;
     }
 
+    public void addPlayedTime( int givenPlayedTime)
+    {
+        this.playedTime += givenPlayedTime;
+    }
+
     
 
 }
