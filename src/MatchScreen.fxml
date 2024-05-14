@@ -41,9 +41,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button id="matchScreenTeamAPlayerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef">
+            <Button id="matchScreenTeamAPlayerButton0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -58,7 +58,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -73,22 +73,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-               <effect>
-                  <Lighting surfaceScale="10.0">
-                     <bumpInput>
-                        <Shadow />
-                     </bumpInput>
-                     <light>
-                        <Light.Distant azimuth="173.81" elevation="61.51" />
-                     </light>
-                  </Lighting>
-               </effect>
-            </Button>
-            <Button id="matchScreenTeamAPlayerButton0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef">
-               <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -103,7 +88,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="1">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -118,7 +103,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -133,7 +118,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -148,7 +133,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="3">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -163,7 +148,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -178,7 +163,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="4">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -193,7 +178,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton9" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -208,7 +193,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton10" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="5">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -223,7 +208,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton11" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -238,7 +223,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="6">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -253,7 +238,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -268,7 +253,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="7">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">
@@ -283,7 +268,7 @@
             </Button>
             <Button id="matchScreenTeamAPlayerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <effect>
                   <Lighting surfaceScale="10.0">

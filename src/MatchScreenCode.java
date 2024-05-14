@@ -39,6 +39,8 @@ public class MatchScreenCode extends Application{
     static Parent mainRoot;
     private Timer timer = new Timer();
     private TimerHelper timerHelper = new TimerHelper( this);
+    private int teamAPlayersSize;
+    private int[] jerseyNumbersOfTeamA;
 
 
     @FXML
@@ -46,7 +48,8 @@ public class MatchScreenCode extends Application{
     private Text teamBScore;
     private Text matchHour;
     private Text matchSecond;
-    private Button matchScreenTeamAPlayerButton;
+    
+    
 
 
     //deneme
@@ -59,6 +62,7 @@ public class MatchScreenCode extends Application{
     //consturcting teams
     public void constructTeam()
     {
+        jerseyNumbersOfTeamA = new int[teamAPlayers.length];
         for ( int i = 0; i < teamAPlayers.length; i ++)
         {
             Button button = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i);
@@ -67,8 +71,10 @@ public class MatchScreenCode extends Application{
                 button.setText("" + i);
             }
             teamAPlayers[i] = new Player("Hüsnü Akseli" + i, i, teamA);
+            jerseyNumbersOfTeamA[i] = i;
             teamBPlayers[i] = new Player("Yunus Karamatov" + i , i, teamB);
         }
+        teamAPlayersSize = teamAPlayers.length;
     }
 
        
@@ -131,7 +137,7 @@ public class MatchScreenCode extends Application{
     //SUB
     @FXML
     void matchScreenSubButtonClicked(ActionEvent event) throws Exception {
-        constructTeam();
+     
         Stage MatchScreenSubButtonClickedStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("MatchScreenSubButtonClicked.fxml"));
         MatchScreenSubButtonClickedStage.setScene( new Scene( root, 600, 600));
@@ -151,8 +157,17 @@ public class MatchScreenCode extends Application{
     void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
 
         Text score = (Text)mainRoot.lookup("#teamAScore");
+
         if(score!=null)
-        score.setText("" + (Integer.parseInt(score.getText()) + 1));
+        {
+            score.setText("" + (Integer.parseInt(score.getText()) + 1));
+        }
+        for ( int i = 0; i < teamAPlayersSize; i++)
+        {
+            
+            Button button = (Button)mainRoot.lookup("#matchScreenPitchClickedGoalClickedTeamAPlayerButton" + i);
+            button.setText( jerseyNumbersOfTeamA[i] + "");
+        }
         MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClickedCode = new MatchScreenPitchClickedGoalClickedCode(this);
     }
     
@@ -203,6 +218,7 @@ public class MatchScreenCode extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+      
         /*DatabaseInitializer.initializeDatabase();
         this.teamDAO = new TeamDAO();
         this.playerDAO = new PlayerDAO();
@@ -222,6 +238,7 @@ public class MatchScreenCode extends Application{
         primaryStage.setTitle("Match Screen");
         primaryStage.setScene(new Scene(mainRoot, 950, 600));
         primaryStage.show();
+        constructTeam();
        
         
        
