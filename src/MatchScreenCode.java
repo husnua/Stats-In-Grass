@@ -5,6 +5,7 @@ import javafx.util.Callback;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.fxml.FXML;
@@ -38,14 +39,39 @@ public class MatchScreenCode extends Application{
     static Parent mainRoot;
     private Timer timer = new Timer();
     private TimerHelper timerHelper = new TimerHelper( this);
+
+
     @FXML
     private Text teamAScore;
     private Text teamBScore;
     private Text matchHour;
     private Text matchSecond;
+    private Button matchScreenTeamAPlayerButton;
+
+
+    //deneme
+    private Team teamA = new Team();
+    private Team teamB = new Team();
+    private Player[] teamAPlayers = new Player[12];
+    private Player[] teamBPlayers = new Player[12];
     
-    
-    
+     
+    //consturcting teams
+    public void constructTeam()
+    {
+        for ( int i = 0; i < teamAPlayers.length; i ++)
+        {
+            Button button = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i);
+            if ( button != null)
+            {
+                button.setText("" + i);
+            }
+            teamAPlayers[i] = new Player("Hüsnü Akseli" + i, i, teamA);
+            teamBPlayers[i] = new Player("Yunus Karamatov" + i , i, teamB);
+        }
+    }
+
+       
     //team Score adjustment by arrows
     @FXML
     void teamAScoreDown(ActionEvent event) {
@@ -76,7 +102,7 @@ public class MatchScreenCode extends Application{
     //Timer matchTime setter
     public void runMatchTime()
     {
-
+        
         Text second = (Text)mainRoot.lookup("#matchSecond");
         Text hour = (Text)mainRoot.lookup("#matchHour");
 
@@ -105,7 +131,7 @@ public class MatchScreenCode extends Application{
     //SUB
     @FXML
     void matchScreenSubButtonClicked(ActionEvent event) throws Exception {
-        
+        constructTeam();
         Stage MatchScreenSubButtonClickedStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("MatchScreenSubButtonClicked.fxml"));
         MatchScreenSubButtonClickedStage.setScene( new Scene( root, 600, 600));
