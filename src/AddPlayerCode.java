@@ -7,6 +7,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class AddPlayerCode {
 
     @FXML
@@ -39,6 +42,9 @@ public class AddPlayerCode {
     private final ObservableList<String> teamAPlayers = FXCollections.observableArrayList();
     private final ObservableList<String> teamBPlayers = FXCollections.observableArrayList();
 
+    private final Set<String> teamAJerseyNumbers = new HashSet<>();
+    private final Set<String> teamBJerseyNumbers = new HashSet<>();
+
     @FXML
     public void initialize() {
         teamAListView.setItems(teamAPlayers);
@@ -53,8 +59,9 @@ public class AddPlayerCode {
         String playerName = teamAPlayerNameField.getText();
         String playerNumber = teamAPlayerNumberField.getText();
 
-        if (isValidInput(playerName, playerNumber, teamAPlayers)) {
+        if (isValidInput(playerName, playerNumber, teamAPlayers, teamAJerseyNumbers)) {
             teamAPlayers.add(playerName + " - #" + playerNumber);
+            teamAJerseyNumbers.add(playerNumber);
             teamAPlayerNameField.clear();
             teamAPlayerNumberField.clear();
         }
@@ -64,20 +71,25 @@ public class AddPlayerCode {
         String playerName = teamBPlayerNameField.getText();
         String playerNumber = teamBPlayerNumberField.getText();
 
-        if (isValidInput(playerName, playerNumber, teamBPlayers)) {
+        if (isValidInput(playerName, playerNumber, teamBPlayers, teamBJerseyNumbers)) {
             teamBPlayers.add(playerName + " - #" + playerNumber);
+            teamBJerseyNumbers.add(playerNumber);
             teamBPlayerNameField.clear();
             teamBPlayerNumberField.clear();
         }
     }
 
-    private boolean isValidInput(String playerName, String playerNumber, ObservableList<String> teamPlayers) {
+    private boolean isValidInput(String playerName, String playerNumber, ObservableList<String> teamPlayers, Set<String> jerseyNumbers) {
         if (playerName.isEmpty() || playerNumber.isEmpty()) {
             showAlert("Error", "Player name and jersey number cannot be empty.");
             return false;
         }
         if (!playerNumber.matches("\\d+")) {
             showAlert("Error", "Jersey number must be a number.");
+            return false;
+        }
+        if (jerseyNumbers.contains(playerNumber)) {
+            showAlert("Error", "Duplicate jersey number for the team.");
             return false;
         }
         if (teamPlayers.size() >= 11) {
@@ -94,13 +106,14 @@ public class AddPlayerCode {
         alert.setContentText(content);
         alert.showAndWait();
     }
-    
 
     private void savePlayerData() {
         if (teamAPlayers.size() == 11 && teamBPlayers.size() == 11) {
             // Save data and open the next interface
+            // This part will be implemented later as per your instructions
         } else {
             showAlert("Error", "Each team must have exactly 11 players.");
         }
     }
 }
+
