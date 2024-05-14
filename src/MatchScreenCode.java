@@ -50,6 +50,8 @@ public class MatchScreenCode extends Application{
     private Stage matchScreenPitchClickedStage;
 
 
+
+
     @FXML
     private Text teamAScore;
     private Text teamBScore;
@@ -57,17 +59,13 @@ public class MatchScreenCode extends Application{
     private Text matchSecond;
     private Text matchScreenTeamAShortName;
     private Text matchScreenTeamBShortName;
-
-
-
-
-    //deneme
     private Team teamA = new Team();
     private Team teamB = new Team();
     private Player[] teamAPlayers = new Player[12];
     private Player[] teamBPlayers = new Player[12];
-    
 
+
+    
 
     //constructor
     public MatchScreenCode()
@@ -188,6 +186,10 @@ public class MatchScreenCode extends Application{
         matchScreenPitchClickedStage.show();   
     }
 
+
+
+
+    //goalScreenMethods
     @FXML
     void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
 
@@ -223,8 +225,6 @@ public class MatchScreenCode extends Application{
         }
     }
 
-
-
     @FXML 
     void matchScreenPitchClickedGoalClickedTeamBClicked ( ActionEvent event) throws Exception{
         Text score = (Text)mainRoot.lookup("#teamBScore");
@@ -245,6 +245,22 @@ public class MatchScreenCode extends Application{
     }
 
     @FXML
+    void goalScreenPlayerSelected ( ActionEvent event) throws Exception{
+        Button assistButton = (Button)goalClickedRoot.lookup("#goalClickedAssistButton");
+       
+        if ( assistButton.isDisabled())
+        {
+            System.out.println("disabled");
+        }
+    }
+
+    @FXML
+    void goalScreenAssistButtonClicked ( ActionEvent event) throws Exception{
+        Button button = (Button)event.getSource();
+        button.setDisable(true);
+    }
+
+    @FXML
     void matchScreenPitchClickedGoalClickedExit(ActionEvent event) {
         //closing goalScreen
         Node source = (Node) event.getSource();
@@ -252,6 +268,9 @@ public class MatchScreenCode extends Application{
         stage.close();
     }   
     
+
+
+    //missedScreenMethods
     @FXML
     void matchScreenPitchClickedMissedClicked(ActionEvent event) throws Exception {
         //closing pitchClickedScreen
@@ -266,6 +285,9 @@ public class MatchScreenCode extends Application{
         matchScreenPitchClickedMissedClickedStage.show();   
     }
 
+
+
+    //lostScreenMethods
     @FXML
     void matchScreenPitchClickedLostClicked(MouseEvent event) throws Exception {
         //closing pitchClickedScreen
@@ -287,6 +309,9 @@ public class MatchScreenCode extends Application{
         stage.close();
     }
 
+
+
+    //FoulScreenMethods
     @FXML
     void matchScreenPitchClickedFoulClicked(MouseEvent event) throws Exception{
         //closing pitchClickedScreen
@@ -308,6 +333,9 @@ public class MatchScreenCode extends Application{
         stage.close();
     }
    
+
+
+
     //getters
     public Text getTextScoreOfTeamA()
     {
