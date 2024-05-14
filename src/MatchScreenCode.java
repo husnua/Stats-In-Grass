@@ -37,10 +37,11 @@ public class MatchScreenCode extends Application{
 
     //Instance Variables of MatchScreenCode
     static Parent mainRoot;
+    static Parent goalClickedRoot;
+    private String teamAShortName;
+    private String teamBShortName;
     private Timer timer = new Timer();
     private TimerHelper timerHelper = new TimerHelper( this);
-    private int teamAPlayersSize;
-    private int[] jerseyNumbersOfTeamA;
 
 
     @FXML
@@ -48,8 +49,10 @@ public class MatchScreenCode extends Application{
     private Text teamBScore;
     private Text matchHour;
     private Text matchSecond;
-    
-    
+    private Text matchScreenTeamAShortName;
+    private Text matchScreenTeamBShortName;
+
+
 
 
     //deneme
@@ -58,23 +61,41 @@ public class MatchScreenCode extends Application{
     private Player[] teamAPlayers = new Player[12];
     private Player[] teamBPlayers = new Player[12];
     
+
+
+    //constructor
+    public MatchScreenCode()
+    {
+        teamAShortName = "GS";
+        teamBShortName = "FB";
+    }
      
     //consturcting teams
     public void constructTeam()
-    {
-        jerseyNumbersOfTeamA = new int[teamAPlayers.length];
+    {   
+        Text textTeamA = (Text)mainRoot.lookup("#matchScreenTeamAShortName");
+        Text textTeamB = (Text)mainRoot.lookup("#matchScreenTeamBShortName");
+
+        textTeamA.setText(teamAShortName);
+        textTeamB.setText(teamBShortName);
+
+
+
         for ( int i = 0; i < teamAPlayers.length; i ++)
         {
-            Button button = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i);
-            if ( button != null)
+            Button buttonTeamA = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i);
+            Button buttonTeamB = (Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i);
+            if ( buttonTeamA != null)
             {
-                button.setText("" + i);
+                buttonTeamA.setText("" + i);
+                teamAPlayers[i] = new Player("Hüsnü Akseli" + i, i, teamA);
             }
-            teamAPlayers[i] = new Player("Hüsnü Akseli" + i, i, teamA);
-            jerseyNumbersOfTeamA[i] = i;
-            teamBPlayers[i] = new Player("Yunus Karamatov" + i , i, teamB);
+            if( buttonTeamB != null)
+            {   
+                buttonTeamB.setText("" + i);
+                teamBPlayers[i] = new Player("Yunus Karamatov" + i , i, teamB);
+            }
         }
-        teamAPlayersSize = teamAPlayers.length;
     }
 
        
@@ -156,19 +177,26 @@ public class MatchScreenCode extends Application{
     @FXML
     void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
 
+        MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClickedCode = new MatchScreenPitchClickedGoalClickedCode(this);
+        
         Text score = (Text)mainRoot.lookup("#teamAScore");
-
+        
+        //now working 
         if(score!=null)
         {
             score.setText("" + (Integer.parseInt(score.getText()) + 1));
         }
-        for ( int i = 0; i < teamAPlayersSize; i++)
+
+        Button assist = (Button)goalClickedRoot.lookup("#goalClickedAssistButton");
+        assist.setText("A");
+
+        for ( int i = 0; i < 12; i++)
         {
-            
-            Button button = (Button)mainRoot.lookup("#matchScreenPitchClickedGoalClickedTeamAPlayerButton" + i);
-            button.setText( jerseyNumbersOfTeamA[i] + "");
+            System.out.println( "sa");
+            Button button = (Button)goalClickedRoot.lookup("#matchScreenTeamAPlayerButtonGoal" + i);
+            button.setText( i + 1 + "");
+           
         }
-        MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClickedCode = new MatchScreenPitchClickedGoalClickedCode(this);
     }
     
     @FXML
@@ -235,6 +263,7 @@ public class MatchScreenCode extends Application{
         
         timer.schedule(timerHelper, 1000, 1000);
         mainRoot = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
+        goalClickedRoot = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedGoalClicked.fxml")); 
         primaryStage.setTitle("Match Screen");
         primaryStage.setScene(new Scene(mainRoot, 950, 600));
         primaryStage.show();

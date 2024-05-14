@@ -16,7 +16,7 @@
    <children>
       <Pane layoutX="46.0" layoutY="34.0" prefHeight="123.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-width: 4;">
          <children>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: -fx-border-width;" text="ASSIST" textFill="#f4f3f3">
+            <Button fx:id="goalClickedAssistButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: -fx-border-width;" text="ASSIST" textFill="#f4f3f3">
                <font>
                   <Font name="System Bold" size="40.0" />
                </font>
@@ -61,7 +61,7 @@
             </Lighting>
          </effect>
       </Button>
-      <GridPane layoutX="323.0" layoutY="20.0" prefHeight="450.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 0;">
+      <GridPane layoutX="313.0" layoutY="26.0" prefHeight="450.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 0;">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -77,7 +77,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef">
+            <Button fx:id="matchScreenTeamAPlayerButtonGoal0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -92,7 +92,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1">
+            <Button fx:id="matchScreenTeamAPlayerButtonGoal1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -107,7 +107,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="matchScreenTeamAPlayerButtonGoal3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -122,7 +122,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="1">
+            <Button fx:id="matchScreenTeamAPlayerButtonGoal2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -137,7 +137,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="2">
+            <Button fx:id="matchScreenTeamAPlayerButtonGoal4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -152,7 +152,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button id="matchScreenTeamAPlayerButtonGoal5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -167,7 +167,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="3">
+            <Button id="matchScreenTeamAPlayerButtonGoal6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -182,7 +182,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Button id="matchScreenTeamAPlayerButtonGoal7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -197,7 +197,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="4">
+            <Button id="matchScreenTeamAPlayerButtonGoal8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="4">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -212,7 +212,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton9" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Button id="matchScreenTeamAPlayerButtonGoal9" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -227,7 +227,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton10" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="5">
+            <Button id="matchScreenTeamAPlayerButtonGoal10" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="5">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -242,7 +242,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton11" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Button id="matchScreenTeamAPlayerButtonGoal11" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -257,7 +257,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="6">
+            <Button id="matchScreenTeamAPlayerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="6">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -272,7 +272,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Button id="matchScreenTeamAPlayerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -287,7 +287,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="7">
+            <Button id="matchScreenTeamAPlayerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.rowIndex="7">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -302,7 +302,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button id="matchScreenPitchClickedGoalClickedTeamAPlayerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Button id="matchScreenTeamAPlayerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" text="0" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
