@@ -98,7 +98,7 @@ public class MatchScreenCode extends Application{
             }
             if( buttonTeamB != null)
             {   
-                buttonTeamB.setText("" + i);
+                buttonTeamB.setText("" + (i + 1));
                 teamBPlayers[i] = new Player("Yunus Karamatov" + i , i, teamB);
             }
         }
@@ -218,10 +218,12 @@ public class MatchScreenCode extends Application{
 
         for ( int i = 0; i < 12; i++)
         {
-            Button buttonOfTeamAPlayer = (Button)goalClickedRoot.lookup("#matchScreenTeamAPlayerButtonGoal" + i );
-            buttonOfTeamAPlayer.setText("a");
+            Button buttonOfTeamAPlayer = (Button)goalClickedRoot.lookup("#matchScreenTeamPlayerButtonGoal" + i );
+            buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
         }
     }
+
+
 
     @FXML 
     void matchScreenPitchClickedGoalClickedTeamBClicked ( ActionEvent event) throws Exception{
@@ -233,6 +235,12 @@ public class MatchScreenCode extends Application{
 
         Button button = (Button)event.getSource();
         button.setDisable(true);
+
+        for ( int i = 0; i < 12; i++)
+        {
+            Button buttonOfTeamBPlayer = (Button)goalClickedRoot.lookup("#matchScreenTeamPlayerButtonGoal" + i );
+            buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
+        }
 
     }
 
