@@ -72,7 +72,17 @@ public class PlayerStatsDAO {
         }
     }
 
-    
+    public int countPlayerStats() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM PlayerStats";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        }
+        return 0;
+    }
 
     
 
