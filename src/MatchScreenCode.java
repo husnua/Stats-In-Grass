@@ -48,6 +48,10 @@ public class MatchScreenCode extends Application{
     private TimerHelper timerHelper = new TimerHelper( this);
     private Stage matchScreenPitchClickedGoalClickedStage;
     private Stage matchScreenPitchClickedStage;
+    private static Team teamA = new Team();
+    private static Team teamB = new Team();
+    private static Player[] teamAPlayers = new Player[12];
+    private static Player[] teamBPlayers = new Player[12];
 
 
 
@@ -59,10 +63,7 @@ public class MatchScreenCode extends Application{
     private Text matchSecond;
     private Text matchScreenTeamAShortName;
     private Text matchScreenTeamBShortName;
-    private Team teamA = new Team();
-    private Team teamB = new Team();
-    private Player[] teamAPlayers = new Player[12];
-    private Player[] teamBPlayers = new Player[12];
+    
 
 
     
@@ -246,11 +247,36 @@ public class MatchScreenCode extends Application{
 
     @FXML
     void goalScreenPlayerSelected ( ActionEvent event) throws Exception{
+
         Button assistButton = (Button)goalClickedRoot.lookup("#goalClickedAssistButton");
-       
+        Button teamAButton = (Button)goalClickedRoot.lookup("#goalScreenTeamAButton");
+        Button teamBButton = (Button)goalClickedRoot.lookup("#goalScreenTeamBButton");
+        int selectedJerseyNumber = Integer.parseInt(((Button)event.getSource()).getText());
+
         if ( assistButton.isDisabled())
-        {
-            System.out.println("disabled");
+        {   
+            if( teamAButton.isDisabled())
+            {
+                for ( Player player: teamAPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().makeAssist();
+                        System.out.println( player.getStats().getAssist());
+                    }
+                }
+            }
+            else
+            {
+                for ( Player player: teamBPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().makeAssist();
+                        System.out.println( player.getStats().getAssist());
+                    }
+                }
+            }
         }
     }
 
@@ -359,7 +385,7 @@ public class MatchScreenCode extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
       
-        DatabaseInitializer.initializeDatabase();
+        /*DatabaseInitializer.initializeDatabase();
         this.teamDAO = new TeamDAO();
         this.playerDAO = new PlayerDAO();
         this.matchDAO = new MatchDAO();
@@ -370,7 +396,7 @@ public class MatchScreenCode extends Application{
         teamDAO.addTeam("Team B", "path/to/logo2.jpg");
         matchDAO.addMatch(1, 2, 3, 2, "2024-05-13");  
         matchDAO.printAllMatches();  // Printing all matches
-        //System.out.println(matchDAO.getMatch(5).getMatchDate());
+        //System.out.println(matchDAO.getMatch(5).getMatchDate());*/
         
         Parent root = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
         timer.schedule(timerHelper, 1000, 1000);

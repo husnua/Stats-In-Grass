@@ -2,6 +2,7 @@ public class PlayerStats {
     private int goal = 0;
     private int steal = 0;
     private int turnover = 0;
+    private int assist = 0;
     private double playedTime = 0;
     private int playedMatch = 0;
     private int fouls = 0;
@@ -20,6 +21,11 @@ public class PlayerStats {
 
     public int getTurnover() {
         return turnover;
+    }
+
+    public int getAssist()
+    {
+        return assist;
     }
 
     public double getPlayedTime() {
@@ -44,6 +50,10 @@ public class PlayerStats {
 
     public void scoreGoal(){
         goal++;
+    }
+
+    public void makeAssist(){
+        assist++;
     }
     
 

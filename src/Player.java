@@ -9,6 +9,7 @@ public class Player {
         jerseyNumber = jersey;
         team = t;
         t.addPlayer( this );
+        stats = new PlayerStats();
     }
 
     public String getName () {
@@ -21,6 +22,11 @@ public class Player {
 
     public Team getTeam () {
         return this.team;
+    }
+
+    public PlayerStats getStats ()
+    {
+        return this.stats;
     }
     
 }
