@@ -43,6 +43,7 @@ public class MatchScreenCode extends Application{
     static Parent mainRoot;
     static Parent goalClickedRoot;
     static Parent lostClickedRoot;
+    static Parent foulClickedRoot;
 
     private String teamAShortName;
     private String teamBShortName;
@@ -487,9 +488,10 @@ public class MatchScreenCode extends Application{
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
 
+        foulClickedRoot = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedFoulClicked.fxml"));
+
         Stage MatchScreenPitchClickedFoulClickedStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedFoulClicked.fxml"));
-        MatchScreenPitchClickedFoulClickedStage.setScene( new Scene( root, 600, 500));
+        MatchScreenPitchClickedFoulClickedStage.setScene( new Scene( foulClickedRoot, 600, 500));
         MatchScreenPitchClickedFoulClickedStage.show();
     }   
 
@@ -500,8 +502,133 @@ public class MatchScreenCode extends Application{
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
-   
+    
+    @FXML 
+    void matchScreenPitchClickedFoulClickedTeamAClicked ( ActionEvent event) throws Exception{
 
+        Button button = (Button)event.getSource();
+        button.setDisable(true);
+
+        for ( int i = 0; i < 12; i++)
+        {
+            Button buttonOfTeamAPlayer = (Button)foulClickedRoot.lookup("#matchScreenTeamPlayerButtonFoul" + i );
+            buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
+        }
+    }
+
+    @FXML 
+    void matchScreenPitchClickedFoulClickedTeamBClicked ( ActionEvent event) throws Exception{
+
+        Button button = (Button)event.getSource();
+        button.setDisable(true);
+
+        for ( int i = 0; i < 12; i++)
+        {
+            Button buttonOfTeamBPlayer = (Button)foulClickedRoot.lookup("#matchScreenTeamPlayerButtonFoul" + i );
+            buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
+        }
+    }
+
+    @FXML
+    void foulScreenPlayerSelected ( ActionEvent event) throws Exception{
+
+        Button yellowButton = (Button)foulClickedRoot.lookup("#foulScreenYellowButton");
+        Button redButton = (Button)foulClickedRoot.lookup("#foulScreenRedButton");
+        Button teamAButton = (Button)foulClickedRoot.lookup("#foulScreenTeamAButton");
+        Button teamBButton = (Button)foulClickedRoot.lookup("#foulScreenTeamBButton");
+
+        int selectedJerseyNumber = Integer.parseInt(((Button)event.getSource()).getText());
+
+        if ( redButton.isDisabled())
+        {
+            if( teamAButton.isDisabled())
+            {
+                for ( Player player: teamAPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().redCardTaken();
+                        System.out.println( player.getStats().getRed());
+                    }
+                }
+            }
+            else
+            {
+                for ( Player player: teamBPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().redCardTaken();
+                        System.out.println( player.getStats().getRed());
+                    }
+                }
+            }
+        }
+        else if( yellowButton.isDisabled())
+        {
+            if( teamAButton.isDisabled())
+            {
+                for ( Player player: teamAPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().yellowCardTaken();
+                        System.out.println( player.getStats().getYellow());
+                    }
+                }
+            }
+            else
+            {
+                for ( Player player: teamBPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().yellowCardTaken();
+                        System.out.println( player.getStats().getYellow());
+                    }
+                }
+            }
+        }
+        else
+        {
+            if( teamAButton.isDisabled())
+            {
+                for ( Player player: teamAPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().foulDone();;
+                        System.out.println( player.getStats().getFouls());
+                    }
+                }
+            }
+            else
+            {
+                for ( Player player: teamBPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().foulDone();;
+                        System.out.println( player.getStats().getFouls());
+                    }
+                }
+            }
+        }
+    }
+
+    @FXML
+    void foulScreenYellowButtonClicked(ActionEvent event) {
+
+        Button button = (Button)event.getSource();
+        button.setDisable(true);
+    }
+
+    @FXML
+    void foulScreenRedButtonClicked(ActionEvent event) {
+
+        Button button = (Button)event.getSource();
+        button.setDisable(true);
+    }
 
 
     //getters

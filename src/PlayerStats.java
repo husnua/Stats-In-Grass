@@ -65,6 +65,20 @@ public class PlayerStats {
     public void stealBall(){
         steal++;
     }
+    
+    public void foulDone(){
+        fouls++;
+    }
+
+    public void yellowCardTaken()
+    {
+        yellow++;
+    }
+
+    public void redCardTaken()
+    {
+        red++;
+    }
 
     
 
