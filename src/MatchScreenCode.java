@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.fxml.FXML;
@@ -190,6 +191,8 @@ public class MatchScreenCode extends Application{
     @FXML
     void matchScreenPitchClickedGoalClicked(ActionEvent event) throws Exception {
 
+        goalClickedRoot = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedGoalClicked.fxml")); 
+        
         //closing pitchClickedScreen
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
@@ -197,27 +200,40 @@ public class MatchScreenCode extends Application{
 
         //MatchScreenPitchClickedGoalClickedCode matchScreenPitchClickedGoalClickedCode = new MatchScreenPitchClickedGoalClickedCode(this);
         matchScreenPitchClickedGoalClickedStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedGoalClicked.fxml"));
-        matchScreenPitchClickedGoalClickedStage.setScene( new Scene( root, 600, 491));
+        matchScreenPitchClickedGoalClickedStage.setScene( new Scene( goalClickedRoot, 600, 491));
         matchScreenPitchClickedGoalClickedStage.show();   
-    
+    }
 
+    @FXML 
+    void matchScreenPitchClickedGoalClickedTeamAClicked ( ActionEvent event) throws Exception{
+        
         Text score = (Text)mainRoot.lookup("#teamAScore");
         if(score!=null)
         {
             score.setText("" + (Integer.parseInt(score.getText()) + 1));
         }
 
-        //now working 
-        Button assist = (Button)goalClickedRoot.lookup("#goalClickedAssistButton");
-        assist.setText("A");
+        Button button = (Button)event.getSource();
+        button.setDisable(true);
 
         for ( int i = 0; i < 12; i++)
         {
-            System.out.println( "sa");
-            Button button = (Button)goalClickedRoot.lookup("#matchScreenTeamAPlayerButtonGoal" + i);
-            button.setText( i + 1 + "");
+            Button buttonOfTeamAPlayer = (Button)goalClickedRoot.lookup("#matchScreenTeamAPlayerButtonGoal" + i );
+            buttonOfTeamAPlayer.setText("a");
         }
+    }
+
+    @FXML 
+    void matchScreenPitchClickedGoalClickedTeamBClicked ( ActionEvent event) throws Exception{
+        Text score = (Text)mainRoot.lookup("#teamBScore");
+        if(score!=null)
+        {
+            score.setText("" + (Integer.parseInt(score.getText()) + 1));
+        }
+
+        Button button = (Button)event.getSource();
+        button.setDisable(true);
+
     }
 
     @FXML
@@ -323,7 +339,6 @@ public class MatchScreenCode extends Application{
         
         timer.schedule(timerHelper, 1000, 1000);
         mainRoot = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
-        goalClickedRoot = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedGoalClicked.fxml")); 
         primaryStage.setTitle("Match Screen");
         primaryStage.setScene(new Scene(mainRoot, 950, 600));
         primaryStage.setMaximized(true);
