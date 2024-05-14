@@ -44,6 +44,7 @@ public class MatchScreenCode extends Application{
     static Parent goalClickedRoot;
     static Parent lostClickedRoot;
     static Parent foulClickedRoot;
+    static Parent missedClickedRoot;
 
     private String teamAShortName;
     private String teamBShortName;
@@ -254,6 +255,7 @@ public class MatchScreenCode extends Application{
         Button assistButton = (Button)goalClickedRoot.lookup("#goalClickedAssistButton");
         Button teamAButton = (Button)goalClickedRoot.lookup("#goalScreenTeamAButton");
         Button teamBButton = (Button)goalClickedRoot.lookup("#goalScreenTeamBButton");
+
         int selectedJerseyNumber = Integer.parseInt(((Button)event.getSource()).getText());
 
         if ( assistButton.isDisabled())
@@ -331,14 +333,87 @@ public class MatchScreenCode extends Application{
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
-
+        
+        missedClickedRoot = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedMissedClicked.fxml"));
         //MatchScreenPitchClickedMissedClickedCode matchScreenPitchClickedMissedClickedCode = new MatchScreenPitchClickedMissedClickedCode(this);
         Stage matchScreenPitchClickedMissedClickedStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedMissedClicked.fxml"));
-        matchScreenPitchClickedMissedClickedStage.setScene( new Scene( root, 600, 400));
+        matchScreenPitchClickedMissedClickedStage.setScene( new Scene( missedClickedRoot, 750, 550));
         matchScreenPitchClickedMissedClickedStage.show();   
     }
 
+    @FXML
+    void matchScreenPitchClickedMissedClickedTeamAClicked(ActionEvent event) {
+
+        Button button = (Button)event.getSource();
+        button.setDisable(true);
+
+        for ( int i = 0; i < 12; i++)
+        {
+            Button buttonOfTeamAPlayer = (Button)missedClickedRoot.lookup("#matchScreenTeamPlayerButtonMissed" + i );
+            buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
+        }
+    }
+
+    @FXML
+    void matchScreenPitchClickedMissedClickedTeamBClicked(ActionEvent event) {
+
+        Button button = (Button)event.getSource();
+        button.setDisable(true);
+
+        for ( int i = 0; i < 12; i++)
+        {
+            Button buttonOfTeamBPlayer = (Button)missedClickedRoot.lookup("#matchScreenTeamPlayerButtonMissed" + i );
+            buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
+        }
+    }
+
+    @FXML
+    void missedScreenPlayerSelected (ActionEvent event) throws Exception{   
+
+        Button onTargetButton = (Button)missedClickedRoot.lookup("#missedScreenOnTargetButton");
+        Button teamAButton = (Button)missedClickedRoot.lookup("#missedScreenTeamAButton");
+        Button teamBButton = (Button)missedClickedRoot.lookup("#missedScreenTeamBButton");
+
+        int selectedJerseyNumber = Integer.parseInt(((Button)event.getSource()).getText());
+        
+        if ( onTargetButton.isDisabled())
+        {   
+            if( teamAButton.isDisabled())
+            {
+                for ( Player player: teamAPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().makeShotOnTarget();
+                        System.out.println( player.getStats().getShotOnTarget());
+                    }
+                }
+            }
+            else
+            {
+                for ( Player player: teamBPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().makeShotOnTarget();
+                        System.out.println( player.getStats().getShotOnTarget());
+                    }
+                }
+            }
+        }
+    }
+
+    @FXML
+    void missedScreenOnTargetClicked(ActionEvent event) {
+        Button button = (Button)event.getSource();
+        button.setDisable(true);
+    }
+
+    @FXML
+    void missedScreenSavedButtonClicked( ActionEvent event) throws Exception{
+        Button button = (Button)event.getSource();
+        button.setDisable(true);
+    }
 
 
     //lostScreenMethods
