@@ -16,7 +16,7 @@
    <children>
       <Pane layoutX="56.0" layoutY="44.0" prefHeight="123.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-width: 4;">
          <children>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: -fx-border-width;" text="STEAL" textFill="#f4f3f3">
+            <Button fx:id="lostScreenStealClickedButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" onAction="#lostScreenStealClicked" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: -fx-border-width;" text="STEAL" textFill="#f4f3f3">
                <font>
                   <Font name="System Bold" size="40.0" />
                </font>
@@ -35,7 +35,7 @@
       </Pane>
       <Pane layoutX="56.0" layoutY="194.0" prefHeight="123.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-width: 4;">
          <children>
-            <Button layoutX="-3.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: -fx-border-width;" text="TEAM A " textAlignment="CENTER" textFill="#f4f3f3">
+            <Button fx:id="lostScreenTeamAButton" layoutX="-3.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" onAction="#matchScreenPitchClickedLostClickedTeamAClicked" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: -fx-border-width;" text="TEAM A " textAlignment="CENTER" textFill="#f4f3f3">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
@@ -44,14 +44,14 @@
       </Pane>
       <Pane layoutX="56.0" layoutY="346.0" prefHeight="123.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-width: 4;">
          <children>
-            <Button layoutX="-3.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: -fx-border-width;" text="TEAM B" textAlignment="CENTER" textFill="#f4f3f3">
+            <Button fx:id="lostScreenTeamBButton" layoutX="-3.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" onAction="#matchScreenPitchClickedLostClickedTeamBClicked" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: -fx-border-width;" text="TEAM B" textAlignment="CENTER" textFill="#f4f3f3">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <GridPane layoutX="332.0" layoutY="30.0" prefHeight="450.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-width: 0;">
+      <GridPane layoutX="299.0" layoutY="30.0" prefHeight="450.0" prefWidth="145.0" style="-fx-border-color: black; -fx-border-width: 0;">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -82,7 +82,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.columnIndex="1">
+            <Button fx:id="matchScreenTeamPlayerButtonLost1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#lostScreenPlayerSelected" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.columnIndex="1">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -97,7 +97,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="matchScreenTeamPlayerButtonLost3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#lostScreenPlayerSelected" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -112,7 +112,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef">
+            <Button fx:id="matchScreenTeamPlayerButtonLost0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#lostScreenPlayerSelected" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -127,7 +127,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.rowIndex="1">
+            <Button fx:id="matchScreenTeamPlayerButtonLost2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#lostScreenPlayerSelected" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -142,7 +142,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.rowIndex="2">
+            <Button fx:id="matchScreenTeamPlayerButtonLost4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#lostScreenPlayerSelected" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -157,7 +157,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="matchScreenTeamPlayerButtonLost5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#lostScreenPlayerSelected" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -172,7 +172,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.rowIndex="3">
+            <Button fx:id="matchScreenTeamPlayerButtonLost6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#lostScreenPlayerSelected" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -187,7 +187,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Button fx:id="matchScreenTeamPlayerButtonLost7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#lostScreenPlayerSelected" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -202,7 +202,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.rowIndex="4">
+            <Button fx:id="matchScreenTeamPlayerButtonLost8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#lostScreenPlayerSelected" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.rowIndex="4">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -217,7 +217,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Button fx:id="matchScreenTeamPlayerButtonLost9" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#lostScreenPlayerSelected" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -232,7 +232,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.rowIndex="5">
+            <Button fx:id="matchScreenTeamPlayerButtonLost10" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#lostScreenPlayerSelected" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.rowIndex="5">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -247,7 +247,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Button fx:id="matchScreenTeamPlayerButtonLost11" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#lostScreenPlayerSelected" style="-fx-background-color: #145F82; -fx-border-color: black; -fx-border-width: 2;" textFill="#f2efef" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>

@@ -42,6 +42,8 @@ public class MatchScreenCode extends Application{
     //Instance Variables of MatchScreenCode
     static Parent mainRoot;
     static Parent goalClickedRoot;
+    static Parent lostClickedRoot;
+
     private String teamAShortName;
     private String teamBShortName;
     private Timer timer = new Timer();
@@ -278,6 +280,31 @@ public class MatchScreenCode extends Application{
                 }
             }
         }
+        else
+        {
+            if( teamAButton.isDisabled())
+            {
+                for ( Player player: teamAPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().scoreGoal();;
+                        System.out.println( player.getStats().getGoal());
+                    }
+                }
+            }
+            else
+            {
+                for ( Player player: teamBPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().scoreGoal();
+                        System.out.println( player.getStats().getGoal());
+                    }
+                }
+            }
+        }
     }
 
     @FXML
@@ -321,10 +348,125 @@ public class MatchScreenCode extends Application{
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
 
+        lostClickedRoot = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedLostClicked.fxml")); 
+
         Stage MatchScreenPitchClickedLostClickedStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedLostClicked.fxml"));
-        MatchScreenPitchClickedLostClickedStage.setScene( new Scene( root, 600, 500));
+        MatchScreenPitchClickedLostClickedStage.setScene( new Scene( lostClickedRoot, 600, 500));
         MatchScreenPitchClickedLostClickedStage.show();
+    }
+
+    @FXML 
+    void matchScreenPitchClickedLostClickedTeamAClicked ( ActionEvent event) throws Exception{
+
+        Button button = (Button)event.getSource();
+        button.setDisable(true);
+
+        for ( int i = 0; i < 12; i++)
+        {
+            Button buttonOfTeamAPlayer = (Button)lostClickedRoot.lookup("#matchScreenTeamPlayerButtonLost" + i );
+            buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
+        }
+    }
+
+    @FXML 
+    void matchScreenPitchClickedLostClickedTeamBClicked ( ActionEvent event) throws Exception{
+
+        Button button = (Button)event.getSource();
+        button.setDisable(true);
+
+        for ( int i = 0; i < 12; i++)
+        {
+            Button buttonOfTeamBPlayer = (Button)lostClickedRoot.lookup("#matchScreenTeamPlayerButtonLost" + i );
+            buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
+        }
+    }
+
+    @FXML
+    void lostScreenStealClicked(ActionEvent event) {
+
+        Button stealButton = (Button)event.getSource();
+        Button teamAButton = (Button)lostClickedRoot.lookup("#lostScreenTeamAButton");
+        Button teamBButton = (Button)lostClickedRoot.lookup("#lostScreenTeamBButton");
+
+        stealButton.setDisable(true);
+
+        if( teamAButton.isDisabled())
+        {
+            for ( int i = 0; i < 12; i++)
+            {
+                Button buttonOfTeamBPlayer = (Button)lostClickedRoot.lookup("#matchScreenTeamPlayerButtonLost" + i );
+                buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
+            }
+        }
+        if( teamBButton.isDisabled())
+        {
+            for ( int i = 0; i < 12; i++)
+            {
+                Button buttonOfTeamAPlayer = (Button)lostClickedRoot.lookup("#matchScreenTeamPlayerButtonLost" + i );
+                buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
+            }
+        }
+    }
+
+    @FXML
+    void lostScreenPlayerSelected(ActionEvent event) {
+
+        Button stealButton = (Button)lostClickedRoot.lookup("#lostScreenStealClickedButton");
+        Button teamAButton = (Button)lostClickedRoot.lookup("#lostScreenTeamAButton");
+        Button teamBButton = (Button)lostClickedRoot.lookup("#lostScreenTeamBButton");
+
+        int selectedJerseyNumber = Integer.parseInt(((Button)event.getSource()).getText());
+
+        if ( stealButton.isDisabled())
+        {   
+            if( teamAButton.isDisabled())
+            {
+                for ( Player player: teamBPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().stealBall();;
+                        System.out.println( player.getStats().getSteal());
+                    }
+                }
+            }
+            else
+            {
+                for ( Player player: teamAPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().stealBall();
+                        System.out.println( player.getStats().getSteal());
+                    }
+                }
+            }
+        }
+        else
+        {
+            if( teamAButton.isDisabled())
+            {
+                for ( Player player: teamAPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().lostBall();
+                        System.out.println( player.getStats().getTurnover());
+                    }
+                }
+            }
+            else
+            {
+                for ( Player player: teamBPlayers)
+                {
+                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    {
+                        player.getStats().lostBall();
+                        System.out.println( player.getStats().getTurnover());
+                    }
+                }
+            }
+        }
     }
 
     @FXML

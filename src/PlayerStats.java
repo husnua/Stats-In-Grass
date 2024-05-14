@@ -47,7 +47,9 @@ public class PlayerStats {
     public int getRed() {
         return red;
     }
+    
 
+    //setters
     public void scoreGoal(){
         goal++;
     }
@@ -55,6 +57,15 @@ public class PlayerStats {
     public void makeAssist(){
         assist++;
     }
+
+    public void lostBall(){
+        turnover++;
+    }
+
+    public void stealBall(){
+        steal++;
+    }
+
     
 
 }
