@@ -22,7 +22,7 @@
          <left>
             <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #64e3a1;" BorderPane.alignment="CENTER">
                <center>
-                  <Button mnemonicParsing="false" onAction="#addPlayerForTeamA" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: red;" text="Add Player" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#addPlayer" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: red;" text="Add Player" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="Microsoft Sans Serif" size="18.0" />
                      </font>
@@ -36,7 +36,7 @@
          <right>
             <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #64e3a1;" BorderPane.alignment="CENTER">
                <center>
-                  <Button mnemonicParsing="false" onAction="#addPlayerForTeamB" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: red;" text="Add Player" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#addPlayer" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: red;" text="Add Player" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="Microsoft Sans Serif" size="18.0" />
                      </font>
@@ -50,10 +50,10 @@
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-size: cover; -fx-background-position: center; -fx-background-color: #64e3a1;" BorderPane.alignment="CENTER">
                <left>
-                  <TextField prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="teamANameField" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                </left>
                <right>
-                  <TextField prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="teamBNameField" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                </right>
                <center>
                   <ImageView fitHeight="95.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
