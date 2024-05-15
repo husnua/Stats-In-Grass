@@ -4,6 +4,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.util.ArrayList;
+
+import dao.Match;
+import dao.MatchDAO;
+import dao.PlayerDAO;
+import dao.PlayerStatsDAO;
+import dao.TeamDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -110,19 +118,49 @@ public class MatchDetailsController {
 
     public void loadMatchDetails(String match) {
         // Set team names dynamically based on the match data
-        teamALabel.setText("Dynamic Team A Name"); // TODO: Replace with actual team A name from the match data
-        teamBLabel.setText("Dynamic Team B Name"); // TODO: Replace with actual team B name from the match data
-
+        
         // TODO: Load match details from the database based on the match identifier
         // Example data
-        teamAStats.addAll(
+        int a = match.indexOf(':');
+        int idofmatch = Integer.parseInt( match.substring(8, a));
+        System.out.println(match);
+        dao.MatchDAO mm = new MatchDAO();
+        int idofteama = 0;
+        int idofteamb = 0;
+        dao.TeamDAO daot = new TeamDAO();
+        try {
+            idofteama = mm.getMatch(idofmatch).getTeam1Id();
+            idofteamb = mm.getMatch(idofmatch).getTeam2Id();
+            teamALabel.setText(daot.getTeam(mm.getMatch(idofmatch).getTeam1Id()).getName()); // TODO: Replace with actual team A name from the match data
+            teamBLabel.setText(daot.getTeam(mm.getMatch(idofmatch).getTeam2Id()).getName()); // TODO: Replace with actual team B name from the match data
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        dao.PlayerStatsDAO pp = new PlayerStatsDAO();
+        ArrayList<dao.PlayerStats> stats = new ArrayList<>();
+        try {
+            stats = pp.getMatchPlayerStats(idofmatch);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        for(int i = 0;i<stats.size()/2;i++){
+            dao.PlayerStats ps = stats.get(i);
+            dao.PlayerDAO dd = new PlayerDAO();
+            teamAStats.add( new PlayerStats(dd.getPlayer(ps.getPlayerId()).getName(), ps.getGoals() + ps.getAssists(), ps.getAssists(), (double)ps.getAssists()/(ps.getGoals() + ps.getAssists())*100, 0, ps.getYellowCards() + ps.getRedCards(), ps.getYellowCards(), ps.getRedCards()));
+        }
+        /*teamAStats.addAll(
             new PlayerStats("Player 1", 3, 1, 75.0, 2, 0, 1, 0),
             new PlayerStats("Player 2", 1, 0, 100.0, 1, 2, 0, 0)
-        );
-        teamBStats.addAll(
+        );*/
+        for(int i = stats.size()/2 + 1;i<stats.size();i++){
+            dao.PlayerStats ps = stats.get(i);
+            dao.PlayerDAO dd = new PlayerDAO();
+            teamBStats.add( new PlayerStats(dd.getPlayer(ps.getPlayerId()).getName(), ps.getGoals() + ps.getAssists(), ps.getAssists(), (double)ps.getAssists()/(ps.getGoals() + ps.getAssists())*100, 0, ps.getYellowCards() + ps.getRedCards(), ps.getYellowCards(), ps.getRedCards()));
+        }
+        /*teamBStats.addAll(
             new PlayerStats("Player 3", 2, 1, 50.0, 1, 1, 1, 0),
             new PlayerStats("Player 4", 4, 2, 50.0, 3, 3, 0, 0)
-        );
+        );*/
     }
 
     @FXML
