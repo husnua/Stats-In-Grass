@@ -479,7 +479,9 @@ public class MatchScreenCode extends Application{
                     for ( Player player : teamAPlayers){
                         if ( selectedJerseyNumber == player.getJerseyNumber())
                         {
-                            player.getStats().scoreGoal();;
+                            player.getStats().scoreGoal();
+                            player.getStats().makeShotOnTarget();
+                            player.getStats().makeShot();
                             System.out.println( player.getStats().getGoal());
                         }
                     }
@@ -491,6 +493,8 @@ public class MatchScreenCode extends Application{
                         if ( selectedJerseyNumber == player.getJerseyNumber())
                         {
                             player.getStats().scoreGoal();
+                            player.getStats().makeShotOnTarget();
+                            player.getStats().makeShot();
                             System.out.println( player.getStats().getGoal());
                         }
                     }
@@ -1019,7 +1023,6 @@ public class MatchScreenCode extends Application{
         timer.schedule(timerHelper, 1000, 1000);
         primaryStage.setTitle("Match Screen");
         primaryStage.setScene(new Scene(mainRoot, 950, 600));
-        primaryStage.setMaximized(true);
         primaryStage.show();
         constructTeam();
         
