@@ -852,27 +852,33 @@ public class MatchScreenCode extends Application{
     
     @FXML 
     void matchScreenPitchClickedFoulClickedTeamAClicked ( ActionEvent event) throws Exception{
-
-        Button button = (Button)event.getSource();
-        button.setDisable(true);
-
-        for ( int i = 0; i < teamAsize; i++)
+        Button teamBButton = (Button)foulClickedRoot.lookup("#foulScreenTeamBButton");
+        if( !teamBButton.isDisabled())
         {
-            Button buttonOfTeamAPlayer = (Button)foulClickedRoot.lookup("#matchScreenTeamPlayerButtonFoul" + i );
-            buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
+            Button button = (Button)event.getSource();
+            button.setDisable(true);
+    
+            for ( int i = 0; i < teamAsize; i++)
+            {
+                Button buttonOfTeamAPlayer = (Button)foulClickedRoot.lookup("#matchScreenTeamPlayerButtonFoul" + i );
+                buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
+            }
         }
     }
 
     @FXML 
     void matchScreenPitchClickedFoulClickedTeamBClicked ( ActionEvent event) throws Exception{
-
-        Button button = (Button)event.getSource();
-        button.setDisable(true);
-
-        for ( int i = 0; i < teamBsize; i++)
+        Button teamAButton = (Button)foulClickedRoot.lookup("#foulScreenTeamAButton");
+        if( !teamAButton.isDisabled())
         {
-            Button buttonOfTeamBPlayer = (Button)foulClickedRoot.lookup("#matchScreenTeamPlayerButtonFoul" + i );
-            buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
+            Button button = (Button)event.getSource();
+            button.setDisable(true);
+
+            for ( int i = 0; i < teamBsize; i++)
+            {
+                Button buttonOfTeamBPlayer = (Button)foulClickedRoot.lookup("#matchScreenTeamPlayerButtonFoul" + i );
+                buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
+            }
         }
     }
 
@@ -973,16 +979,22 @@ public class MatchScreenCode extends Application{
 
     @FXML
     void foulScreenYellowButtonClicked(ActionEvent event) {
-
-        Button button = (Button)event.getSource();
-        button.setDisable(true);
+        Button redButton = (Button)foulClickedRoot.lookup("#foulScreenRedButton");
+        if( !redButton.isDisabled())
+        {
+            Button button = (Button)event.getSource();
+            button.setDisable(true);
+        }
     }
 
     @FXML
     void foulScreenRedButtonClicked(ActionEvent event) {
-
-        Button button = (Button)event.getSource();
-        button.setDisable(true);
+        Button yellowButton = (Button)foulClickedRoot.lookup("#foulScreenYellowButton");
+        if( !yellowButton.isDisabled())
+        {
+            Button button = (Button)event.getSource();
+            button.setDisable(true);
+        }
     }
 
 
@@ -1024,6 +1036,7 @@ public class MatchScreenCode extends Application{
         primaryStage.setTitle("Match Screen");
         primaryStage.setScene(new Scene(mainRoot, 950, 600));
         primaryStage.show();
+        primaryStage.setResizable(false);
         constructTeam();
         
         

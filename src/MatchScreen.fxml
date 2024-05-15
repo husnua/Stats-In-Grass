@@ -662,29 +662,19 @@
                         </Pane>
                         <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="190.0" style="-fx-border-width: 4; -fx-border-radius: 0; -fx-background-color: #B9AAB8;" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS">
                            <children>
-                              <ImageView fitHeight="35.0" fitWidth="39.0" layoutX="139.0" layoutY="22.0">
-                                 <image>
-                                    <Image url="@TimeUp.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="35.0" fitWidth="39.0" layoutX="14.0" layoutY="23.0">
-                                 <image>
-                                    <Image url="@TimeDown.png" />
-                                 </image>
-                              </ImageView>
-                              <Text id="matchSecond" layoutX="100.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="38.53755187988281">
+                              <Text id="matchSecond" fill="#731010" layoutX="107.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="68.79996337890611">
                                  <font>
-                                    <Font name="System Bold" size="20.0" />
+                                    <Font name="System Bold" size="42.0" />
                                  </font>
                               </Text>
-                              <Text id="matchHour" layoutX="55.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="38.53755187988281">
+                              <Text id="matchHour" fill="#731010" layoutX="14.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="68.79996337890611">
                                  <font>
-                                    <Font name="System Bold" size="20.0" />
+                                    <Font name="System Bold" size="42.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="96.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                              <Text layoutX="89.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":" wrappingWidth="11.3818359375">
                                  <font>
-                                    <Font name="System Bold" size="16.0" />
+                                    <Font name="System Bold" size="42.0" />
                                  </font>
                               </Text>
                            </children>
