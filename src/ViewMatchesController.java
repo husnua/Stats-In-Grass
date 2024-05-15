@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import dao.MatchDAO;
+
 public class ViewMatchesController extends Application{
 
     @FXML
@@ -37,11 +39,17 @@ public class ViewMatchesController extends Application{
 
     private void loadSampleMatches() {
         // Sample match data to test
-        allMatches.add("Match 1: Team A vs Team B - 2:1");
+        dao.MatchDAO mm = new MatchDAO(); 
+        dao.TeamDAO tt = new TeamDAO(); 
+        ArrayList<dao.Match> matches = mm.getAllMatches();
+        for(int i = 0;i<matches.size();i++){
+            allMatches.add( "Matches " + matches.get(i).getMatchId() + ": " + tt.getTeam(matches.get(i).getTeam1Id()).getName() + " vs " + tt.getTeam(matches.get(i).getTeam2Id()).getName() + " - " + matches.get(i).getTeam1Score() + ":" + matches.get(i).getTeam2Score());
+        }
+        /*allMatches.add("Match 1: Team A vs Team B - 2:1");
         allMatches.add("Match 2: Team C vs Team D - 0:0");
         allMatches.add("Match 3: Team E vs Team F - 3:2");
         allMatches.add("Match 4: Team A vs Team C - 1:1");
-        allMatches.add("Match 5: Team B vs Team D - 4:3");
+        allMatches.add("Match 5: Team B vs Team D - 4:3");*/
 
         // Display the last 3 matches
         recentMatches.addAll(allMatches.subList(Math.max(allMatches.size() - 3, 0), allMatches.size()));
