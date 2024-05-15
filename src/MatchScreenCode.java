@@ -30,6 +30,7 @@ public class MatchScreenCode extends Application{
     static Parent foulClickedRoot;
     static Parent missedClickedRoot;
     static Parent subClickedRoot;
+    static Parent actionsClickedRoot;
 
     private String teamAShortName;
     private String teamBShortName;
@@ -38,7 +39,7 @@ public class MatchScreenCode extends Application{
     private Stage matchScreenPitchClickedGoalClickedStage;
     private Stage matchScreenPitchClickedStage;
 
-
+    private static ArrayList<ActionLog> actions = new ArrayList<ActionLog>();
     private static Player[] teamAPlayers = new Player[12];
     private static Player[] teamBPlayers = new Player[12];
     private static int teamAsize;
@@ -362,9 +363,39 @@ public class MatchScreenCode extends Application{
         shotCountB++;
 
         matchScreenPitchClickedStage.show();   
-
     }
 
+
+
+    @FXML
+    void pitchScreenActionButtonClicked(ActionEvent event) throws Exception{
+
+        
+        actionsClickedRoot = FXMLLoader.load(getClass().getResource("MatchScreenPitchClickedActionsClicked.fxml")); 
+        System.out.println( actions.size());
+        if ( actions.size() > 0)
+        {   
+            int bound = 0;
+            if ( actions.size() >= 6 )
+            {
+                bound = 6;
+            }
+            else
+            {
+                bound = actions.size();
+            }
+            for( int i = 0; i < bound; i++)
+            {
+                Text playerName = (Text)actionsClickedRoot.lookup("#actionPlayerName" + i);
+                Text actionType = (Text)actionsClickedRoot.lookup("#actionType" + i);
+                playerName.setText( actions.get(actions.size() - 1 - i).getPlayer().getName());
+                actionType.setText( actions.get(actions.size() - 1 - i).getType());
+            }
+        }
+        Stage actionsClickedStage = new Stage();
+        actionsClickedStage.setScene(new Scene(actionsClickedRoot, 600,600));
+        actionsClickedStage.show();
+    }
 
 
 
@@ -454,6 +485,8 @@ public class MatchScreenCode extends Application{
                         {
                             player.getStats().makeAssist();
                             System.out.println( player.getStats().getAssist());
+                            ActionLog newAction = new ActionLog("assist", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -465,6 +498,8 @@ public class MatchScreenCode extends Application{
                         {
                             player.getStats().makeAssist();
                             System.out.println( player.getStats().getAssist());
+                            ActionLog newAction = new ActionLog("assist", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -483,6 +518,8 @@ public class MatchScreenCode extends Application{
                             player.getStats().makeShotOnTarget();
                             player.getStats().makeShot();
                             System.out.println( player.getStats().getGoal());
+                            ActionLog newAction = new ActionLog("goal", player);
+                            actions.add(newAction);
                         }
                     }
                 }   
@@ -496,6 +533,8 @@ public class MatchScreenCode extends Application{
                             player.getStats().makeShotOnTarget();
                             player.getStats().makeShot();
                             System.out.println( player.getStats().getGoal());
+                            ActionLog newAction = new ActionLog("goal", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -603,6 +642,8 @@ public class MatchScreenCode extends Application{
                             player.getStats().makeShotOnTarget();
                             player.getStats().makeShot();
                             System.out.println( player.getStats().getShotOnTarget());
+                            ActionLog newAction = new ActionLog("shotOnTarget", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -615,6 +656,8 @@ public class MatchScreenCode extends Application{
                             player.getStats().makeShotOnTarget();
                             player.getStats().makeShot();
                             System.out.println( player.getStats().getShotOnTarget());
+                            ActionLog newAction = new ActionLog("shotOnTarget", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -629,6 +672,8 @@ public class MatchScreenCode extends Application{
                         {
                             player.getStats().makeShot();
                             System.out.println( player.getStats().getTotalShot());
+                            ActionLog newAction = new ActionLog("shotNotOnTarget", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -640,6 +685,8 @@ public class MatchScreenCode extends Application{
                         {
                             player.getStats().makeShot();
                             System.out.println( player.getStats().getTotalShot());
+                            ActionLog newAction = new ActionLog("shotNotOnTarget", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -672,6 +719,7 @@ public class MatchScreenCode extends Application{
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
+
 
 
     //lostScreenMethods
@@ -761,8 +809,10 @@ public class MatchScreenCode extends Application{
                     {
                         if ( selectedJerseyNumber == player.getJerseyNumber())
                         {
-                            player.getStats().stealBall();;
+                            player.getStats().stealBall();
                             System.out.println( player.getStats().getSteal());
+                            ActionLog newAction = new ActionLog("steal", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -774,6 +824,8 @@ public class MatchScreenCode extends Application{
                         {
                             player.getStats().stealBall();
                             System.out.println( player.getStats().getSteal());
+                            ActionLog newAction = new ActionLog("steal", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -788,6 +840,8 @@ public class MatchScreenCode extends Application{
                         {
                             player.getStats().lostBall();
                             System.out.println( player.getStats().getTurnover());
+                            ActionLog newAction = new ActionLog("turnover", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -799,6 +853,8 @@ public class MatchScreenCode extends Application{
                         {
                             player.getStats().lostBall();
                             System.out.println( player.getStats().getTurnover());
+                            ActionLog newAction = new ActionLog("turnover", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -905,6 +961,8 @@ public class MatchScreenCode extends Application{
                         {
                             player.getStats().redCardTaken();
                             System.out.println( player.getStats().getRed());
+                            ActionLog newAction = new ActionLog("redCard", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -916,6 +974,8 @@ public class MatchScreenCode extends Application{
                         {
                             player.getStats().redCardTaken();
                             System.out.println( player.getStats().getRed());
+                            ActionLog newAction = new ActionLog("redCard", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -930,6 +990,8 @@ public class MatchScreenCode extends Application{
                         {
                             player.getStats().yellowCardTaken();
                             System.out.println( player.getStats().getYellow());
+                            ActionLog newAction = new ActionLog("yellowCard", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -941,6 +1003,8 @@ public class MatchScreenCode extends Application{
                         {
                             player.getStats().yellowCardTaken();
                             System.out.println( player.getStats().getYellow());
+                            ActionLog newAction = new ActionLog("yellowCard", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -953,8 +1017,10 @@ public class MatchScreenCode extends Application{
                     {
                         if ( selectedJerseyNumber == player.getJerseyNumber())
                         {
-                            player.getStats().foulDone();;
+                            player.getStats().foulDone();
                             System.out.println( player.getStats().getFouls());
+                            ActionLog newAction = new ActionLog("foulDone", player);
+                            actions.add(newAction);
                         }
                     }
                 }
@@ -966,6 +1032,8 @@ public class MatchScreenCode extends Application{
                         {
                             player.getStats().foulDone();;
                             System.out.println( player.getStats().getFouls());
+                            ActionLog newAction = new ActionLog("foulDone", player);
+                            actions.add(newAction);
                         }
                     }
                 }

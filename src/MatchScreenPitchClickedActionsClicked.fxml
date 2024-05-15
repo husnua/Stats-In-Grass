@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchScreenCode">
+   <children>
+      <GridPane layoutX="118.0" layoutY="65.0" prefHeight="629.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane prefHeight="90.0" prefWidth="600.0" style="-fx-background-color: #882A2A; -fx-border-color: white;">
+               <children>
+                  <Text fill="#f4ecec" layoutX="246.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACTION" wrappingWidth="114.936767578125">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="actionPlayerName0" fill="#f2e1e1" layoutX="33.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="195.73675537109375">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#fceded" layoutX="297.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="actionType0" fill="#f4e1e1" layoutX="390.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="171.98248291015625">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="90.0" prefWidth="600.0" style="-fx-background-color: #882A2A; -fx-border-color: white;" GridPane.rowIndex="1">
+               <children>
+                  <Text fill="#f4ecec" layoutX="246.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACTION" wrappingWidth="114.936767578125">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="actionPlayerName1" fill="#f2e1e1" layoutX="33.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="195.73675537109375">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#fceded" layoutX="297.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="actionType1" fill="#f4e1e1" layoutX="390.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="171.98248291015625">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="90.0" prefWidth="600.0" style="-fx-background-color: #882A2A; -fx-border-color: white;" GridPane.rowIndex="2">
+               <children>
+                  <Text fill="#f4ecec" layoutX="246.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACTION" wrappingWidth="114.936767578125">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="actionPlayerName2" fill="#f2e1e1" layoutX="33.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="195.73675537109375">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#fceded" layoutX="297.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="actionType2" fill="#f4e1e1" layoutX="390.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="171.98248291015625">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="90.0" prefWidth="600.0" style="-fx-background-color: #882A2A; -fx-border-color: white;" GridPane.rowIndex="3">
+               <children>
+                  <Text fill="#f4ecec" layoutX="246.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACTION" wrappingWidth="114.936767578125">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="actionPlayerName3" fill="#f2e1e1" layoutX="33.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="195.73675537109375">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#fceded" layoutX="297.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="actionType3" fill="#f4e1e1" layoutX="390.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="171.98248291015625">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="90.0" prefWidth="600.0" style="-fx-background-color: #882A2A; -fx-border-color: white;" GridPane.rowIndex="4">
+               <children>
+                  <Text fill="#f4ecec" layoutX="246.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACTION" wrappingWidth="114.936767578125">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="actionPlayerName4" fill="#f2e1e1" layoutX="33.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="195.73675537109375">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#fceded" layoutX="297.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="actionType4" fill="#f4e1e1" layoutX="390.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="171.98248291015625">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="90.0" prefWidth="600.0" style="-fx-background-color: #882A2A; -fx-border-color: white;" GridPane.rowIndex="5">
+               <children>
+                  <Text fill="#f4ecec" layoutX="246.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACTION" wrappingWidth="114.936767578125">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="actionPlayerName5" fill="#f2e1e1" layoutX="33.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="195.73675537109375">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#fceded" layoutX="297.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="actionType5" fill="#f4e1e1" layoutX="390.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="171.98248291015625">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
