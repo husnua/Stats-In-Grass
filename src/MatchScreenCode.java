@@ -1056,6 +1056,9 @@ public class MatchScreenCode extends Application{
                     }
                 }
             }
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
         }
         else
         {
