@@ -195,6 +195,8 @@ public class MatchScreenCode extends Application{
     @FXML
     void subScreenTeamAPlayerClicked(ActionEvent event) {
 
+        Button firstSelectedPlayer;
+
         for ( int i = 0; i < 12; i++)
         {
             Button button = (Button)subClickedRoot.lookup("#subScreenTeamAButton" + i);
@@ -205,42 +207,43 @@ public class MatchScreenCode extends Application{
         }
         if ( !disabledControl)
         {
-            Button firstSelectedPlayer = (Button)event.getSource();
+            firstSelectedPlayer = (Button)event.getSource();
             firstSelectedPlayer.setDisable(true);
         }
         else
         {
-            System.out.println("sa");
             Button secondSelectedButton = (Button)event.getSource();
+            Button firstSelectedButton = null;
+            int jerseyNumberMainRootFirstSelectedButton = 0;
+            int jerseyNumberMainRootSecondSelectedButton = 0;
+            String tempText = null;
             for( int i = 0; i < 12; i++)
             {
                 if( ((Button)subClickedRoot.lookup("#subScreenTeamAButton" + i)).isDisabled())
                 {   
-
-                    Button firstSelectedButton = (Button)subClickedRoot.lookup("#subScreenTeamAButton" + i);
-                    String tempText = secondSelectedButton.getText();
-                    
-
-                    for( int c = 0; i < 12; i++)
-                    {
-                        if ( firstSelectedButton.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c)).getText()))
-                        {
-                            Button mainRootFirstSelectedButton = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c);
-                        }
-                        if ( secondSelectedButton.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c)).getText()))
-                        {
-                            Button mainRootSecondSelectedButton = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c);
-                        }
-                        
-                        /*Button tempMainRootButton = mainRootSecondSelectedButton;
-                        mainRootSecondSelectedButton = mainRootFirstSelectedButton;
-                        mainRootFirstSelectedButton = tempMainRootButton;*/
-                    }
-                    secondSelectedButton.setText(firstSelectedButton.getText());
-                    firstSelectedButton.setText(tempText);
-                    secondSelectedButton.setDisable(true);
+                    firstSelectedButton = (Button)subClickedRoot.lookup("#subScreenTeamAButton" + i);
+                    tempText = secondSelectedButton.getText();
+                    jerseyNumberMainRootFirstSelectedButton = Integer.parseInt(firstSelectedButton.getText());
+                    jerseyNumberMainRootSecondSelectedButton = Integer.parseInt(tempText);
+                    //mainRoot buttons changed here
                 }
             }
+            for( int c = 0; c < 12; c++)
+            {
+                if ( firstSelectedButton.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c)).getText()))
+                {
+                    Button firstMainRootButton = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c);
+                    firstMainRootButton.setText("" + jerseyNumberMainRootSecondSelectedButton);
+                }
+                if ( secondSelectedButton.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c)).getText()))
+                {
+                    Button secondMainRootButton = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c);
+                    secondMainRootButton.setText("" + jerseyNumberMainRootFirstSelectedButton);
+                }
+            }
+            secondSelectedButton.setText(firstSelectedButton.getText());
+            firstSelectedButton.setText(tempText);
+            secondSelectedButton.setDisable(true);
         }
     }
 
@@ -399,7 +402,7 @@ public class MatchScreenCode extends Application{
             }
             else
             {
-                for ( Player player: teamBPlayers)
+                for ( Player player : teamBPlayers)
                 {
                     if ( selectedJerseyNumber == player.getJerseyNumber())
                     {
