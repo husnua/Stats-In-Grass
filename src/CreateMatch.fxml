@@ -22,7 +22,7 @@
          <left>
             <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #64e3a1;" BorderPane.alignment="CENTER">
                <center>
-                  <Button mnemonicParsing="false" onAction="#addPlayer" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: red;" text="Add Player" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#addPlayerForTeamA" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: red;" text="Add Player" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="Microsoft Sans Serif" size="18.0" />
                      </font>
@@ -36,7 +36,7 @@
          <right>
             <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #64e3a1;" BorderPane.alignment="CENTER">
                <center>
-                  <Button mnemonicParsing="false" onAction="#addPlayer" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: red;" text="Add Player" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#addPlayerForTeamB" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: red;" text="Add Player" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="Microsoft Sans Serif" size="18.0" />
                      </font>
@@ -76,7 +76,17 @@
    <bottom>
       <Pane prefHeight="85.0" prefWidth="950.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="369.0" layoutY="19.0" mnemonicParsing="false" onAction="#startMatch" prefHeight="66.0" prefWidth="200.0" text="START">
+            <Button layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#addPlayerFromDatabaseTeamA" prefHeight="46.0" prefWidth="284.0" style="-fx-background-radius: 15; -fx-background-color: black;" text="Add Player From Database" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="367.0" layoutY="10.0" mnemonicParsing="false" onAction="#startMatch" prefHeight="66.0" prefWidth="200.0" text="START">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="619.0" layoutY="20.0" mnemonicParsing="false" onAction="#addPlayerFromDatabaseTeamB" prefHeight="46.0" prefWidth="284.0" style="-fx-background-radius: 15; -fx-background-color: black;" text="Add Player From Database" textFill="WHITE">
                <font>
                   <Font name="Microsoft Sans Serif" size="18.0" />
                </font>

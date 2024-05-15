@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="950" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShotChartController">
+    <Pane fx:id="pane" prefHeight="600.0" prefWidth="950">
+        <ImageView fx:id="pitchImageView" fitHeight="600.0" fitWidth="950">
+            <image>
+                <Image url="@football_pitch.png" />
+            </image>
+        </ImageView>
+    </Pane>
+</AnchorPane>
