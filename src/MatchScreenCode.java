@@ -13,15 +13,18 @@ import java.util.ArrayList;
 import java.util.Timer;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import dao.Match;
+import dao.MatchDAO;
 //db related conns
 import dao.PlayerDAO;
+import dao.PlayerStatsDAO;
 
 
 
 public class MatchScreenCode extends Application{
 
     private PlayerDAO playerDAO;
-    
+    private static Stage stage;
 
     //Instance Variables of MatchScreenCode
     static Parent mainRoot;
@@ -32,8 +35,9 @@ public class MatchScreenCode extends Application{
     static Parent subClickedRoot;
     static Parent actionsClickedRoot;
 
-    private String teamAShortName;
-    private String teamBShortName;
+    private static String teamAShortName;
+    private static String teamBShortName;
+    private static dao.Team teamAdb, teamBdb;
     private Timer timer = new Timer();
     private TimerHelper timerHelper = new TimerHelper( this);
     private Stage matchScreenPitchClickedGoalClickedStage;
@@ -52,7 +56,7 @@ public class MatchScreenCode extends Application{
     private static int[][] teamBShotChart = new int[100][2];
     private static int shotCountA = 0;
     private static int shotCountB = 0;
-
+    private static ArrayList<dao.Player> aPlayers = null, bPlayers = null;
 
 
 
@@ -65,7 +69,9 @@ public class MatchScreenCode extends Application{
     public Text getTeamBScore() {
         return teamBScore;
     }
-
+    public static Stage getStage() {
+        return stage;
+    }
 
     //alert
     private void showAlert(String title, String content) {
@@ -80,6 +86,8 @@ public class MatchScreenCode extends Application{
 
     //constructor
     public void con(dao.Team teamA, dao.Team teamB){
+        teamAdb = teamA;
+        teamBdb = teamB;
         if(teamA.getName().length()>=3)
             teamAShortName = teamA.getName().substring(0, 5).toUpperCase();
         else 
@@ -92,7 +100,7 @@ public class MatchScreenCode extends Application{
             teamBShortName = teamB.getName().toUpperCase();
 
         playerDAO = new PlayerDAO();
-        ArrayList<dao.Player> aPlayers = null, bPlayers = null;
+    
         try {
             aPlayers = playerDAO.getTeamPlayers( teamA.getTeamId() ); 
         } catch (Exception e) {
@@ -225,7 +233,35 @@ public class MatchScreenCode extends Application{
     //finishingMatch
     @FXML
     void matchScreenFinishClicked(ActionEvent event) {
-
+        MatchDAO m = new MatchDAO();
+        PlayerStatsDAO ps = new PlayerStatsDAO();
+        try {
+            m.addMatch(teamAdb.getTeamId(), teamBdb.getTeamId(), goalCountTeamA, goalCountTeamB, "15.05.2024");
+        } catch (Exception e) {
+            System.out.println("Match could not added");
+        }
+        dao.Match ml = new Match();
+        // TODO: define a correct match
+        for(int i = 0; i< teamAPlayers.length;i++){
+            try {
+                ps.addPlayerStats(aPlayers.get(i).getPlayerId(), ml.getMatchId(), teamAPlayers[i].getStats().getGoal(), teamAPlayers[i].getStats().getAssist(), (int)teamAPlayers[i].getStats().getPlayedTime(), teamAPlayers[i].getStats().getYellow(), teamAPlayers[i].getStats().getRed());
+            } catch (Exception e) {
+                System.out.println("PlayerStats could not added " + e);
+            }
+        }
+        for(int i = 0; i< teamBPlayers.length;i++){
+            try {
+                ps.addPlayerStats(bPlayers.get(i).getPlayerId(), ml.getMatchId(), teamBPlayers[i].getStats().getGoal(), teamBPlayers[i].getStats().getAssist(), (int)teamBPlayers[i].getStats().getPlayedTime(), teamBPlayers[i].getStats().getYellow(), teamBPlayers[i].getStats().getRed());
+            } catch (Exception e) {
+                System.out.println("PlayerStats could not added " + e);
+            }
+        }
+        MainScreenCode msc = new MainScreenCode();
+        try {
+            msc.start(getStage());
+        } catch (Exception e) {
+            System.out.println("Returning back to main");
+        }
     }
 
 
@@ -1110,7 +1146,7 @@ public class MatchScreenCode extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-      
+        stage = primaryStage;
         /*DatabaseInitializer.initializeDatabase();
         this.teamDAO = new TeamDAO();
         this.playerDAO = new PlayerDAO();

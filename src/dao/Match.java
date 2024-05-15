@@ -8,6 +8,7 @@ public class Match {
     private int team2Score;
     private String matchDate;
 
+    public Match(){}
     public Match(int matchId, int team1Id, int team2Id, int team1Score, int team2Score, String matchDate) {
         this.matchId = matchId;
         this.team1Id = team1Id;
