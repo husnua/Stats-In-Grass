@@ -488,6 +488,13 @@ public class MatchScreenCode extends Application{
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }   
+
+    @FXML
+    void goalScreenConfirmClicked(ActionEvent event) {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
     
 
 
@@ -509,26 +516,36 @@ public class MatchScreenCode extends Application{
     @FXML
     void matchScreenPitchClickedMissedClickedTeamAClicked(ActionEvent event) {
 
-        Button button = (Button)event.getSource();
-        button.setDisable(true);
+        Button teamBButton = (Button)missedClickedRoot.lookup("#missedScreenTeamBButton");
 
-        for ( int i = 0; i < 12; i++)
+        if( !teamBButton.isDisabled())
         {
-            Button buttonOfTeamAPlayer = (Button)missedClickedRoot.lookup("#matchScreenTeamPlayerButtonMissed" + i );
-            buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
+            Button button = (Button)event.getSource();
+            button.setDisable(true);
+
+            for ( int i = 0; i < 12; i++)
+            {
+                Button buttonOfTeamAPlayer = (Button)missedClickedRoot.lookup("#matchScreenTeamPlayerButtonMissed" + i );
+                buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
+            }
         }
     }
 
     @FXML
     void matchScreenPitchClickedMissedClickedTeamBClicked(ActionEvent event) {
 
-        Button button = (Button)event.getSource();
-        button.setDisable(true);
+        Button teamAButton = (Button)missedClickedRoot.lookup("#missedScreenTeamAButton");
 
-        for ( int i = 0; i < 12; i++)
-        {
-            Button buttonOfTeamBPlayer = (Button)missedClickedRoot.lookup("#matchScreenTeamPlayerButtonMissed" + i );
-            buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
+        if( !teamAButton.isDisabled())
+        {   
+            Button button = (Button)event.getSource();
+            button.setDisable(true);
+
+            for ( int i = 0; i < 12; i++)
+            {
+                Button buttonOfTeamBPlayer = (Button)missedClickedRoot.lookup("#matchScreenTeamPlayerButtonMissed" + i );
+                buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
+            }
         }
     }
 
@@ -552,6 +569,7 @@ public class MatchScreenCode extends Application{
                         if ( selectedJerseyNumber == player.getJerseyNumber())
                         {
                             player.getStats().makeShotOnTarget();
+                            player.getStats().makeShot();
                             System.out.println( player.getStats().getShotOnTarget());
                         }
                     }
@@ -563,11 +581,40 @@ public class MatchScreenCode extends Application{
                         if ( selectedJerseyNumber == player.getJerseyNumber())
                         {
                             player.getStats().makeShotOnTarget();
+                            player.getStats().makeShot();
                             System.out.println( player.getStats().getShotOnTarget());
                         }
                     }
                 }
             }
+            else
+            {
+                if( teamAButton.isDisabled())
+                {   
+                    for ( Player player: teamAPlayers)
+                    {
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().makeShot();
+                            System.out.println( player.getStats().getTotalShot());
+                        }
+                    }
+                }
+                else
+                {
+                    for ( Player player: teamBPlayers)
+                    {
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().makeShot();
+                            System.out.println( player.getStats().getTotalShot());
+                        }
+                    }
+                }
+            }
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
         }
         else
         {
@@ -585,6 +632,13 @@ public class MatchScreenCode extends Application{
     void missedScreenSavedButtonClicked( ActionEvent event) throws Exception{
         Button button = (Button)event.getSource();
         button.setDisable(true);
+    }
+
+    @FXML
+    void missedScreenConfirmClicked(ActionEvent event) {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
 
@@ -727,6 +781,13 @@ public class MatchScreenCode extends Application{
     @FXML
     void matchScreenPitchClickedLostClickedExit( ActionEvent event) throws Exception{
         //closing pitchClickedScreen
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    void stealScreenConfirmClicked(ActionEvent event) {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();

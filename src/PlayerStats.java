@@ -9,6 +9,7 @@ public class PlayerStats {
     private int yellow = 0;
     private int red = 0;
     private int shotOnTarget;
+    private int totalShot = 0;
     
 
     public PlayerStats(){}
@@ -54,6 +55,12 @@ public class PlayerStats {
     {
         return shotOnTarget;
     }
+
+    public int getTotalShot()
+    {
+        return totalShot;
+    }
+
     
 
     //setters
@@ -85,6 +92,11 @@ public class PlayerStats {
     public void redCardTaken()
     {
         red++;
+    }
+
+    public void makeShot()
+    {
+        totalShot++;
     }
 
     public void makeShotOnTarget()
