@@ -8,11 +8,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: linear-gradient(to bottom, #4374BA, #1e3c72);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateMatchCode">
    <top>
-      <ImageView fitHeight="130.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_RIGHT">
+      <ImageView fitHeight="72.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_RIGHT">
          <image>
             <Image url="@Logo.jpg" />
          </image>
@@ -47,13 +46,13 @@
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-size: cover; -fx-background-position: center; -fx-background-color: #4caf50;" BorderPane.alignment="CENTER">
                <left>
-                  <TextField fx:id="teamANameField" promptText="Team A Name" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 15; -fx-padding: 10; -fx-font-size: 16px;" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="teamANameField" prefHeight="50.0" prefWidth="200.0" promptText="Team A Name" style="-fx-background-radius: 15; -fx-padding: 10; -fx-font-size: 16px;" BorderPane.alignment="CENTER" />
                </left>
                <right>
-                  <TextField fx:id="teamBNameField" promptText="Team B Name" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 15; -fx-padding: 10; -fx-font-size: 16px;" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="teamBNameField" prefHeight="50.0" prefWidth="200.0" promptText="Team B Name" style="-fx-background-radius: 15; -fx-padding: 10; -fx-font-size: 16px;" BorderPane.alignment="CENTER" />
                </right>
                <center>
-                  <Label text="VS" style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: white;" BorderPane.alignment="CENTER">
+                  <Label style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: white;" text="VS" BorderPane.alignment="CENTER">
                      <effect>
                         <DropShadow />
                      </effect>

@@ -458,6 +458,7 @@ public class MatchScreenCode extends Application{
                 actions.remove( actions.size() - 1 - i);
             }
         }
+
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
