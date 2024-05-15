@@ -22,7 +22,7 @@
          <left>
             <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #64e3a1;" BorderPane.alignment="CENTER">
                <center>
-                  <Button mnemonicParsing="false" onAction="#addPlayer" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: red;" text="Add Player" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#addPlayerForTeamA" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: red;" text="Add Player to Team A" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="Microsoft Sans Serif" size="18.0" />
                      </font>
@@ -36,7 +36,7 @@
          <right>
             <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #64e3a1;" BorderPane.alignment="CENTER">
                <center>
-                  <Button mnemonicParsing="false" onAction="#addPlayer" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: red;" text="Add Player" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#addPlayerForTeamB" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: red;" text="Add Player to Team B" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="Microsoft Sans Serif" size="18.0" />
                      </font>

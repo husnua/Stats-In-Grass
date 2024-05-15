@@ -1,33 +1,17 @@
-import dao.DatabaseInitializer;
-import dao.MatchDAO;
-import dao.PlayerDAO;
-import dao.PlayerStatsDAO;
-import dao.TeamDAO;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.fxml.FXML;
 
 public class CreateMatchCode extends Application {
-    private TeamDAO teamDAO;
-    private PlayerDAO playerDAO;
-    private MatchDAO matchDAO;
-    private PlayerStatsDAO playerStatsDAO;
-    private DatabaseInitializer databaseInitializer;
-    private static String nameA;
-    private static String nameB;
-    private static Stage stage;
 
-    public static Stage getStage() {
-        return stage;
-    }
-    
     @FXML
     private TextField teamANameField;
 
@@ -35,32 +19,31 @@ public class CreateMatchCode extends Application {
     private TextField teamBNameField;
 
     @FXML
-    void addPlayer(ActionEvent event) throws Exception {
-        String nameTeamA = teamANameField.getText();
-        String nameTeamB = teamBNameField.getText();
-        
-        if (nameTeamA.isEmpty() || nameTeamB.isEmpty()) {
+    void addPlayerForTeamA(ActionEvent event) throws Exception {
+        if (teamANameField.getText().isEmpty() || teamBNameField.getText().isEmpty()) {
             showAlert("Error", "Both team names must be entered.");
             return;
         }
-
-        this.teamDAO = new TeamDAO();
-        teamDAO.addTeam( nameTeamA, "path/to/logo1.jpg");
-        teamDAO.addTeam( nameTeamB, "path/to/logo2.jpg");
-        nameA = nameTeamA;
-        nameB = nameTeamB;
         Stage addPlayerButtonClickedStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("AddPlayer.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("AddPlayerTeamA.fxml"));
         addPlayerButtonClickedStage.setScene(new Scene(root, 950, 600));
-        addPlayerButtonClickedStage.setTitle("Add Player");
+        addPlayerButtonClickedStage.setTitle("Add Player to Team A");
         addPlayerButtonClickedStage.show();
     }
-    public static String getNameA() {
-        return nameA;
+
+    @FXML
+    void addPlayerForTeamB(ActionEvent event) throws Exception {
+        if (teamANameField.getText().isEmpty() || teamBNameField.getText().isEmpty()) {
+            showAlert("Error", "Both team names must be entered.");
+            return;
+        }
+        Stage addPlayerButtonClickedStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("AddPlayerTeamB.fxml"));
+        addPlayerButtonClickedStage.setScene(new Scene(root, 950, 600));
+        addPlayerButtonClickedStage.setTitle("Add Player to Team B");
+        addPlayerButtonClickedStage.show();
     }
-    public static String getNameB() {
-        return nameB;
-    }
+
     @FXML
     void startMatch(ActionEvent event) {
         System.out.println("MATCH STARTING");
@@ -81,11 +64,9 @@ public class CreateMatchCode extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        stage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("CreateMatch.fxml"));
         primaryStage.setTitle("Create Match");
         primaryStage.setScene(new Scene(root, 950, 600));
         primaryStage.show();
     }
 }
-
