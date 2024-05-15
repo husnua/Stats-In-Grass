@@ -510,32 +510,39 @@ public class MatchScreenCode extends Application{
         Button teamAButton = (Button)missedClickedRoot.lookup("#missedScreenTeamAButton");
         Button teamBButton = (Button)missedClickedRoot.lookup("#missedScreenTeamBButton");
 
-        int selectedJerseyNumber = Integer.parseInt(((Button)event.getSource()).getText());
-        
-        if ( onTargetButton.isDisabled())
-        {   
-            if( teamAButton.isDisabled())
-            {
-                for ( Player player: teamAPlayers)
+        if( teamAButton.isDisabled() || teamBButton.isDisabled())
+        {
+            int selectedJerseyNumber = Integer.parseInt(((Button)event.getSource()).getText());
+            
+            if ( onTargetButton.isDisabled())
+            {   
+                if( teamAButton.isDisabled())
                 {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    for ( Player player: teamAPlayers)
                     {
-                        player.getStats().makeShotOnTarget();
-                        System.out.println( player.getStats().getShotOnTarget());
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().makeShotOnTarget();
+                            System.out.println( player.getStats().getShotOnTarget());
+                        }
+                    }
+                }
+                else
+                {
+                    for ( Player player: teamBPlayers)
+                    {
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().makeShotOnTarget();
+                            System.out.println( player.getStats().getShotOnTarget());
+                        }
                     }
                 }
             }
-            else
-            {
-                for ( Player player: teamBPlayers)
-                {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
-                    {
-                        player.getStats().makeShotOnTarget();
-                        System.out.println( player.getStats().getShotOnTarget());
-                    }
-                }
-            }
+        }
+        else
+        {
+            showAlert("Error", "Please select a team.");
         }
     }
 
@@ -627,57 +634,64 @@ public class MatchScreenCode extends Application{
         Button teamAButton = (Button)lostClickedRoot.lookup("#lostScreenTeamAButton");
         Button teamBButton = (Button)lostClickedRoot.lookup("#lostScreenTeamBButton");
 
-        int selectedJerseyNumber = Integer.parseInt(((Button)event.getSource()).getText());
+        if ( teamAButton.isDisabled() || teamBButton.isDisabled())
+        {
+            int selectedJerseyNumber = Integer.parseInt(((Button)event.getSource()).getText());
 
-        if ( stealButton.isDisabled())
-        {   
-            if( teamAButton.isDisabled())
-            {
-                for ( Player player: teamBPlayers)
+            if ( stealButton.isDisabled())
+            {   
+                if( teamAButton.isDisabled())
                 {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    for ( Player player: teamBPlayers)
                     {
-                        player.getStats().stealBall();;
-                        System.out.println( player.getStats().getSteal());
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().stealBall();;
+                            System.out.println( player.getStats().getSteal());
+                        }
+                    }
+                }
+                else
+                {
+                    for ( Player player: teamAPlayers)
+                    {
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().stealBall();
+                            System.out.println( player.getStats().getSteal());
+                        }
                     }
                 }
             }
             else
             {
-                for ( Player player: teamAPlayers)
+                if( teamAButton.isDisabled())
                 {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    for ( Player player: teamAPlayers)
                     {
-                        player.getStats().stealBall();
-                        System.out.println( player.getStats().getSteal());
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().lostBall();
+                            System.out.println( player.getStats().getTurnover());
+                        }
+                    }
+                }
+                else
+                {
+                    for ( Player player: teamBPlayers)
+                    {
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().lostBall();
+                            System.out.println( player.getStats().getTurnover());
+                        }
                     }
                 }
             }
         }
         else
         {
-            if( teamAButton.isDisabled())
-            {
-                for ( Player player: teamAPlayers)
-                {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
-                    {
-                        player.getStats().lostBall();
-                        System.out.println( player.getStats().getTurnover());
-                    }
-                }
-            }
-            else
-            {
-                for ( Player player: teamBPlayers)
-                {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
-                    {
-                        player.getStats().lostBall();
-                        System.out.println( player.getStats().getTurnover());
-                    }
-                }
-            }
+            showAlert("Error", "Please select a team.");
         }
     }
 
@@ -748,82 +762,90 @@ public class MatchScreenCode extends Application{
         Button teamAButton = (Button)foulClickedRoot.lookup("#foulScreenTeamAButton");
         Button teamBButton = (Button)foulClickedRoot.lookup("#foulScreenTeamBButton");
 
-        int selectedJerseyNumber = Integer.parseInt(((Button)event.getSource()).getText());
+        if( teamAButton.isDisabled() || teamBButton.isDisabled())
+        {
 
-        if ( redButton.isDisabled())
-        {
-            if( teamAButton.isDisabled())
+            int selectedJerseyNumber = Integer.parseInt(((Button)event.getSource()).getText());
+
+            if ( redButton.isDisabled())
             {
-                for ( Player player: teamAPlayers)
+                if( teamAButton.isDisabled())
                 {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    for ( Player player: teamAPlayers)
                     {
-                        player.getStats().redCardTaken();
-                        System.out.println( player.getStats().getRed());
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().redCardTaken();
+                            System.out.println( player.getStats().getRed());
+                        }
+                    }
+                }
+                else
+                {
+                    for ( Player player: teamBPlayers)
+                    {
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().redCardTaken();
+                            System.out.println( player.getStats().getRed());
+                        }
+                    }
+                }
+            }
+            else if( yellowButton.isDisabled())
+            {
+                if( teamAButton.isDisabled())
+                {
+                    for ( Player player: teamAPlayers)
+                    {
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().yellowCardTaken();
+                            System.out.println( player.getStats().getYellow());
+                        }
+                    }
+                }
+                else
+                {
+                    for ( Player player: teamBPlayers)
+                    {
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().yellowCardTaken();
+                            System.out.println( player.getStats().getYellow());
+                        }
                     }
                 }
             }
             else
             {
-                for ( Player player: teamBPlayers)
+                if( teamAButton.isDisabled())
                 {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    for ( Player player: teamAPlayers)
                     {
-                        player.getStats().redCardTaken();
-                        System.out.println( player.getStats().getRed());
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().foulDone();;
+                            System.out.println( player.getStats().getFouls());
+                        }
                     }
                 }
-            }
-        }
-        else if( yellowButton.isDisabled())
-        {
-            if( teamAButton.isDisabled())
-            {
-                for ( Player player: teamAPlayers)
+                else
                 {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    for ( Player player: teamBPlayers)
                     {
-                        player.getStats().yellowCardTaken();
-                        System.out.println( player.getStats().getYellow());
-                    }
-                }
-            }
-            else
-            {
-                for ( Player player: teamBPlayers)
-                {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
-                    {
-                        player.getStats().yellowCardTaken();
-                        System.out.println( player.getStats().getYellow());
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().foulDone();;
+                            System.out.println( player.getStats().getFouls());
+                        }
                     }
                 }
             }
         }
         else
         {
-            if( teamAButton.isDisabled())
-            {
-                for ( Player player: teamAPlayers)
-                {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
-                    {
-                        player.getStats().foulDone();;
-                        System.out.println( player.getStats().getFouls());
-                    }
-                }
-            }
-            else
-            {
-                for ( Player player: teamBPlayers)
-                {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
-                    {
-                        player.getStats().foulDone();;
-                        System.out.println( player.getStats().getFouls());
-                    }
-                }
-            }
+            showAlert("Error", "Please select a team.");
         }
     }
 
