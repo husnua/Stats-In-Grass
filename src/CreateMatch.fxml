@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #4374BA;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateMatchCode">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: linear-gradient(to bottom, #4374BA, #1e3c72);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateMatchCode">
    <top>
       <ImageView fitHeight="130.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_RIGHT">
          <image>
@@ -20,12 +21,10 @@
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <left>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #64e3a1;" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #4caf50;" BorderPane.alignment="CENTER">
                <center>
-                  <Button mnemonicParsing="false" onAction="#addPlayerForTeamA" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: red;" text="Add Player" BorderPane.alignment="CENTER">
-                     <font>
-                        <Font name="Microsoft Sans Serif" size="18.0" />
-                     </font>
+                  <Button mnemonicParsing="false" onAction="#addPlayerForTeamA" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: #f44336; -fx-background-radius: 15; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;">
+                     Add Player
                      <effect>
                         <DropShadow />
                      </effect>
@@ -34,12 +33,10 @@
             </BorderPane>
          </left>
          <right>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #64e3a1;" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #4caf50;" BorderPane.alignment="CENTER">
                <center>
-                  <Button mnemonicParsing="false" onAction="#addPlayerForTeamB" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: red;" text="Add Player" BorderPane.alignment="CENTER">
-                     <font>
-                        <Font name="Microsoft Sans Serif" size="18.0" />
-                     </font>
+                  <Button mnemonicParsing="false" onAction="#addPlayerForTeamB" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: #f44336; -fx-background-radius: 15; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;">
+                     Add Player
                      <effect>
                         <DropShadow />
                      </effect>
@@ -48,19 +45,19 @@
             </BorderPane>
          </right>
          <center>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-size: cover; -fx-background-position: center; -fx-background-color: #64e3a1;" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-size: cover; -fx-background-position: center; -fx-background-color: #4caf50;" BorderPane.alignment="CENTER">
                <left>
-                  <TextField fx:id="teamANameField" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="teamANameField" promptText="Team A Name" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 15; -fx-padding: 10; -fx-font-size: 16px;" BorderPane.alignment="CENTER" />
                </left>
                <right>
-                  <TextField fx:id="teamBNameField" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="teamBNameField" promptText="Team B Name" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 15; -fx-padding: 10; -fx-font-size: 16px;" BorderPane.alignment="CENTER" />
                </right>
                <center>
-                  <ImageView fitHeight="95.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                     <image>
-                        <Image url="@images.jpeg" />
-                     </image>
-                  </ImageView>
+                  <Label text="VS" style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: white;" BorderPane.alignment="CENTER">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Label>
                </center>
                <top>
                   <ImageView fitHeight="307.0" fitWidth="578.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
@@ -76,20 +73,14 @@
    <bottom>
       <Pane prefHeight="85.0" prefWidth="950.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#addPlayerFromDatabaseTeamA" prefHeight="46.0" prefWidth="284.0" style="-fx-background-radius: 15; -fx-background-color: black;" text="Add Player From Database" textFill="WHITE">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="18.0" />
-               </font>
+            <Button layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#addPlayerFromDatabaseTeamA" prefHeight="46.0" prefWidth="284.0" style="-fx-background-radius: 15; -fx-background-color: #0000a5; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;">
+               Add Player From Database
             </Button>
-            <Button layoutX="367.0" layoutY="10.0" mnemonicParsing="false" onAction="#startMatch" prefHeight="66.0" prefWidth="200.0" text="START">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="18.0" />
-               </font>
+            <Button layoutX="367.0" layoutY="10.0" mnemonicParsing="false" onAction="#startMatch" prefHeight="66.0" prefWidth="200.0" style="-fx-background-color: #32cd32; -fx-background-radius: 15; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;">
+               START
             </Button>
-            <Button layoutX="619.0" layoutY="20.0" mnemonicParsing="false" onAction="#addPlayerFromDatabaseTeamB" prefHeight="46.0" prefWidth="284.0" style="-fx-background-radius: 15; -fx-background-color: black;" text="Add Player From Database" textFill="WHITE">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="18.0" />
-               </font>
+            <Button layoutX="619.0" layoutY="20.0" mnemonicParsing="false" onAction="#addPlayerFromDatabaseTeamB" prefHeight="46.0" prefWidth="284.0" style="-fx-background-radius: 15; -fx-background-color: #0000a5; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;">
+               Add Player From Database
             </Button>
          </children>
       </Pane>

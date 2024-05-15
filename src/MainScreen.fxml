@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: #66ff00;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainScreenCode">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" style="-fx-background-image: url('StadiumImage.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainScreenCode">
    <children>
       <ImageView fitHeight="175.0" fitWidth="300.0" layoutX="313.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -17,7 +17,7 @@
             <DropShadow />
          </effect>
       </ImageView>
-      <Button layoutX="188.0" layoutY="367.0" mnemonicParsing="false" onAction="#showCreateMatchScreen" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #0000a5;" text="Create Match" textAlignment="CENTER" textFill="WHITE">
+      <Button layoutX="188.0" layoutY="367.0" mnemonicParsing="false" onAction="#showCreateMatchScreen" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #4B4BC3; -fx-background-radius: 15;" text="Create Match" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Microsoft Sans Serif" size="24.0" />
          </font>
@@ -25,7 +25,7 @@
             <DropShadow />
          </effect>
       </Button>
-      <Button layoutX="488.0" layoutY="367.0" mnemonicParsing="false" onAction="#showViewMatchScreen" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #0000a5;" text="View Match" textFill="WHITE">
+      <Button layoutX="488.0" layoutY="367.0" mnemonicParsing="false" onAction="#showViewMatchScreen" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #4B4BC3; -fx-background-radius: 15;" text="View Match" textFill="WHITE">
          <font>
             <Font name="Microsoft Sans Serif" size="24.0" />
          </font>

@@ -1,63 +1,47 @@
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.stage.Stage;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.fxml.FXML;
+import javafx.stage.Stage;
 
-
-public class MainScreenCode extends Application{
-    private static Stage stage;
-    public static Stage getStage() {
-        return stage;
-    }
+public class MainScreenCode extends Application {
 
     @FXML
-    public void showCreateMatchScreen (ActionEvent event) {
-        System.out.println("Creating Match");
+    public void showCreateMatchScreen() {
         try {
-            CreateMatchCode cmc = new CreateMatchCode();
-            cmc.start(stage); 
-            
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("CreateMatch.fxml"));
+            stage.setTitle("Create Match");
+            stage.setScene(new Scene(root, 950, 600));
+            stage.show();
         } catch (Exception e) {
-            System.out.println("Could not change screen to create match");
+            e.printStackTrace();
         }
     }
 
     @FXML
-    public void showViewMatchScreen(ActionEvent event) {
-        System.out.println("Viewing Match");
+    public void showViewMatchScreen() {
         try {
-            ViewMatchesController vmc = new ViewMatchesController();
-            vmc.start(stage); 
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("ViewMatches.fxml"));
+            stage.setTitle("View Matches");
+            stage.setScene(new Scene(root, 950, 600));
+            stage.show();
         } catch (Exception e) {
-            System.out.println("Could not change screen to view match");
+            e.printStackTrace();
         }
     }
-
-    @FXML
-    public void startMatch(ActionEvent event) {
-        System.out.println("Starting Match");
-    }
-
-    public static void main(String[] args)  {
-        System.out.println("Hello, World!");
-        launch(args);
-    }
-
-
-    
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        stage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         primaryStage.setTitle("Homepage");
         primaryStage.setScene(new Scene(root, 950, 600));
         primaryStage.show();
+    }
 
-    
-        
+    public static void main(String[] args) {
+        launch(args);
     }
 }
