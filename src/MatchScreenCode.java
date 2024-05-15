@@ -16,6 +16,8 @@ import javafx.fxml.FXML;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 //db related conns
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -71,6 +73,15 @@ public class MatchScreenCode extends Application{
     private Text matchScreenTeamBShortName;
     
 
+
+    //alert
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
 
     
 
@@ -195,86 +206,90 @@ public class MatchScreenCode extends Application{
     @FXML
     void subScreenTeamAPlayerClicked(ActionEvent event) {
 
+        Button firstSelectedPlayer = null;
+        boolean dis = false;
         for ( int i = 0; i < 12; i++)
         {
             Button button = (Button)subClickedRoot.lookup("#subScreenTeamAButton" + i);
             if ( button.isDisabled())
             {
-                disabledControl = true;
+                dis = true;
+                firstSelectedPlayer = button;
             }
         }
-        if ( !disabledControl)
+        if ( !dis )
         {
-            Button firstSelectedPlayer = (Button)event.getSource();
+            firstSelectedPlayer = (Button)event.getSource();
             firstSelectedPlayer.setDisable(true);
         }
         else
         {
-            System.out.println("sa");
-            Button secondSelectedButton = (Button)event.getSource();
-            for( int i = 0; i < 12; i++)
-            {
-                if( ((Button)subClickedRoot.lookup("#subScreenTeamAButton" + i)).isDisabled())
-                {   
+            String temp = firstSelectedPlayer.getText();
+            Button seconSelectedPlayer = (Button)event.getSource();
+            seconSelectedPlayer.setDisable( true );
+            firstSelectedPlayer.setText( seconSelectedPlayer.getText() );
+            seconSelectedPlayer.setText( temp );
 
-                    Button firstSelectedButton = (Button)subClickedRoot.lookup("#subScreenTeamAButton" + i);
-                    String tempText = secondSelectedButton.getText();
-                    
-
-                    for( int c = 0; i < 12; i++)
-                    {
-                        if ( firstSelectedButton.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c)).getText()))
-                        {
-                            Button mainRootFirstSelectedButton = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c);
-                        }
-                        if ( secondSelectedButton.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c)).getText()))
-                        {
-                            Button mainRootSecondSelectedButton = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c);
-                        }
-                        
-                        /*Button tempMainRootButton = mainRootSecondSelectedButton;
-                        mainRootSecondSelectedButton = mainRootFirstSelectedButton;
-                        mainRootFirstSelectedButton = tempMainRootButton;*/
-                    }
-                    secondSelectedButton.setText(firstSelectedButton.getText());
-                    firstSelectedButton.setText(tempText);
-                    secondSelectedButton.setDisable(true);
+            for( int c = 0; c < 12; c++){
+                if ( firstSelectedPlayer.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c)).getText()))
+                {
+                    Button firstMainRootButton = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c);
+                    firstMainRootButton.setText("" + seconSelectedPlayer.getText());
+                }
+                else if ( seconSelectedPlayer.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c)).getText()))
+                {
+                    Button secondMainRootButton = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c);
+                    secondMainRootButton.setText("" + firstSelectedPlayer.getText());
                 }
             }
+            firstSelectedPlayer.setDisable(false);
+            seconSelectedPlayer.setDisable(false);
+            
         }
     }
 
     @FXML
     void subScreenTeamBPlayerClicked(ActionEvent event) {
 
+        Button firstSelectedPlayer = null;
+        boolean dis = false;
         for ( int i = 0; i < 12; i++)
         {
             Button button = (Button)subClickedRoot.lookup("#subScreenTeamBButton" + i);
             if ( button.isDisabled())
             {
-                disabledControl = true;
+                dis = true;
+                firstSelectedPlayer = button;
             }
         }
-        if ( !disabledControl)
+        if ( !dis )
         {
-            Button firstSelectedPlayer = (Button)event.getSource();
+            firstSelectedPlayer = (Button)event.getSource();
             firstSelectedPlayer.setDisable(true);
         }
         else
         {
-            System.out.println("sa");
-            Button secondSelectedButton = (Button)event.getSource();
-            for( int i = 0; i < 12; i++)
-            {
-                if( ((Button)subClickedRoot.lookup("#subScreenTeamBButton" + i)).isDisabled())
+            String temp = firstSelectedPlayer.getText();
+            Button seconSelectedPlayer = (Button)event.getSource();
+            seconSelectedPlayer.setDisable( true );
+            firstSelectedPlayer.setText( seconSelectedPlayer.getText() );
+            seconSelectedPlayer.setText( temp );
+
+            for( int c = 0; c < 12; c++){
+                if ( firstSelectedPlayer.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + c)).getText()))
                 {
-                    Button firstSelectedButton = (Button)subClickedRoot.lookup("#subScreenTeamBButton" + i);
-                    String tempText = secondSelectedButton.getText();
-                    secondSelectedButton.setText(firstSelectedButton.getText());
-                    firstSelectedButton.setText(tempText);
-                    secondSelectedButton.setDisable(true);
+                    Button firstMainRootButton = (Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + c);
+                    firstMainRootButton.setText("" + seconSelectedPlayer.getText());
+                }
+                else if ( seconSelectedPlayer.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + c)).getText()))
+                {
+                    Button secondMainRootButton = (Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + c);
+                    secondMainRootButton.setText("" + firstSelectedPlayer.getText());
                 }
             }
+            firstSelectedPlayer.setDisable(false);
+            seconSelectedPlayer.setDisable(false);
+            
         }
     }
 
@@ -314,40 +329,50 @@ public class MatchScreenCode extends Application{
 
     @FXML 
     void matchScreenPitchClickedGoalClickedTeamAClicked ( ActionEvent event) throws Exception{
-        
-        Text score = (Text)mainRoot.lookup("#teamAScore");
-        if(score!=null)
-        {
-            score.setText("" + (Integer.parseInt(score.getText()) + 1));
-        }
 
-        Button button = (Button)event.getSource();
-        button.setDisable(true);
+        Button teamBButton = (Button)goalClickedRoot.lookup("#goalScreenTeamBButton");
 
-        for ( int i = 0; i < 12; i++)
+        if ( !teamBButton.isDisabled())
         {
-            Button buttonOfTeamAPlayer = (Button)goalClickedRoot.lookup("#matchScreenTeamPlayerButtonGoal" + i );
-            buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
+            Text score = (Text)mainRoot.lookup("#teamAScore");
+            if(score!=null)
+            {
+                score.setText("" + (Integer.parseInt(score.getText()) + 1));
+            }
+
+            Button button = (Button)event.getSource();
+            button.setDisable(true);
+
+            for ( int i = 0; i < 12; i++)
+            {
+                Button buttonOfTeamAPlayer = (Button)goalClickedRoot.lookup("#matchScreenTeamPlayerButtonGoal" + i );
+                buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
+            }
         }
     }
 
     @FXML 
     void matchScreenPitchClickedGoalClickedTeamBClicked ( ActionEvent event) throws Exception{
-        Text score = (Text)mainRoot.lookup("#teamBScore");
-        if(score!=null)
+
+        Button teamAButton = (Button)goalClickedRoot.lookup("#goalScreenTeamAButton");
+
+        if ( !teamAButton.isDisabled())
         {
-            score.setText("" + (Integer.parseInt(score.getText()) + 1));
+            Text score = (Text)mainRoot.lookup("#teamBScore");
+            if(score!=null)
+            {
+                score.setText("" + (Integer.parseInt(score.getText()) + 1));
+            }
+
+            Button button = (Button)event.getSource();
+            button.setDisable(true);
+
+            for ( int i = 0; i < 12; i++)
+            {
+                Button buttonOfTeamBPlayer = (Button)goalClickedRoot.lookup("#matchScreenTeamPlayerButtonGoal" + i );
+                buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
+            }
         }
-
-        Button button = (Button)event.getSource();
-        button.setDisable(true);
-
-        for ( int i = 0; i < 12; i++)
-        {
-            Button buttonOfTeamBPlayer = (Button)goalClickedRoot.lookup("#matchScreenTeamPlayerButtonGoal" + i );
-            buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
-        }
-
     }
 
     @FXML
@@ -356,58 +381,68 @@ public class MatchScreenCode extends Application{
         Button assistButton = (Button)goalClickedRoot.lookup("#goalClickedAssistButton");
         Button teamAButton = (Button)goalClickedRoot.lookup("#goalScreenTeamAButton");
         Button teamBButton = (Button)goalClickedRoot.lookup("#goalScreenTeamBButton");
+    
+        if( teamAButton.isDisabled() || teamBButton.isDisabled())
+        {
+            int selectedJerseyNumber = Integer.parseInt(((Button)event.getSource()).getText());
 
-        int selectedJerseyNumber = Integer.parseInt(((Button)event.getSource()).getText());
-
-        if ( assistButton.isDisabled())
-        {   
-            if( teamAButton.isDisabled())
-            {
-                for ( Player player : teamAPlayers)
+            if ( assistButton.isDisabled())
+            {   
+                if( teamAButton.isDisabled())
                 {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    for ( Player player : teamAPlayers)
                     {
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
                         player.getStats().makeAssist();
                         System.out.println( player.getStats().getAssist());
+                        }
                     }
                 }
+                else
+                {
+                    for ( Player player: teamBPlayers)
+                    {
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().makeAssist();
+                            System.out.println( player.getStats().getAssist());
+                        }
+                    }
+                }
+                Node source = (Node) event.getSource();
+                Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();
             }
             else
             {
-                for ( Player player: teamBPlayers)
+                if( teamAButton.isDisabled())
                 {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
+                    for ( Player player : teamAPlayers)
                     {
-                        player.getStats().makeAssist();
-                        System.out.println( player.getStats().getAssist());
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().scoreGoal();;
+                            System.out.println( player.getStats().getGoal());
+                        }
+                    }
+                }   
+                else
+                {
+                    for ( Player player : teamBPlayers)
+                    {
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().scoreGoal();
+                            System.out.println( player.getStats().getGoal());
+                        }
                     }
                 }
             }
         }
         else
         {
-            if( teamAButton.isDisabled())
-            {
-                for ( Player player : teamAPlayers)
-                {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
-                    {
-                        player.getStats().scoreGoal();;
-                        System.out.println( player.getStats().getGoal());
-                    }
-                }
-            }
-            else
-            {
-                for ( Player player: teamBPlayers)
-                {
-                    if ( selectedJerseyNumber == player.getJerseyNumber())
-                    {
-                        player.getStats().scoreGoal();
-                        System.out.println( player.getStats().getGoal());
-                    }
-                }
-            }
+            showAlert("Error", "Please select a team.");
         }
     }
 

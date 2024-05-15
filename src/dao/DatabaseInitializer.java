@@ -11,7 +11,7 @@ public class DatabaseInitializer {
 
     private static final String URL = "jdbc:mysql://localhost:3306/football_stats"; 
     static final String USER = "root";
-    static final String PASS = "statsingrass24";
+    static final String PASS = "root";
     private static final String DATABASE_NAME = "football_stats";
 
     public static void initializeDatabase() {
