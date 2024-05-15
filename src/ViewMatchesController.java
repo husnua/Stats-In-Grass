@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import dao.MatchDAO;
+import dao.TeamDAO;
 
 public class ViewMatchesController extends Application{
 
@@ -41,7 +42,13 @@ public class ViewMatchesController extends Application{
         // Sample match data to test
         dao.MatchDAO mm = new MatchDAO(); 
         dao.TeamDAO tt = new TeamDAO(); 
-        ArrayList<dao.Match> matches = mm.getAllMatches();
+        ArrayList<dao.Match> matches = null;
+        try {
+            
+             matches = mm.getAllMatches();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
         for(int i = 0;i<matches.size();i++){
             allMatches.add( "Matches " + matches.get(i).getMatchId() + ": " + tt.getTeam(matches.get(i).getTeam1Id()).getName() + " vs " + tt.getTeam(matches.get(i).getTeam2Id()).getName() + " - " + matches.get(i).getTeam1Score() + ":" + matches.get(i).getTeam2Score());
         }
