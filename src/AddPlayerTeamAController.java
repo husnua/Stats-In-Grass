@@ -2,16 +2,22 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+
+import dao.PlayerDAO;
+import dao.TeamDAO;
 
 
 public class AddPlayerTeamAController {
+
+    private TeamDAO teamDAO;
+    private PlayerDAO playerDAO;
 
     @FXML
     private TextField teamAPlayerNameField;
@@ -29,8 +35,7 @@ public class AddPlayerTeamAController {
     private Button saveButton;
 
     private final ObservableList<String> teamAPlayers = FXCollections.observableArrayList();
-    private final Set<String> teamAJerseyNumbers = new HashSet<>();
-
+    private final ArrayList<String> teamAJerseyNumbers = new ArrayList<>();
     @FXML
     public void initialize() {
         teamAListView.setItems(teamAPlayers);
@@ -51,7 +56,7 @@ public class AddPlayerTeamAController {
         }
     }
 
-    private boolean isValidInput(String playerName, String playerNumber, ObservableList<String> teamPlayers, Set<String> jerseyNumbers) {
+    private boolean isValidInput(String playerName, String playerNumber, ObservableList<String> teamPlayers, ArrayList<String> jerseyNumbers) {
         if (playerName.isEmpty() || playerNumber.isEmpty()) {
             showAlert("Error", "Player name and jersey number cannot be empty.");
             return false;
@@ -80,11 +85,28 @@ public class AddPlayerTeamAController {
     }
 
     private void savePlayerData() {
-        if (teamAPlayers.size() == 11) {
-            // Save data and close the interface
-            // TODO: Implement save functionality
-        } else {
-            showAlert("Error", "Team A must have exactly 11 players.");
+        playerDAO = new PlayerDAO();
+        teamDAO = new TeamDAO();
+        String nameA = CreateMatchCode.getNameA();
+        int aID;
+        try {
+            aID = teamDAO.searchTeamByName(nameA).getTeamId();
+        } catch (Exception e) {
+            System.out.println("Error in search players db");
+            return;
+        }
+        if (teamAPlayers.size() <=12  && teamAPlayers.size() >=6) {
+            try {
+                for(int i = 0;i< teamAJerseyNumbers.size();i++){
+                    playerDAO.addPlayer(aID, teamAPlayers.get(i), teamAJerseyNumbers.get(i));
+                }
+            } catch (Exception e) {
+                System.out.println("Error in adding players to db");
+            }
+            System.out.println("Save button");
+            Stage stage = (Stage) saveButton.getScene().getWindow();
+            stage.close();
+            CreateMatchCode.isReadyA = true;
         }
     }
 }

@@ -60,9 +60,9 @@
             </Lighting>
          </effect>
       </Button>
-      <Button layoutX="850.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="STATS" AnchorPane.rightAnchor="0.0">
+      <Button layoutX="850.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#matchScreenFinishClicked" prefHeight="80.0" prefWidth="100.0" text="FINISH" AnchorPane.rightAnchor="0.0">
          <font>
-            <Font name="System Bold" size="22.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Button>
       <VBox layoutY="150.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="153.0">

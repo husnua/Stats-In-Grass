@@ -18,6 +18,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import java.util.ArrayList;
 //db related conns
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -60,6 +61,11 @@ public class MatchScreenCode extends Application{
     private static Team teamB = new Team();
     private static Player[] teamAPlayers = new Player[12];
     private static Player[] teamBPlayers = new Player[12];
+    //shotChart
+    private static int[][] teamAShotChart = new int[100][2];
+    private static int[][] teamBShotChart = new int[100][2];
+    private static int shotCountA = 0;
+    private static int shotCountB = 0;
 
 
 
@@ -185,6 +191,13 @@ public class MatchScreenCode extends Application{
 
 
 
+    //finishingMatch
+    @FXML
+    void matchScreenFinishClicked(ActionEvent event) {
+
+    }
+
+
     //SUB
     @FXML
     void matchScreenSubButtonClicked(ActionEvent event) throws Exception {
@@ -293,6 +306,13 @@ public class MatchScreenCode extends Application{
         }
     }
 
+    @FXML
+    void subScreenDoneClicked(ActionEvent event) {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
 
 
     //PitchClickRelatedCodes
@@ -304,7 +324,16 @@ public class MatchScreenCode extends Application{
         matchScreenPitchClickedStage.setScene( new Scene( root, 300, 300));
         matchScreenPitchClickedStage.setX( event.getX() + 100);
         matchScreenPitchClickedStage.setY( event.getY() + 100);
+
+        teamAShotChart[shotCountA][0] = (int) event.getX();
+        teamAShotChart[shotCountA][1] = (int) event.getY();
+        teamBShotChart[shotCountB][0] = (int) event.getX();
+        teamBShotChart[shotCountB][1] = (int) event.getY();
+        shotCountA++;
+        shotCountB++;
+
         matchScreenPitchClickedStage.show();   
+
     }
 
 
@@ -394,8 +423,8 @@ public class MatchScreenCode extends Application{
                     {
                         if ( selectedJerseyNumber == player.getJerseyNumber())
                         {
-                        player.getStats().makeAssist();
-                        System.out.println( player.getStats().getAssist());
+                            player.getStats().makeAssist();
+                            System.out.println( player.getStats().getAssist());
                         }
                     }
                 }
@@ -459,6 +488,13 @@ public class MatchScreenCode extends Application{
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }   
+
+    @FXML
+    void goalScreenConfirmClicked(ActionEvent event) {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
     
 
 
@@ -480,26 +516,36 @@ public class MatchScreenCode extends Application{
     @FXML
     void matchScreenPitchClickedMissedClickedTeamAClicked(ActionEvent event) {
 
-        Button button = (Button)event.getSource();
-        button.setDisable(true);
+        Button teamBButton = (Button)missedClickedRoot.lookup("#missedScreenTeamBButton");
 
-        for ( int i = 0; i < 12; i++)
+        if( !teamBButton.isDisabled())
         {
-            Button buttonOfTeamAPlayer = (Button)missedClickedRoot.lookup("#matchScreenTeamPlayerButtonMissed" + i );
-            buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
+            Button button = (Button)event.getSource();
+            button.setDisable(true);
+
+            for ( int i = 0; i < 12; i++)
+            {
+                Button buttonOfTeamAPlayer = (Button)missedClickedRoot.lookup("#matchScreenTeamPlayerButtonMissed" + i );
+                buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
+            }
         }
     }
 
     @FXML
     void matchScreenPitchClickedMissedClickedTeamBClicked(ActionEvent event) {
 
-        Button button = (Button)event.getSource();
-        button.setDisable(true);
+        Button teamAButton = (Button)missedClickedRoot.lookup("#missedScreenTeamAButton");
 
-        for ( int i = 0; i < 12; i++)
-        {
-            Button buttonOfTeamBPlayer = (Button)missedClickedRoot.lookup("#matchScreenTeamPlayerButtonMissed" + i );
-            buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
+        if( !teamAButton.isDisabled())
+        {   
+            Button button = (Button)event.getSource();
+            button.setDisable(true);
+
+            for ( int i = 0; i < 12; i++)
+            {
+                Button buttonOfTeamBPlayer = (Button)missedClickedRoot.lookup("#matchScreenTeamPlayerButtonMissed" + i );
+                buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
+            }
         }
     }
 
@@ -517,12 +563,13 @@ public class MatchScreenCode extends Application{
             if ( onTargetButton.isDisabled())
             {   
                 if( teamAButton.isDisabled())
-                {
+                {   
                     for ( Player player: teamAPlayers)
                     {
                         if ( selectedJerseyNumber == player.getJerseyNumber())
                         {
                             player.getStats().makeShotOnTarget();
+                            player.getStats().makeShot();
                             System.out.println( player.getStats().getShotOnTarget());
                         }
                     }
@@ -534,11 +581,40 @@ public class MatchScreenCode extends Application{
                         if ( selectedJerseyNumber == player.getJerseyNumber())
                         {
                             player.getStats().makeShotOnTarget();
+                            player.getStats().makeShot();
                             System.out.println( player.getStats().getShotOnTarget());
                         }
                     }
                 }
             }
+            else
+            {
+                if( teamAButton.isDisabled())
+                {   
+                    for ( Player player: teamAPlayers)
+                    {
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().makeShot();
+                            System.out.println( player.getStats().getTotalShot());
+                        }
+                    }
+                }
+                else
+                {
+                    for ( Player player: teamBPlayers)
+                    {
+                        if ( selectedJerseyNumber == player.getJerseyNumber())
+                        {
+                            player.getStats().makeShot();
+                            System.out.println( player.getStats().getTotalShot());
+                        }
+                    }
+                }
+            }
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
         }
         else
         {
@@ -556,6 +632,13 @@ public class MatchScreenCode extends Application{
     void missedScreenSavedButtonClicked( ActionEvent event) throws Exception{
         Button button = (Button)event.getSource();
         button.setDisable(true);
+    }
+
+    @FXML
+    void missedScreenConfirmClicked(ActionEvent event) {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
 
@@ -698,6 +781,13 @@ public class MatchScreenCode extends Application{
     @FXML
     void matchScreenPitchClickedLostClickedExit( ActionEvent event) throws Exception{
         //closing pitchClickedScreen
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    void stealScreenConfirmClicked(ActionEvent event) {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();

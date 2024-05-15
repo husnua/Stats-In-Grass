@@ -82,6 +82,18 @@ public class TeamDAO {
         }
         return teams;
     }
+    public Team searchTeamByName(String name) throws SQLException {
+        String sql = "SELECT * FROM Teams WHERE Name LIKE ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, name );
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                return (new Team(rs.getInt("TeamID"), rs.getString("Name"), rs.getString("LogoPath")));
+            }
+        }
+        return null;
+    }
 
     
 
