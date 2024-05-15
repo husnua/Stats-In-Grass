@@ -237,16 +237,17 @@ public class MatchScreenCode extends Application{
         MatchDAO m = new MatchDAO();
         PlayerStatsDAO ps = new PlayerStatsDAO();
         try {
-            m.addMatch(teamAdb.getTeamId(), teamBdb.getTeamId(), goalCountTeamA, goalCountTeamB, "15.05.2024");
+            m.addMatch(teamAdb.getTeamId(), teamBdb.getTeamId(), goalCountTeamA, goalCountTeamB, "2024-05-14");
         } catch (Exception e) {
-            System.out.println("Match could not added");
+            System.out.println("Match could not added" + e);
         }
         dao.Match ml = new Match();
         try {
             
             ml = m.searchMatchByTeamsName(teamAdb.getTeamId(), teamBdb.getTeamId());
+            System.out.println(ml);
         } catch (Exception e) {
-            // TODO: handle exception
+            System.out.println("Match could not found" + e);
         }
         
         // TODO: define a correct match
