@@ -1,10 +1,16 @@
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 public class MatchDetailsController {
 
@@ -68,8 +74,15 @@ public class MatchDetailsController {
     @FXML
     private TableColumn<PlayerStats, Integer> redCardsBColumn;
 
+    @FXML
+    private Button shotChartButton;
+
     private ObservableList<PlayerStats> teamAStats = FXCollections.observableArrayList();
     private ObservableList<PlayerStats> teamBStats = FXCollections.observableArrayList();
+
+    // Example shot coordinates
+    private int[][] shootCoordinatesTeamA = {{50, 30}, {70, 40}, {30, 20}};
+    private int[][] shootCoordinatesTeamB = {{60, 50}, {80, 60}, {40, 30}};
 
     @FXML
     public void initialize() {
@@ -101,7 +114,7 @@ public class MatchDetailsController {
         teamBLabel.setText("Dynamic Team B Name"); // TODO: Replace with actual team B name from the match data
 
         // TODO: Load match details from the database based on the match identifier
-        // Example data to test
+        // Example data
         teamAStats.addAll(
             new PlayerStats("Player 1", 3, 1, 75.0, 2, 0, 1, 0),
             new PlayerStats("Player 2", 1, 0, 100.0, 1, 2, 0, 0)
@@ -110,6 +123,24 @@ public class MatchDetailsController {
             new PlayerStats("Player 3", 2, 1, 50.0, 1, 1, 1, 0),
             new PlayerStats("Player 4", 4, 2, 50.0, 3, 3, 0, 0)
         );
+    }
+
+    @FXML
+    void showShotChart(ActionEvent event) {
+        try {
+            Stage shotChartStage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ShotChart.fxml"));
+            Parent root = loader.load();
+
+            ShotChartController controller = loader.getController();
+            controller.setShotCoordinates(shootCoordinatesTeamA, shootCoordinatesTeamB);
+
+            shotChartStage.setScene(new Scene(root, 950, 600));
+            shotChartStage.setTitle("Shot Chart");
+            shotChartStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static class PlayerStats {
@@ -166,4 +197,3 @@ public class MatchDetailsController {
         }
     }
 }
-
