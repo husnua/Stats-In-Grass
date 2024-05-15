@@ -44,6 +44,9 @@ public class MatchScreenCode extends Application{
     private static Player[] teamBPlayers = new Player[12];
     private static int teamAsize;
     private static int teamBsize;
+    private static int goalCountTeamA = 0;
+    private static int goalCountTeamB = 0;
+
     //shotChart
     private static int[][] teamAShotChart = new int[100][2];
     private static int[][] teamBShotChart = new int[100][2];
@@ -538,6 +541,7 @@ public class MatchScreenCode extends Application{
                             System.out.println( player.getStats().getGoal());
                             ActionLog newAction = new ActionLog("goal", player);
                             actions.add(newAction);
+                            goalCountTeamA++;
                         }
                     }
                 }   
@@ -553,6 +557,7 @@ public class MatchScreenCode extends Application{
                             System.out.println( player.getStats().getGoal());
                             ActionLog newAction = new ActionLog("goal", player);
                             actions.add(newAction);
+                            goalCountTeamB++;
                         }
                     }
                 }
