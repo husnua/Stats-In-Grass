@@ -18,6 +18,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import java.util.ArrayList;
 //db related conns
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -60,6 +61,11 @@ public class MatchScreenCode extends Application{
     private static Team teamB = new Team();
     private static Player[] teamAPlayers = new Player[12];
     private static Player[] teamBPlayers = new Player[12];
+    //shotChart
+    private static int[][] teamAShotChart = new int[100][2];
+    private static int[][] teamBShotChart = new int[100][2];
+    private static int shotCountA = 0;
+    private static int shotCountB = 0;
 
 
 
@@ -185,6 +191,13 @@ public class MatchScreenCode extends Application{
 
 
 
+    //finishingMatch
+    @FXML
+    void matchScreenFinishClicked(ActionEvent event) {
+
+    }
+
+
     //SUB
     @FXML
     void matchScreenSubButtonClicked(ActionEvent event) throws Exception {
@@ -293,6 +306,13 @@ public class MatchScreenCode extends Application{
         }
     }
 
+    @FXML
+    void subScreenDoneClicked(ActionEvent event) {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
 
 
     //PitchClickRelatedCodes
@@ -304,7 +324,16 @@ public class MatchScreenCode extends Application{
         matchScreenPitchClickedStage.setScene( new Scene( root, 300, 300));
         matchScreenPitchClickedStage.setX( event.getX() + 100);
         matchScreenPitchClickedStage.setY( event.getY() + 100);
+
+        teamAShotChart[shotCountA][0] = (int) event.getX();
+        teamAShotChart[shotCountA][1] = (int) event.getY();
+        teamBShotChart[shotCountB][0] = (int) event.getX();
+        teamBShotChart[shotCountB][1] = (int) event.getY();
+        shotCountA++;
+        shotCountB++;
+
         matchScreenPitchClickedStage.show();   
+
     }
 
 
@@ -394,8 +423,8 @@ public class MatchScreenCode extends Application{
                     {
                         if ( selectedJerseyNumber == player.getJerseyNumber())
                         {
-                        player.getStats().makeAssist();
-                        System.out.println( player.getStats().getAssist());
+                            player.getStats().makeAssist();
+                            System.out.println( player.getStats().getAssist());
                         }
                     }
                 }
@@ -517,7 +546,7 @@ public class MatchScreenCode extends Application{
             if ( onTargetButton.isDisabled())
             {   
                 if( teamAButton.isDisabled())
-                {
+                {   
                     for ( Player player: teamAPlayers)
                     {
                         if ( selectedJerseyNumber == player.getJerseyNumber())

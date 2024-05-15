@@ -596,7 +596,7 @@
             </Button>
          </children>
       </GridPane>
-      <Button layoutX="522.0" layoutY="537.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="80.0" style="-fx-background-color: green; -fx-border-radius: 6;" text="DONE" textFill="#f7f6f6" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Button layoutX="522.0" layoutY="537.0" mnemonicParsing="false" onAction="#subScreenDoneClicked" prefHeight="62.0" prefWidth="80.0" style="-fx-background-color: green; -fx-border-radius: 6;" text="DONE" textFill="#f7f6f6" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
