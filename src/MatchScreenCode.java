@@ -1,45 +1,26 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import javafx.util.Callback;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.fxml.FXML;
 import java.util.ArrayList;
 import java.util.Timer;
-import java.util.TimerTask;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import java.util.ArrayList;
 //db related conns
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
-import dao.TeamDAO;
 import dao.PlayerDAO;
-import dao.MatchDAO;
-import dao.PlayerStatsDAO;
-import dao.DatabaseInitializer;
-import dao.Match;
+
 
 
 public class MatchScreenCode extends Application{
-    private TeamDAO teamDAO;
-    private PlayerDAO playerDAO;
-    private MatchDAO matchDAO;
-    private PlayerStatsDAO playerStatsDAO;
-    private DatabaseInitializer databaseInitializer;
 
+    private PlayerDAO playerDAO;
     
 
     //Instance Variables of MatchScreenCode
@@ -56,11 +37,12 @@ public class MatchScreenCode extends Application{
     private TimerHelper timerHelper = new TimerHelper( this);
     private Stage matchScreenPitchClickedGoalClickedStage;
     private Stage matchScreenPitchClickedStage;
-    private static boolean disabledControl;
-    private static Team teamA = new Team();
-    private static Team teamB = new Team();
+
+
     private static Player[] teamAPlayers = new Player[12];
     private static Player[] teamBPlayers = new Player[12];
+    private static int teamAsize;
+    private static int teamBsize;
     //shotChart
     private static int[][] teamAShotChart = new int[100][2];
     private static int[][] teamBShotChart = new int[100][2];
@@ -75,9 +57,10 @@ public class MatchScreenCode extends Application{
     private Text teamBScore;
     private Text matchHour;
     private Text matchSecond;
-    private Text matchScreenTeamAShortName;
-    private Text matchScreenTeamBShortName;
-    
+
+    public Text getTeamBScore() {
+        return teamBScore;
+    }
 
 
     //alert
@@ -92,11 +75,49 @@ public class MatchScreenCode extends Application{
     
 
     //constructor
-    public MatchScreenCode()
-    {
-        teamAShortName = "GS";
-        teamBShortName = "FB";
-        disabledControl = false;
+    public void con(dao.Team teamA, dao.Team teamB){
+        if(teamA.getName().length()>=3)
+            teamAShortName = teamA.getName().substring(0, 5).toUpperCase();
+        else 
+            teamAShortName = teamA.getName().toUpperCase();
+        
+
+        if(teamB.getName().length()>=3)
+            teamBShortName = teamB.getName().substring(0, 5).toUpperCase();
+        else 
+            teamBShortName = teamB.getName().toUpperCase();
+
+        playerDAO = new PlayerDAO();
+        ArrayList<dao.Player> aPlayers = null, bPlayers = null;
+        try {
+            aPlayers = playerDAO.getTeamPlayers( teamA.getTeamId() ); 
+        } catch (Exception e) {
+            System.out.println("An error occured when accesing the team members");
+        }
+
+        try {
+            bPlayers = playerDAO.getTeamPlayers( teamB.getTeamId() ); 
+        } catch (Exception e) {
+            System.out.println("An error occured when accesing the team members");
+        }
+        teamAsize = aPlayers.size();
+        teamBsize = bPlayers.size();
+        teamAPlayers = new Player[teamAsize];
+        teamBPlayers = new Player[teamBsize];
+        int i;
+        for( i = 0; i < aPlayers.size(); i++){
+            teamAPlayers[i] = new Player( aPlayers.get(i) );
+        }
+        /*for (; i < 12; i++){
+            teamAPlayers[i] = null;
+        }*/
+
+        for( i = 0; i < bPlayers.size(); i++){
+            teamBPlayers[i] = new Player( bPlayers.get(i) );
+        }
+        /*for (; i < 12; i++){
+            teamBPlayers[i] = null;
+        }*/
     }
      
 
@@ -118,13 +139,19 @@ public class MatchScreenCode extends Application{
             Button buttonTeamB = (Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i);
             if ( buttonTeamA != null)
             {
-                buttonTeamA.setText("" + i);
-                teamAPlayers[i] = new Player("Hüsnü Akseli" + i, i, teamA);
+                if(teamAPlayers[i]!=null )
+                    buttonTeamA.setText("" + teamAPlayers[i].getJerseyNumber());
+                else
+                    buttonTeamA.setText("");
+
             }
             if( buttonTeamB != null)
             {   
-                buttonTeamB.setText("" + (i + 20));
-                teamBPlayers[i] = new Player("Yunus Karamatov" + i , i + 20, teamB);
+                if(teamBPlayers[i]!=null )
+                    buttonTeamB.setText("" + teamBPlayers[i].getJerseyNumber());
+                else
+                    buttonTeamB.setText("");
+
             }
         }
     }
@@ -207,10 +234,12 @@ public class MatchScreenCode extends Application{
         MatchScreenSubButtonClickedStage.setScene( new Scene( subClickedRoot, 600, 600));
         MatchScreenSubButtonClickedStage.show();
 
-        for ( int i = 0; i < 12; i++)
-        {
+        for ( int i = 0; i < teamAsize; i++){
             Button buttonOfTeamAPlayer = (Button)subClickedRoot.lookup("#subScreenTeamAButton" + i );
             buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
+
+        }
+        for ( int i = 0; i < teamBsize; i++){
             Button buttonOfTeamBPlayer = (Button)subClickedRoot.lookup("#subScreenTeamBButton" + i );
             buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
         }
@@ -221,7 +250,7 @@ public class MatchScreenCode extends Application{
 
         Button firstSelectedPlayer = null;
         boolean dis = false;
-        for ( int i = 0; i < 12; i++)
+        for ( int i = 0; i < teamAsize; i++)
         {
             Button button = (Button)subClickedRoot.lookup("#subScreenTeamAButton" + i);
             if ( button.isDisabled())
@@ -243,7 +272,7 @@ public class MatchScreenCode extends Application{
             firstSelectedPlayer.setText( seconSelectedPlayer.getText() );
             seconSelectedPlayer.setText( temp );
 
-            for( int c = 0; c < 12; c++){
+            for( int c = 0; c < teamAsize; c++){
                 if ( firstSelectedPlayer.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c)).getText()))
                 {
                     Button firstMainRootButton = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c);
@@ -266,7 +295,7 @@ public class MatchScreenCode extends Application{
 
         Button firstSelectedPlayer = null;
         boolean dis = false;
-        for ( int i = 0; i < 12; i++)
+        for ( int i = 0; i < teamBsize; i++)
         {
             Button button = (Button)subClickedRoot.lookup("#subScreenTeamBButton" + i);
             if ( button.isDisabled())
@@ -288,7 +317,7 @@ public class MatchScreenCode extends Application{
             firstSelectedPlayer.setText( seconSelectedPlayer.getText() );
             seconSelectedPlayer.setText( temp );
 
-            for( int c = 0; c < 12; c++){
+            for( int c = 0; c < teamBsize; c++){
                 if ( firstSelectedPlayer.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + c)).getText()))
                 {
                     Button firstMainRootButton = (Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + c);
@@ -372,7 +401,7 @@ public class MatchScreenCode extends Application{
             Button button = (Button)event.getSource();
             button.setDisable(true);
 
-            for ( int i = 0; i < 12; i++)
+            for ( int i = 0; i < teamAsize; i++)
             {
                 Button buttonOfTeamAPlayer = (Button)goalClickedRoot.lookup("#matchScreenTeamPlayerButtonGoal" + i );
                 buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
@@ -396,7 +425,7 @@ public class MatchScreenCode extends Application{
             Button button = (Button)event.getSource();
             button.setDisable(true);
 
-            for ( int i = 0; i < 12; i++)
+            for ( int i = 0; i < teamBsize; i++)
             {
                 Button buttonOfTeamBPlayer = (Button)goalClickedRoot.lookup("#matchScreenTeamPlayerButtonGoal" + i );
                 buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
@@ -447,8 +476,7 @@ public class MatchScreenCode extends Application{
             {
                 if( teamAButton.isDisabled())
                 {
-                    for ( Player player : teamAPlayers)
-                    {
+                    for ( Player player : teamAPlayers){
                         if ( selectedJerseyNumber == player.getJerseyNumber())
                         {
                             player.getStats().scoreGoal();;
@@ -523,7 +551,7 @@ public class MatchScreenCode extends Application{
             Button button = (Button)event.getSource();
             button.setDisable(true);
 
-            for ( int i = 0; i < 12; i++)
+            for ( int i = 0; i < teamAsize; i++)
             {
                 Button buttonOfTeamAPlayer = (Button)missedClickedRoot.lookup("#matchScreenTeamPlayerButtonMissed" + i );
                 buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
@@ -541,7 +569,7 @@ public class MatchScreenCode extends Application{
             Button button = (Button)event.getSource();
             button.setDisable(true);
 
-            for ( int i = 0; i < 12; i++)
+            for ( int i = 0; i < teamBsize; i++)
             {
                 Button buttonOfTeamBPlayer = (Button)missedClickedRoot.lookup("#matchScreenTeamPlayerButtonMissed" + i );
                 buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
@@ -663,7 +691,7 @@ public class MatchScreenCode extends Application{
         Button button = (Button)event.getSource();
         button.setDisable(true);
 
-        for ( int i = 0; i < 12; i++)
+        for ( int i = 0; i < teamAsize; i++)
         {
             Button buttonOfTeamAPlayer = (Button)lostClickedRoot.lookup("#matchScreenTeamPlayerButtonLost" + i );
             buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
@@ -676,7 +704,7 @@ public class MatchScreenCode extends Application{
         Button button = (Button)event.getSource();
         button.setDisable(true);
 
-        for ( int i = 0; i < 12; i++)
+        for ( int i = 0; i < teamBsize; i++)
         {
             Button buttonOfTeamBPlayer = (Button)lostClickedRoot.lookup("#matchScreenTeamPlayerButtonLost" + i );
             buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
@@ -694,7 +722,7 @@ public class MatchScreenCode extends Application{
 
         if( teamAButton.isDisabled())
         {
-            for ( int i = 0; i < 12; i++)
+            for ( int i = 0; i < teamBsize; i++)
             {
                 Button buttonOfTeamBPlayer = (Button)lostClickedRoot.lookup("#matchScreenTeamPlayerButtonLost" + i );
                 buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
@@ -702,7 +730,7 @@ public class MatchScreenCode extends Application{
         }
         if( teamBButton.isDisabled())
         {
-            for ( int i = 0; i < 12; i++)
+            for ( int i = 0; i < teamAsize; i++)
             {
                 Button buttonOfTeamAPlayer = (Button)lostClickedRoot.lookup("#matchScreenTeamPlayerButtonLost" + i );
                 buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
@@ -824,7 +852,7 @@ public class MatchScreenCode extends Application{
         Button button = (Button)event.getSource();
         button.setDisable(true);
 
-        for ( int i = 0; i < 12; i++)
+        for ( int i = 0; i < teamAsize; i++)
         {
             Button buttonOfTeamAPlayer = (Button)foulClickedRoot.lookup("#matchScreenTeamPlayerButtonFoul" + i );
             buttonOfTeamAPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + i)).getText());
@@ -837,7 +865,7 @@ public class MatchScreenCode extends Application{
         Button button = (Button)event.getSource();
         button.setDisable(true);
 
-        for ( int i = 0; i < 12; i++)
+        for ( int i = 0; i < teamBsize; i++)
         {
             Button buttonOfTeamBPlayer = (Button)foulClickedRoot.lookup("#matchScreenTeamPlayerButtonFoul" + i );
             buttonOfTeamBPlayer.setText( ((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + i)).getText());
@@ -955,10 +983,6 @@ public class MatchScreenCode extends Application{
 
 
     //getters
-    public Text getTextScoreOfTeamA()
-    {
-        return teamAScore;
-    }
     public Text getMatchHour()
     {
         return matchHour;
@@ -990,15 +1014,14 @@ public class MatchScreenCode extends Application{
         matchDAO.printAllMatches();  // Printing all matches
         //System.out.println(matchDAO.getMatch(5).getMatchDate());*/
         
-        Parent root = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
-        timer.schedule(timerHelper, 1000, 1000);
+        //Parent root = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
         mainRoot = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
+        timer.schedule(timerHelper, 1000, 1000);
         primaryStage.setTitle("Match Screen");
         primaryStage.setScene(new Scene(mainRoot, 950, 600));
         primaryStage.setMaximized(true);
         primaryStage.show();
         constructTeam();
-        
         
         
     }

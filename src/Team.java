@@ -3,6 +3,9 @@ import java.util.ArrayList;
 public class Team {
     private ArrayList<Player> players;
 
+    public Team( dao.Team t){
+        players = null;
+    }
     public Team() {
         players = new ArrayList<Player>();
         //TODO

@@ -72,7 +72,19 @@ public class PlayerDAO {
         }
         return 0;
     }
-
+    public ArrayList<Player> getTeamPlayers(int id) throws SQLException {
+        ArrayList<Player> players = new ArrayList<>();
+        String sql = "SELECT * FROM Players WHERE TeamID = ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                players.add(new Player(rs.getInt("PlayerID"), rs.getInt("TeamID"), rs.getString("Name"), rs.getString("Position")));
+            }
+        }
+        return players;
+    }
     public ArrayList<Player> searchPlayersByName(String name) throws SQLException {
         ArrayList<Player> players = new ArrayList<>();
         String sql = "SELECT * FROM Players WHERE Name LIKE ?";

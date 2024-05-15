@@ -125,6 +125,7 @@ public class CreateMatchCode extends Application {
         }
         System.out.println("MATCH STARTING");
         MatchScreenCode msc = new MatchScreenCode();
+        msc.con(teamA, teamB);
         msc.start(CreateMatchCode.getStage()); 
         
     }

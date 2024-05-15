@@ -1,14 +1,17 @@
 public class Player {
     private String name;
     private int jerseyNumber;
-    private Team team;
     PlayerStats stats;
-    
-    public Player ( String namee, int jersey, Team t) {
+    public Player( dao.Player p){
+        name=p.getName();
+        jerseyNumber=Integer.parseInt(p.getPosition());
+        stats = new PlayerStats();
+
+        
+    }
+    public Player ( String namee, int jersey) {
         name = namee;
         jerseyNumber = jersey;
-        team = t;
-        t.addPlayer( this );
         stats = new PlayerStats();
     }
 
@@ -18,10 +21,6 @@ public class Player {
 
     public int getJerseyNumber() {
         return this.jerseyNumber;
-    }
-
-    public Team getTeam () {
-        return this.team;
     }
 
     public PlayerStats getStats ()
