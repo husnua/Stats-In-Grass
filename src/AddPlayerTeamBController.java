@@ -110,5 +110,9 @@ public class AddPlayerTeamBController {
             CreateMatchCode.isReadyB = true;
 
         }
+        else{
+            showAlert("Error", "Team must have at least 6 at most 12 players");
+
+        }
     }
 }

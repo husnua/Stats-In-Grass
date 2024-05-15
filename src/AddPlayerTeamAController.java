@@ -108,6 +108,9 @@ public class AddPlayerTeamAController {
             stage.close();
             CreateMatchCode.isReadyA = true;
         }
+        else{
+            showAlert("Error", "Team must have at least 6 at most 12 players");
+        }
     }
 }
 

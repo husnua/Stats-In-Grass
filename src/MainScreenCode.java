@@ -1,3 +1,4 @@
+import dao.DatabaseInitializer;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -6,15 +7,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainScreenCode extends Application {
-
+    private static Stage stage;
+    public static Stage getStage() {
+        return stage;
+    }
     @FXML
     public void showCreateMatchScreen() {
         try {
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("CreateMatch.fxml"));
-            stage.setTitle("Create Match");
-            stage.setScene(new Scene(root, 950, 600));
-            stage.show();
+            CreateMatchCode cmc = new CreateMatchCode();
+            cmc.start(getStage());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -23,11 +24,8 @@ public class MainScreenCode extends Application {
     @FXML
     public void showViewMatchScreen() {
         try {
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("ViewMatches.fxml"));
-            stage.setTitle("View Matches");
-            stage.setScene(new Scene(root, 950, 600));
-            stage.show();
+            ViewMatchesController vmc = new ViewMatchesController();
+            vmc.start(getStage());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -35,6 +33,7 @@ public class MainScreenCode extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        stage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         primaryStage.setTitle("Homepage");
         primaryStage.setScene(new Scene(root, 950, 600));
@@ -42,6 +41,7 @@ public class MainScreenCode extends Application {
     }
 
     public static void main(String[] args) {
+        DatabaseInitializer.initializeDatabase();
         launch(args);
     }
 }
