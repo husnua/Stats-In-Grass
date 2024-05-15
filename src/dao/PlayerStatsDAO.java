@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 
@@ -83,6 +84,33 @@ public class PlayerStatsDAO {
         }
         return 0;
     }
+    public ArrayList<PlayerStats> getMatchPlayerStats(int matchId) throws SQLException {
+        ArrayList<PlayerStats> playerStats = new ArrayList<>();
+        String sql = "SELECT StatsID, PlayerID, MatchID, Goals, Assists, MinutesPlayed, YellowCards, RedCards " +
+                     "FROM PlayerStats " +
+                     "WHERE MatchID = ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, matchId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                playerStats.add(new PlayerStats(
+                    rs.getInt("StatsID"),
+                    rs.getInt("PlayerID"),
+                    rs.getInt("MatchID"),
+                    rs.getInt("Goals"),
+                    rs.getInt("Assists"),
+                    rs.getInt("MinutesPlayed"),
+                    rs.getInt("YellowCards"),
+                    rs.getInt("RedCards")
+                ));
+            }
+        }
+        return playerStats;
+    }
+    
+}
+
 
     
 
