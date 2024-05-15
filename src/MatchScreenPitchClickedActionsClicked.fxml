@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -32,7 +33,7 @@
                   </Text>
                   <Text fx:id="actionPlayerName0" fill="#f2e1e1" layoutX="33.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="195.73675537109375">
                      <font>
-                        <Font name="System Bold" size="29.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Text>
                   <Text fill="#fceded" layoutX="297.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
@@ -42,9 +43,14 @@
                   </Text>
                   <Text fx:id="actionType0" fill="#f4e1e1" layoutX="390.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="171.98248291015625">
                      <font>
-                        <Font name="System Bold" size="29.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Text>
+                  <Button fx:id="actionScreenDeleteButton0" layoutX="476.0" layoutY="9.0" mnemonicParsing="false" onAction="#actionScreenDeleteClicked" prefHeight="13.0" prefWidth="94.0" style="-fx-background-color: #882A2A; -fx-border-width: 2; -fx-border-color: white; -fx-border-radius: 6;" text="DELETE" textFill="#efe5e5">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="90.0" prefWidth="600.0" style="-fx-background-color: #882A2A; -fx-border-color: white;" GridPane.rowIndex="1">
@@ -56,7 +62,7 @@
                   </Text>
                   <Text fx:id="actionPlayerName1" fill="#f2e1e1" layoutX="33.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="195.73675537109375">
                      <font>
-                        <Font name="System Bold" size="29.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Text>
                   <Text fill="#fceded" layoutX="297.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
@@ -66,9 +72,14 @@
                   </Text>
                   <Text fx:id="actionType1" fill="#f4e1e1" layoutX="390.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="171.98248291015625">
                      <font>
-                        <Font name="System Bold" size="29.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Text>
+                  <Button fx:id="actionScreenDeleteButton1" layoutX="476.0" layoutY="9.0" mnemonicParsing="false" onAction="#actionScreenDeleteClicked" prefHeight="0.0" prefWidth="94.0" style="-fx-background-color: #882A2A; -fx-border-width: 2; -fx-border-color: white; -fx-border-radius: 6;" text="DELETE" textFill="#efe5e5">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="90.0" prefWidth="600.0" style="-fx-background-color: #882A2A; -fx-border-color: white;" GridPane.rowIndex="2">
@@ -80,7 +91,7 @@
                   </Text>
                   <Text fx:id="actionPlayerName2" fill="#f2e1e1" layoutX="33.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="195.73675537109375">
                      <font>
-                        <Font name="System Bold" size="29.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Text>
                   <Text fill="#fceded" layoutX="297.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
@@ -90,9 +101,14 @@
                   </Text>
                   <Text fx:id="actionType2" fill="#f4e1e1" layoutX="390.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="171.98248291015625">
                      <font>
-                        <Font name="System Bold" size="29.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Text>
+                  <Button fx:id="actionScreenDeleteButton2" layoutX="476.0" layoutY="14.0" mnemonicParsing="false" onAction="#actionScreenDeleteClicked" prefHeight="3.0" prefWidth="94.0" style="-fx-background-color: #882A2A; -fx-border-width: 2; -fx-border-color: white; -fx-border-radius: 6;" text="DELETE" textFill="#efe5e5">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="90.0" prefWidth="600.0" style="-fx-background-color: #882A2A; -fx-border-color: white;" GridPane.rowIndex="3">
@@ -104,7 +120,7 @@
                   </Text>
                   <Text fx:id="actionPlayerName3" fill="#f2e1e1" layoutX="33.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="195.73675537109375">
                      <font>
-                        <Font name="System Bold" size="29.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Text>
                   <Text fill="#fceded" layoutX="297.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
@@ -114,9 +130,14 @@
                   </Text>
                   <Text fx:id="actionType3" fill="#f4e1e1" layoutX="390.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="171.98248291015625">
                      <font>
-                        <Font name="System Bold" size="29.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Text>
+                  <Button fx:id="actionScreenDeleteButton3" layoutX="476.0" layoutY="14.0" mnemonicParsing="false" onAction="#actionScreenDeleteClicked" prefHeight="17.0" prefWidth="94.0" style="-fx-background-color: #882A2A; -fx-border-width: 2; -fx-border-color: white; -fx-border-radius: 6;" text="DELETE" textFill="#efe5e5">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="90.0" prefWidth="600.0" style="-fx-background-color: #882A2A; -fx-border-color: white;" GridPane.rowIndex="4">
@@ -128,7 +149,7 @@
                   </Text>
                   <Text fx:id="actionPlayerName4" fill="#f2e1e1" layoutX="33.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="195.73675537109375">
                      <font>
-                        <Font name="System Bold" size="29.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Text>
                   <Text fill="#fceded" layoutX="297.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
@@ -138,9 +159,14 @@
                   </Text>
                   <Text fx:id="actionType4" fill="#f4e1e1" layoutX="390.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="171.98248291015625">
                      <font>
-                        <Font name="System Bold" size="29.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Text>
+                  <Button fx:id="actionScreenDeleteButton4" layoutX="476.0" layoutY="14.0" mnemonicParsing="false" onAction="#actionScreenDeleteClicked" prefHeight="20.0" prefWidth="94.0" style="-fx-background-color: #882A2A; -fx-border-width: 2; -fx-border-color: white; -fx-border-radius: 6;" text="DELETE" textFill="#efe5e5">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="90.0" prefWidth="600.0" style="-fx-background-color: #882A2A; -fx-border-color: white;" GridPane.rowIndex="5">
@@ -152,7 +178,7 @@
                   </Text>
                   <Text fx:id="actionPlayerName5" fill="#f2e1e1" layoutX="33.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="195.73675537109375">
                      <font>
-                        <Font name="System Bold" size="29.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Text>
                   <Text fill="#fceded" layoutX="297.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
@@ -162,9 +188,14 @@
                   </Text>
                   <Text fx:id="actionType5" fill="#f4e1e1" layoutX="390.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="171.98248291015625">
                      <font>
-                        <Font name="System Bold" size="29.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Text>
+                  <Button fx:id="actionScreenDeleteButton5" layoutX="476.0" layoutY="13.0" mnemonicParsing="false" onAction="#actionScreenDeleteClicked" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #882A2A; -fx-border-width: 2; -fx-border-color: white; -fx-border-radius: 6;" text="DELETE" textFill="#efe5e5">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </children>

@@ -367,6 +367,7 @@ public class MatchScreenCode extends Application{
 
 
 
+    //actionLog
     @FXML
     void pitchScreenActionButtonClicked(ActionEvent event) throws Exception{
 
@@ -395,6 +396,23 @@ public class MatchScreenCode extends Application{
         Stage actionsClickedStage = new Stage();
         actionsClickedStage.setScene(new Scene(actionsClickedRoot, 600,600));
         actionsClickedStage.show();
+    }
+
+    @FXML
+    void actionScreenDeleteClicked(ActionEvent event) throws Exception {
+        
+        Button button = (Button)event.getSource();
+
+        for( int i = 0; i < 6; i++)
+        {
+            if( button.getId().equals(((Button)actionsClickedRoot.lookup("#actionScreenDeleteButton" + i)).getId()))
+            {
+                actions.remove( actions.size() - 1 - i);
+            }
+        }
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
 
