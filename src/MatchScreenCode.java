@@ -21,6 +21,7 @@ import dao.PlayerStatsDAO;
 
 
 
+
 public class MatchScreenCode extends Application{
 
     private PlayerDAO playerDAO;
@@ -89,13 +90,13 @@ public class MatchScreenCode extends Application{
         teamAdb = teamA;
         teamBdb = teamB;
         if(teamA.getName().length()>=3)
-            teamAShortName = teamA.getName().substring(0, 5).toUpperCase();
+            teamAShortName = teamA.getName().substring(0, 3).toUpperCase();
         else 
             teamAShortName = teamA.getName().toUpperCase();
         
 
         if(teamB.getName().length()>=3)
-            teamBShortName = teamB.getName().substring(0, 5).toUpperCase();
+            teamBShortName = teamB.getName().substring(0, 3).toUpperCase();
         else 
             teamBShortName = teamB.getName().toUpperCase();
 
@@ -241,6 +242,13 @@ public class MatchScreenCode extends Application{
             System.out.println("Match could not added");
         }
         dao.Match ml = new Match();
+        try {
+            
+            ml = m.searchMatchByTeamsName(teamAdb.getTeamId(), teamBdb.getTeamId());
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        
         // TODO: define a correct match
         for(int i = 0; i< teamAPlayers.length;i++){
             try {

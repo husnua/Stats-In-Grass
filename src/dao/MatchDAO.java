@@ -108,6 +108,20 @@ public class MatchDAO {
         }
         return 0;
     }
+    public Match searchMatchByTeamsName(int team1, int team2) throws SQLException {
+        Match match =new  Match();
+        String sql = "SELECT * FROM Matches WHERE Team1ID LIKE ? AND TEAM2ID LIKE ?";
+        try (Connection conn = DatabaseInitializer.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, "%" + team1 + "%");
+            stmt.setString(1, "%" + team2 + "%");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                match =  new Match(rs.getInt("MatchID"), rs.getInt("Team1ID"), rs.getInt("Team2ID"), rs.getInt("Team1Score"), rs.getInt("Team2Score"), rs.getString("MatchDate"));
+            }
+        }
+        return match;
+    }
 
     
 }
