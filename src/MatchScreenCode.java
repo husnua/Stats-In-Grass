@@ -206,89 +206,90 @@ public class MatchScreenCode extends Application{
     @FXML
     void subScreenTeamAPlayerClicked(ActionEvent event) {
 
-        Button firstSelectedPlayer;
-
+        Button firstSelectedPlayer = null;
+        boolean dis = false;
         for ( int i = 0; i < 12; i++)
         {
             Button button = (Button)subClickedRoot.lookup("#subScreenTeamAButton" + i);
             if ( button.isDisabled())
             {
-                disabledControl = true;
+                dis = true;
+                firstSelectedPlayer = button;
             }
         }
-        if ( !disabledControl)
+        if ( !dis )
         {
             firstSelectedPlayer = (Button)event.getSource();
             firstSelectedPlayer.setDisable(true);
         }
         else
         {
-            Button secondSelectedButton = (Button)event.getSource();
-            Button firstSelectedButton = null;
-            int jerseyNumberMainRootFirstSelectedButton = 0;
-            int jerseyNumberMainRootSecondSelectedButton = 0;
-            String tempText = null;
-            for( int i = 0; i < 12; i++)
-            {
-                if( ((Button)subClickedRoot.lookup("#subScreenTeamAButton" + i)).isDisabled())
-                {   
-                    firstSelectedButton = (Button)subClickedRoot.lookup("#subScreenTeamAButton" + i);
-                    tempText = secondSelectedButton.getText();
-                    jerseyNumberMainRootFirstSelectedButton = Integer.parseInt(firstSelectedButton.getText());
-                    jerseyNumberMainRootSecondSelectedButton = Integer.parseInt(tempText);
-                    //mainRoot buttons changed here
-                }
-            }
-            for( int c = 0; c < 12; c++)
-            {
-                if ( firstSelectedButton.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c)).getText()))
+            String temp = firstSelectedPlayer.getText();
+            Button seconSelectedPlayer = (Button)event.getSource();
+            seconSelectedPlayer.setDisable( true );
+            firstSelectedPlayer.setText( seconSelectedPlayer.getText() );
+            seconSelectedPlayer.setText( temp );
+
+            for( int c = 0; c < 12; c++){
+                if ( firstSelectedPlayer.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c)).getText()))
                 {
                     Button firstMainRootButton = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c);
-                    firstMainRootButton.setText("" + jerseyNumberMainRootSecondSelectedButton);
+                    firstMainRootButton.setText("" + seconSelectedPlayer.getText());
                 }
-                if ( secondSelectedButton.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c)).getText()))
+                else if ( seconSelectedPlayer.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c)).getText()))
                 {
                     Button secondMainRootButton = (Button)mainRoot.lookup("#matchScreenTeamAPlayerButton" + c);
-                    secondMainRootButton.setText("" + jerseyNumberMainRootFirstSelectedButton);
+                    secondMainRootButton.setText("" + firstSelectedPlayer.getText());
                 }
             }
-            secondSelectedButton.setText(firstSelectedButton.getText());
-            firstSelectedButton.setText(tempText);
-            secondSelectedButton.setDisable(true);
+            firstSelectedPlayer.setDisable(false);
+            seconSelectedPlayer.setDisable(false);
+            
         }
     }
 
     @FXML
     void subScreenTeamBPlayerClicked(ActionEvent event) {
 
+        Button firstSelectedPlayer = null;
+        boolean dis = false;
         for ( int i = 0; i < 12; i++)
         {
             Button button = (Button)subClickedRoot.lookup("#subScreenTeamBButton" + i);
             if ( button.isDisabled())
             {
-                disabledControl = true;
+                dis = true;
+                firstSelectedPlayer = button;
             }
         }
-        if ( !disabledControl)
+        if ( !dis )
         {
-            Button firstSelectedPlayer = (Button)event.getSource();
+            firstSelectedPlayer = (Button)event.getSource();
             firstSelectedPlayer.setDisable(true);
         }
         else
         {
-            System.out.println("sa");
-            Button secondSelectedButton = (Button)event.getSource();
-            for( int i = 0; i < 12; i++)
-            {
-                if( ((Button)subClickedRoot.lookup("#subScreenTeamBButton" + i)).isDisabled())
+            String temp = firstSelectedPlayer.getText();
+            Button seconSelectedPlayer = (Button)event.getSource();
+            seconSelectedPlayer.setDisable( true );
+            firstSelectedPlayer.setText( seconSelectedPlayer.getText() );
+            seconSelectedPlayer.setText( temp );
+
+            for( int c = 0; c < 12; c++){
+                if ( firstSelectedPlayer.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + c)).getText()))
                 {
-                    Button firstSelectedButton = (Button)subClickedRoot.lookup("#subScreenTeamBButton" + i);
-                    String tempText = secondSelectedButton.getText();
-                    secondSelectedButton.setText(firstSelectedButton.getText());
-                    firstSelectedButton.setText(tempText);
-                    secondSelectedButton.setDisable(true);
+                    Button firstMainRootButton = (Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + c);
+                    firstMainRootButton.setText("" + seconSelectedPlayer.getText());
+                }
+                else if ( seconSelectedPlayer.getText().equals(((Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + c)).getText()))
+                {
+                    Button secondMainRootButton = (Button)mainRoot.lookup("#matchScreenTeamBPlayerButton" + c);
+                    secondMainRootButton.setText("" + firstSelectedPlayer.getText());
                 }
             }
+            firstSelectedPlayer.setDisable(false);
+            seconSelectedPlayer.setDisable(false);
+            
         }
     }
 
