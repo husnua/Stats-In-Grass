@@ -451,7 +451,9 @@ public class MatchScreenCode extends Application{
                     {
                         if ( selectedJerseyNumber == player.getJerseyNumber())
                         {
-                            player.getStats().scoreGoal();;
+                            player.getStats().scoreGoal();
+                            player.getStats().makeShotOnTarget();
+                            player.getStats().makeShot();
                             System.out.println( player.getStats().getGoal());
                         }
                     }
@@ -463,6 +465,8 @@ public class MatchScreenCode extends Application{
                         if ( selectedJerseyNumber == player.getJerseyNumber())
                         {
                             player.getStats().scoreGoal();
+                            player.getStats().makeShotOnTarget();
+                            player.getStats().makeShot();
                             System.out.println( player.getStats().getGoal());
                         }
                     }
@@ -995,7 +999,6 @@ public class MatchScreenCode extends Application{
         mainRoot = FXMLLoader.load(getClass().getResource("MatchScreen.fxml"));
         primaryStage.setTitle("Match Screen");
         primaryStage.setScene(new Scene(mainRoot, 950, 600));
-        primaryStage.setMaximized(true);
         primaryStage.show();
         constructTeam();
         
