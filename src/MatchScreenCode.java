@@ -928,6 +928,8 @@ public class MatchScreenCode extends Application{
                     }
                 }
             }
+            Button button = (Button)event.getSource();
+            button.setDisable(true);
         }
         else
         {
