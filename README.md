@@ -1,12 +1,18 @@
 ![Forks](https://img.shields.io/badge/forks-44-blue)
 ![Stars](https://img.shields.io/badge/stars-13-yellow)
 # Stats-In-Grass
+##Creators
+Husnu Arkca
+Yusufbek Karamatov
+Yunus Emre
+Mustafa Akseli
 
 ## Description
 Welcome to our CS-102 group project! This is Stats-In-Grass desktop app made on Java, offers a comprehensive suite of tools designed to assist sports leagues and organizers in effectively managing sports matches, teams, and player statistics. Our system enables users to seamlessly create matches, add players to teams, and keep track of detailed statistics during games, such as player performance and team outcomes.
 
 With intuitive interfaces for match setup, player additions, and real-time game interactions, this application simplifies the complexities of match management. Whether you're tracking a local tournament or managing a sports league, our system is equipped to provide robust support for all your management needs. 
 We integrated JavaFX and MySql in it. Our DB system is dao(DAO, or Data Access Object) 
+
 
 ## Contributing
 We welcome any and all contributions! Here are some ways you can get started:
