@@ -15,6 +15,21 @@ Welcome to our CS-102 group project! This is Stats-In-Grass desktop app made on 
 With intuitive interfaces for match setup, player additions, and real-time game interactions, this application simplifies the complexities of match management. Whether you're tracking a local tournament or managing a sports league, our system is equipped to provide robust support for all your management needs. 
 We integrated JavaFX and MySql in it. Our DB system is dao(DAO, or Data Access Object) 
 
+## Usage
+
+Start the application:
+java Application
+
+##
+Use the CreateMatchCode class to set up new matches.
+Adding players:
+##
+Utilize AddPlayerTeamBController to add players to Team B.
+Recording match interactions:
+
+Use MatchScreenCode and MatchScreenPitchClickedCode for match interactions and updates.
+
+
 ## Key Files and Their Roles
 - Application.java: The entry point of the application.
 - CreateMatchCode.java: Handles creation of new matches.
