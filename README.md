@@ -2,10 +2,10 @@
 ![Stars](https://img.shields.io/badge/stars-13-yellow)
 # Stats-In-Grass
 ## Creators
-Husnu Arkca
-Yusufbek Karamatov
-Yunus Emre
-Mustafa Akseli
+- Husnu Arkca
+- Yusufbek Karamatov
+- Yunus Emre
+- Mustafa Akseli
 
 ## Description
 Welcome to our CS-102 group project! This is Stats-In-Grass desktop app made on Java, offers a comprehensive suite of tools designed to assist sports leagues and organizers in effectively managing sports matches, teams, and player statistics. Our system enables users to seamlessly create matches, add players to teams, and keep track of detailed statistics during games, such as player performance and team outcomes.
