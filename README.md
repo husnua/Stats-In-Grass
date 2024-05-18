@@ -20,10 +20,11 @@ We integrated JavaFX and MySql in it. Our DB system is dao(DAO, or Data Access O
 Start the application:
 java Application
 
-##
+
 Use the CreateMatchCode class to set up new matches.
 Adding players:
-##
+
+
 Utilize AddPlayerTeamBController to add players to Team B.
 Recording match interactions:
 
